@@ -16,6 +16,7 @@
     </main>
 
     <?php $this->insert('_partials/footer') ?>
+    <?php $this->insert('_partials/ga') ?>
 
     <script src="/builds/js/scripts.js"></script>
 </body>
