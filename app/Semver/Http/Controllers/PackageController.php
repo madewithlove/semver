@@ -21,12 +21,20 @@ class PackageController
     private $request;
 
     /**
-     * @param Client  $client
+     * @var VersionParser
      */
-    public function __construct(Request $request, Client $client)
+    private $parser;
+
+    /**
+     * @param Request       $request
+     * @param VersionParser $parser
+     * @param Client        $client
+     */
+    public function __construct(Request $request, VersionParser $parser, Client $client)
     {
         $this->client = $client;
         $this->request = $request;
+        $this->parser = $parser;
     }
 
     /**
@@ -50,13 +58,12 @@ class PackageController
     {
         $versions = $this->getVersions($vendor, $package);
 
-        $parser = new VersionParser();
         $constraint = $this->request->get('constraint');
 
-        $constraint = $parser->parseConstraints($constraint);
+        $constraint = $this->parser->parseConstraints($constraint);
 
         $matchedVersions = array_filter($versions, function (Version $version) use ($constraint) {
-            return $constraint->matches(new VersionConstraint('==', $version->getVersion()));
+            return $constraint->matches(new VersionConstraint('==', $this->parser->normalize($version->getVersion())));
         });
 
         return new JsonResponse(array_keys($matchedVersions));
