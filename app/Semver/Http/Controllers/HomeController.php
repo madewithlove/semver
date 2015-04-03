@@ -2,7 +2,6 @@
 namespace Semver\Http\Controllers;
 
 use League\Plates\Engine;
-use Symfony\Component\HttpFoundation\Response;
 
 class HomeController
 {
@@ -19,10 +18,11 @@ class HomeController
         $this->views = $views;
     }
 
+    /**
+     * @return string
+     */
     public function index()
     {
-        $content = $this->views->render('index');
-
-        return new Response($content);
+        return $this->views->render('index');
     }
 }

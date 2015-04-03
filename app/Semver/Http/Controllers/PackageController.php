@@ -89,7 +89,7 @@ class PackageController
      */
     protected function getVersions($vendor, $package)
     {
-        /** @type Version[] $versions */
+        /* @type Version[] $versions */
         $package  = $this->client->get("$vendor/$package");
         $versions = $package->getVersions();
 

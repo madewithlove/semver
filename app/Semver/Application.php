@@ -37,12 +37,12 @@ class Application
     }
 
     /**
-     * Run the application
+     * Run the application.
      */
     public function run()
     {
-        /** @var Dispatcher $dispatcher */
-        /** @var Request $request */
+        /** @type Dispatcher $dispatcher */
+        /** @type Request $request */
         $dispatcher = $this->container->get(RouteCollection::class)->getDispatcher();
         $request    = $this->container->get(Request::class);
 
@@ -52,12 +52,12 @@ class Application
     }
 
     /**
-     * Register the providers with the container
+     * Register the providers with the container.
      */
     private function setupProviders()
     {
         foreach ($this->serviceProviders as &$serviceProvider) {
-            $serviceProvider = new $serviceProvider;
+            $serviceProvider = new $serviceProvider();
         }
 
         // Register the service providers.
