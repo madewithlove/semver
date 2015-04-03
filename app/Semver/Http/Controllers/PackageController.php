@@ -45,9 +45,16 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
-        $versions = array_keys($this->getVersions($vendor, $package));
+        $versions = $this->getVersions($vendor, $package);
+        foreach ($versions as $key => $version) {
+            $versions[$version->getVersion()] = [
+                'source'  => substr($version->getSource()->getUrl(), 0, -4),
+                'version' => $version->getVersion(),
+            ];
+        }
+
         usort($versions, function ($a, $b) {
-            return -1 * version_compare($a, $b);
+            return -1 * version_compare($a['version'], $b['version']);
         });
 
         return new JsonResponse($versions);
