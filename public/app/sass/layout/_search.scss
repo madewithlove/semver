@@ -2,6 +2,10 @@
 	border-bottom: 1px solid $color-grey;
 	padding-bottom: 2rem;
 
+	input, button {
+		margin-right: 1rem;
+	}
+
 	input {
 		$color-input: grey(95);
 		background: $color-input;
@@ -11,7 +15,6 @@
 		font-size: 2rem;
 		padding: 0.5em;
 		text-align: center;
-		margin-right: 1rem;
 		transition: background 0.3s;
 
 		&:focus {
