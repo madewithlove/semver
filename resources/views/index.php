@@ -16,5 +16,9 @@
         <ul class="versions list-unstyled">
             <li ng-repeat="version in versions" class="version" ng-class="{'version--matching': matches(version)}">{{ version }}</li>
         </ul>
+
+        <h2>Satisfied?</h2>
+        <pre>composer require {{ package }}:{{ version }}</pre>
     </section>
+
 <?php $this->stop() ?>

@@ -1,8 +1,9 @@
 .versions {
-	padding: 2rem 0;
+	padding: 0;
 
-	h1 {
+	h1, h2 {
 		font-size: 2rem;
+		margin: 2rem 0;
 		color: $color-text;
 		text-align: center;
 

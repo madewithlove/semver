@@ -1,0 +1,9 @@
+pre {
+	&:before {
+		content: '$ ';
+	}
+
+	border: none;
+	background: $color-grey;
+	color: $color-text;
+}
