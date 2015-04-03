@@ -1,0 +1,21 @@
+{
+  "name": "madewithlove/semver",
+  "description": "A semver checker for Packagist",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hannes Van De Vreken",
+      "email": "vandevreken.hannes@gmail.com"
+    },
+    {
+      "name": "Maxime Fabre",
+      "email": "ehtnam6@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Madewithlove\\Semver\\": "src"
+    }
+  }
+}
