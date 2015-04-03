@@ -1,9 +1,9 @@
 var app = angular.module('semver', []);
 
-app.controller('AppController', function ($scope, $http) {
+app.controller('AppController', function ($scope, $http, $location) {
 
-	$scope.package = 'madewithlove/elasticsearcher';
-	$scope.version = '^0.1.1';
+	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
+	$scope.version = $location.search().version || '^0.1.1';
 	$scope.exists = false;
 
 	$scope.versions = [];
@@ -30,6 +30,12 @@ app.controller('AppController', function ($scope, $http) {
 		if (!$scope.version) {
 			return;
 		}
+
+		// Update URL
+		$location.search({
+			package: $scope.package,
+			version: $scope.version,
+		});
 
 		$http.post('/packages/' + $scope.package + '/match', {
 			constraint: $scope.version
