@@ -10,7 +10,7 @@ use Whoops\Run;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @var array
+     * @type array
      */
     protected $provides = [
         Run::class,
@@ -42,6 +42,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->container->add('Whoops\Run', function () {
             $whoops = new Run();
             $whoops->pushHandler(new PrettyPageHandler());
+
             return $whoops;
         });
     }

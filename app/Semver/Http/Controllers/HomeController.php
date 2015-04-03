@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HomeController
 {
     /**
-     * @var Engine
+     * @type Engine
      */
     private $views;
 
@@ -25,4 +25,4 @@ class HomeController
 
         return new Response($content);
     }
-} 
+}

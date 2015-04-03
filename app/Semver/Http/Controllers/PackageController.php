@@ -11,17 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
 class PackageController
 {
     /**
-     * @var Client
+     * @type Client
      */
     private $client;
 
     /**
-     * @var Request
+     * @type Request
      */
     private $request;
 
     /**
-     * @var VersionParser
+     * @type VersionParser
      */
     private $parser;
 
@@ -84,7 +84,7 @@ class PackageController
     {
         $package = $this->client->get("$vendor/$package");
 
-        /** @var array $versions */
+        /** @type array $versions */
         $versions = $package->getVersions();
 
         return array_filter(

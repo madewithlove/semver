@@ -8,7 +8,7 @@ use League\Route\Strategy\UriStrategy;
 class RoutesServiceProvider extends ServiceProvider
 {
     /**
-     * @var array
+     * @type array
      */
     protected $provides = [
         RouteCollection::class,
@@ -24,18 +24,19 @@ class RoutesServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register method,
+     * Register method,.
      */
     public function register()
     {
         $this->container->add('routes.file', function () {
-            return $this->container->get('paths.app') . 'routes.php';
+            return $this->container->get('paths.app').'routes.php';
         });
 
         // Bind a route collection to the container.
         $this->container->singleton(RouteCollection::class, function () {
             $routes = new RouteCollection($this->container);
             $routes->setStrategy(new UriStrategy());
+
             return $routes;
         });
     }

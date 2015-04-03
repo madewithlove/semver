@@ -1,4 +1,5 @@
 <?php
+
 use League\Container\ServiceProvider;
 
 $serviceProviders = [
@@ -12,7 +13,6 @@ $serviceProviders = [
 
 // Register the service providers.
 array_walk($serviceProviders, function (ServiceProvider $serviceProvider) use ($container) {
-    $serviceProvider->setContainer($container);
     $container->addServiceProvider($serviceProvider);
 });
 

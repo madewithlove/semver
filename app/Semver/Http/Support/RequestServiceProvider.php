@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RequestServiceProvider extends ServiceProvider
 {
     /**
-     * @var array
+     * @type array
      */
     protected $provides = [
         Request::class,

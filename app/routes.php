@@ -1,9 +1,10 @@
 <?php
+
 use League\Route\RouteCollection;
+use Semver\Http\Controllers\HomeController;
+use Semver\Http\Controllers\PackageController;
 
-/** @var RouteCollection $router */
-$ns = 'Semver\Http\Controllers\\';
-
-$router->get('/', $ns.'HomeController::index');
-$router->get('/packages/{vendor}/{name}', $ns.'PackageController::versions');
-$router->post('/packages/{vendor}/{name}/match', $ns.'PackageController::matchVersions');
+/* @var RouteCollection $router */
+$router->get('/', HomeController::class.'::index');
+$router->get('/packages/{vendor}/{name}', PackageController::class.'::versions');
+$router->post('/packages/{vendor}/{name}/match', PackageController::class.'::matchVersions');

@@ -7,7 +7,7 @@ use Packagist\Api\Client;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @var array
+     * @type array
      */
     protected $provides = [
         Client::class,

@@ -6,7 +6,7 @@ use League\Container\ServiceProvider as BaseServiceProvider;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @var array
+     * @type array
      */
     protected $provides = [
         'paths.app',
@@ -22,7 +22,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->container->add('paths.base', realpath(__DIR__.'/../../../..').'/');
 
         $paths = [
-            'app' => 'app',
+            'app'   => 'app',
             'views' => 'resources/views',
         ];
 
