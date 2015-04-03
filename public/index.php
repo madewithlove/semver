@@ -1,20 +1,11 @@
 <?php
 
 use League\Container\Container;
-use League\Route\RouteCollection;
-use Symfony\Component\HttpFoundation\Request;
+use Semver\Application;
 
-require '../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 $container = new Container();
+$app       = new Application($container);
 
-include '../app/boot.php';
-
-/** @var RouteCollection $routes */
-$routes = $container->get(RouteCollection::class);
-/** @var Request $request */
-$request = $container->get(Request::class);
-
-$response = $routes->getDispatcher()->dispatch($request->getMethod(), $request->getPathInfo());
-
-$response->send();
+return $app->run();
