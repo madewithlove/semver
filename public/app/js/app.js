@@ -27,7 +27,11 @@ app.controller('AppController', function ($scope, $http) {
 	 * Fetches all versions matching a specified range
 	 */
 	$scope.fetchMatchingVersions = function () {
-		$http.post('/packages/' + $scope.package + '/match').success(function (versions) {
+		if (!$scope.version) {
+			return;
+		}
+
+		$http.post('/packages/' + $scope.package + '/match', {constraint: $scope.version}).success(function (versions) {
 			$scope.matchingVersions = versions;
 		});
 	};
