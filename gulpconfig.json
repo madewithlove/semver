@@ -1,0 +1,20 @@
+{
+  "paths": {
+    "original": {
+      "js": "public/app/js",
+      "views": "resources/views"
+    },
+    "compiled": {
+      "css": "public/builds/css",
+      "js": "public/builds/js"
+    }
+  },
+  "styles": [
+    "public/components/bootstrap/dist/css/bootstrap.css"
+  ],
+  "scripts": [
+    "public/components/jquery/dist/jquery.js",
+    "public/components/angular/angular.js",
+    "public/app/js/**/*.js"
+  ]
+}

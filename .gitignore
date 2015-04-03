@@ -1,2 +1,8 @@
+# Cached and compiled
+public/builds
+
+# Dependencies
+node_modules
+public/components
 vendor
 composer.lock
