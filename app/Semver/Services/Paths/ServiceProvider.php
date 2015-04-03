@@ -10,6 +10,8 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $provides = [
         'paths.app',
+        'paths.base',
+        'paths.views',
     ];
 
     /**
@@ -17,6 +19,17 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->container->add('paths.app', realpath(__DIR__.'/../../..').'/');
+        $this->container->add('paths.base', realpath(__DIR__.'/../../../..').'/');
+
+        $paths = [
+            'app' => 'app',
+            'views' => 'resources/views',
+        ];
+
+        foreach ($paths as $name => $relative) {
+            $this->container->add('paths.'.$name, function () use ($relative) {
+                return $this->container->get('paths.base').$relative.'/';
+            });
+        }
     }
 }

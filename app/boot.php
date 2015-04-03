@@ -7,6 +7,7 @@ $serviceProviders = [
     new Semver\Services\Paths\ServiceProvider(),
     new Semver\Services\Error\ServiceProvider(),
     new Semver\Services\Packagist\ServiceProvider(),
+    new Semver\Services\Views\ServiceProvider(),
 ];
 
 // Register the service providers.
