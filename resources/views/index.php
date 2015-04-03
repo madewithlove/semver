@@ -12,7 +12,7 @@
     </section>
 
     <section class="versions">
-        <h1>Results for <span>{{ package }}:{{ version }}</span></h1>
+        <h1>Results for <a target="_blank" href="https://packagist.org/packages/{{ package }}">{{ package }}:{{ version }}</a></h1>
         <ul class="versions list-unstyled">
             <li ng-repeat="version in versions" class="version" ng-class="{'version--matching': matches(version)}">{{ version }}</li>
         </ul>

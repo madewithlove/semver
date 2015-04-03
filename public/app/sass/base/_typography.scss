@@ -4,4 +4,10 @@ body {
 
 a {
 	color: $color-green;
+	transition: color 0.3s;
+
+	&:hover {
+		color: lighten($color-green, 10);
+		text-decoration: none;
+	}
 }
