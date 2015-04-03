@@ -4,6 +4,7 @@ app.controller('AppController', function ($scope, $http) {
 
 	$scope.package = 'anahkiasen/rocketeer';
 	$scope.version = '~2.1';
+	$scope.exists = false;
 
 	$scope.versions = [];
 	$scope.matchingVersions = [];
@@ -12,9 +13,12 @@ app.controller('AppController', function ($scope, $http) {
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/'+$scope.package).then(function (response) {
+		$http.get('/packages/'+$scope.package).success(function (response) {
 			$scope.versions = response.data;
+			$scope.exists = true;
 			$scope.fetchMatchingVersions();
+		}).error(function() {
+			$scope.exists = false;
 		});
 	};
 

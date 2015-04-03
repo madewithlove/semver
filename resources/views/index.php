@@ -7,6 +7,8 @@
             <input placeholder="Version" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
             <button type="submit" class="btn btn-default">Fetch</button>
         </form>
+
+        <p class="error" ng-show="!exists">The package {{ package }} does not exist</p>
     </section>
 
     <section class="versions">
