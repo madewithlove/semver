@@ -8,7 +8,8 @@
             <button type="submit" class="btn btn-default">Fetch</button>
         </form>
 
-        <p class="error" ng-show="versions.length && !exists">The package {{ package }} does not exist</p>
+        <p class="error" ng-show="versions.length && errors.versions">The package {{ package }} does not exist</p>
+        <p class="error" ng-show="versions.length && errors.matching">Invalid version constraint</p>
     </section>
 
     <section class="versions">

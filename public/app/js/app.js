@@ -4,7 +4,10 @@ app.controller('AppController', function ($scope, $http, $location) {
 
 	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
 	$scope.version = $location.search().version || '^0.1.1';
-	$scope.exists = false;
+	$scope.errors = {
+		versions: false,
+		matching: false,
+	};
 
 	$scope.versions = [];
 	$scope.matchingVersions = [];
@@ -15,11 +18,11 @@ app.controller('AppController', function ($scope, $http, $location) {
 	$scope.fetchVersions = function () {
 		$http.get('/packages/' + $scope.package).success(function (versions) {
 			$scope.versions = versions;
-			$scope.exists = true;
+			$scope.errors.versions = false;
 
 			$scope.fetchMatchingVersions();
 		}).error(function () {
-			$scope.exists = false;
+			$scope.errors.versions = true;
 		});
 	};
 
@@ -41,6 +44,9 @@ app.controller('AppController', function ($scope, $http, $location) {
 			constraint: $scope.version
 		}).success(function (versions) {
 			$scope.matchingVersions = versions;
+			$scope.errors.matching = false;
+		}).error(function () {
+			$scope.errors.matching = true;
 		});
 	};
 
