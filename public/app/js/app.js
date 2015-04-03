@@ -31,7 +31,9 @@ app.controller('AppController', function ($scope, $http) {
 			return;
 		}
 
-		$http.post('/packages/' + $scope.package + '/match', {constraint: $scope.version}).success(function (versions) {
+		$http.post('/packages/' + $scope.package + '/match', {
+			constraint: $scope.version
+		}).success(function (versions) {
 			$scope.matchingVersions = versions;
 		});
 	};

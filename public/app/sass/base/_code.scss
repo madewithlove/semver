@@ -7,3 +7,7 @@ pre {
 	background: $color-grey;
 	color: $color-text;
 }
+
+[ng-cloak] {
+	display: none;
+}

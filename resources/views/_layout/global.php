@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/builds/css/styles.css" />
 </head>
 <body ng-app="semver" ng-controller="AppController">
-    <main class="container">
+    <main class="container" ng-cloak>
         <?php $this->insert('_partials/header') ?>
         <?= $this->section('body') ?>
     </main>

@@ -8,7 +8,7 @@
             <button type="submit" class="btn btn-default">Fetch</button>
         </form>
 
-        <p class="error" ng-show="!exists">The package {{ package }} does not exist</p>
+        <p class="error" ng-show="versions.length && !exists">The package {{ package }} does not exist</p>
     </section>
 
     <section class="versions">
@@ -20,5 +20,4 @@
         <h2>Satisfied?</h2>
         <pre>composer require {{ package }}:{{ version }}</pre>
     </section>
-
 <?php $this->stop() ?>
