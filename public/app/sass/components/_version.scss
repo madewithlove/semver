@@ -7,9 +7,16 @@
 	font-family: Monaco, Consolas, monospace;
 	transition: all 0.1s;
 
+	a, a:hover {
+		color: $color-text;
+	}
+
 	&--matching {
 		background: $color-green;
-		color: white;
-		font-weight: bold;
+
+		a, a:hover {
+			color: white;
+			font-weight: bold;
+		}
 	}
 }
