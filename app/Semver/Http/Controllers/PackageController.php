@@ -58,9 +58,9 @@ class PackageController
     {
         $versions = $this->getVersions($vendor, $package);
 
-        $constraint = $this->request->get('constraint');
+        $body = json_decode($this->request->getContent(), true);
 
-        $constraint = $this->parser->parseConstraints($constraint);
+        $constraint = $this->parser->parseConstraints(isset($body['constraint']) ? $body['constraint'] : '*');
 
         $matchedVersions = array_filter($versions, function (Version $version) use ($constraint) {
             return $constraint->matches(new VersionConstraint('==', $this->parser->normalize($version->getVersion())));
