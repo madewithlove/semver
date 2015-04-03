@@ -17,11 +17,13 @@
         "league/route": "~1.1",
         "knplabs/packagist-api": "~1.2",
         "filp/whoops": "~1.1",
-        "league/plates": "~3.1"
+        "league/plates": "~3.1",
+        "composer/composer": "~1.0@dev"
     },
     "autoload": {
         "psr-4": {
             "Semver\\": "app/Semver"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
