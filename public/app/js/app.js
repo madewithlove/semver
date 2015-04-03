@@ -2,8 +2,8 @@ var app = angular.module('semver', []);
 
 app.controller('AppController', function ($scope, $http) {
 
-	$scope.package = 'anahkiasen/rocketeer';
-	$scope.version = '~2.1';
+	$scope.package = 'madewithlove/elasticsearcher';
+	$scope.version = '^0.1.1';
 	$scope.exists = false;
 
 	$scope.versions = [];
