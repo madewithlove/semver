@@ -1,0 +1,3 @@
+@function grey($lightness) {
+	@return lighten(black, $lightness);
+}

@@ -1,0 +1,32 @@
+.search {
+	border-bottom: 1px solid $color-grey;
+	padding-bottom: 2rem;
+
+	input {
+		$color-input: grey(95);
+		background: $color-input;
+		color: darken($color-input, 15);
+		border: none;
+		width: 100%;
+		font-size: 2rem;
+		padding: 0.5em;
+		text-align: center;
+		margin-right: 1rem;
+		transition: background 0.3s;
+
+		&:focus {
+			background: darken($color-input, 5);
+		}
+	}
+
+	button {
+		background: $color-green;
+		color: white;
+		border: none;
+		width: 15rem;
+	}
+
+	form {
+		display: flex;
+	}
+}

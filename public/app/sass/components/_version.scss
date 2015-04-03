@@ -1,0 +1,35 @@
+.versions {
+	padding: 2rem 0;
+
+	h1 {
+		font-size: 2rem;
+		color: grey(40);
+		text-align: center;
+
+		span {
+			color: $color-green;
+		}
+	}
+
+	ul {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+}
+
+.version {
+	list-style-type: none;
+	padding: 0.5em 1em;
+	margin: 0 1rem 1rem 0;
+	background: $color-grey;
+	border-radius: 0.25em;
+	font-family: Monaco, Consolas, monospace;
+	transition: all 0.1s;
+
+	&--matching {
+		background: $color-green;
+		color: white;
+		font-weight: bold;
+	}
+}

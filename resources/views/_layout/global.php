@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>semver checker - madewithlove</title>
     <meta name="description" content="Semver version constraint checker for packagist.">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/builds/css/styles.css" />
 </head>
 <body ng-app="semver" ng-controller="AppController">

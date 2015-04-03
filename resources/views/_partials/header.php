@@ -1,3 +1,3 @@
-<div class="page-header">
-    <h1>semver</h1>
-</div>
+<header class="header">
+    <h1>Packagist Semver Checker</h1>
+</header>

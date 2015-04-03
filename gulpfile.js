@@ -1,4 +1,5 @@
 var gulp       = require('gulp'),
+		annotate   = require('gulp-ng-annotate'),
 		changed    = require('gulp-changed'),
 		concat     = require('gulp-concat'),
 		config     = require('./gulpconfig.json'),
@@ -7,7 +8,7 @@ var gulp       = require('gulp'),
 		plumber    = require('gulp-plumber'),
 		prefix     = require('gulp-autoprefixer'),
 		rename     = require('gulp-rename'),
-		annotate   = require('gulp-ng-annotate'),
+		sass       = require('gulp-sass'),
 		sourcemaps = require('gulp-sourcemaps'),
 		uglify     = require('gulp-uglify');
 
@@ -18,6 +19,7 @@ gulp.task('css', function () {
 	return gulp.src(config.styles)
 		.pipe(plumber())
 		.pipe(changed(config.paths.compiled.css))
+		.pipe(sass())
 		.pipe(prefix())
 		.pipe(sourcemaps.init())
 			.pipe(concat('styles.css'))
@@ -60,6 +62,7 @@ gulp.task('default', ['css', 'js']);
 gulp.task('watch', function () {
 	livereload.listen();
 
+	gulp.watch(config.paths.original.css + '/**/*.scss', ['css']);
 	gulp.watch(config.paths.original.js + '/**/*.js', ['js']);
 	gulp.watch(config.paths.original.views + '/**/*.php', function () {
 		livereload.reload('index.php');
