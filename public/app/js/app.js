@@ -13,12 +13,12 @@ app.controller('AppController', function ($scope, $http) {
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/'+$scope.package).success(function (versions) {
+		$http.get('/packages/' + $scope.package).success(function (versions) {
 			$scope.versions = versions;
 			$scope.exists = true;
 
 			$scope.fetchMatchingVersions();
-		}).error(function() {
+		}).error(function () {
 			$scope.exists = false;
 		});
 	};
@@ -27,7 +27,9 @@ app.controller('AppController', function ($scope, $http) {
 	 * Fetches all versions matching a specified range
 	 */
 	$scope.fetchMatchingVersions = function () {
-		$scope.matchingVersions = [$scope.version];
+		$http.post('/packages/' + $scope.package + '/match').success(function (versions) {
+			$scope.matchingVersions = versions;
+		});
 	};
 
 	/**
