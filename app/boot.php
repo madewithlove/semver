@@ -12,7 +12,7 @@ $serviceProviders = [
 // Register the service providers.
 array_walk($serviceProviders, function (ServiceProvider $serviceProvider) use ($container) {
     $serviceProvider->setContainer($container);
-    $container->add($serviceProvider);
+    $container->addServiceProvider($serviceProvider);
 });
 
 // Call the boot methods.
