@@ -1,3 +1,3 @@
 <footer>
-    &copy; <?= date('Y') ?> - <a href="madewithlove.be">Madewithlove</a>
+    &copy; <?= date('Y') ?> - <a target="_blank" href="http://madewithlove.be">Madewithlove</a>
 </footer>
