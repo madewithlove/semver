@@ -32,9 +32,9 @@ class PackageController
      */
     public function __construct(Request $request, VersionParser $parser, Client $client)
     {
-        $this->client = $client;
+        $this->client  = $client;
         $this->request = $request;
-        $this->parser = $parser;
+        $this->parser  = $parser;
     }
 
     /**
@@ -45,7 +45,12 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
-        return new JsonResponse(array_keys($this->getVersions($vendor, $package)));
+        $versions = array_keys($this->getVersions($vendor, $package));
+        usort($versions, function ($a, $b) {
+            return -1 * version_compare($a, $b);
+        });
+
+        return new JsonResponse($versions);
     }
 
     /**
@@ -92,6 +97,7 @@ class PackageController
 
     /**
      * @param Version $version
+     *
      * @return bool
      */
     protected function isDevVersion(Version $version)
