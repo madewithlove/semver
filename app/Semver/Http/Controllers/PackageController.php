@@ -1,40 +1,30 @@
 <?php
 namespace Semver\Http\Controllers;
 
-use Composer\Package\LinkConstraint\VersionConstraint;
-use Composer\Package\Version\VersionParser;
-use Packagist\Api\Client;
-use Packagist\Api\Result\Package\Version;
+use Semver\Services\Packagist\Packagist;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class PackageController
 {
     /**
-     * @type Client
-     */
-    private $client;
-
-    /**
      * @type Request
      */
     private $request;
 
     /**
-     * @type VersionParser
+     * @var Packagist
      */
-    private $parser;
+    private $packagist;
 
     /**
+     * @param Packagist     $packagist
      * @param Request       $request
-     * @param VersionParser $parser
-     * @param Client        $client
      */
-    public function __construct(Request $request, VersionParser $parser, Client $client)
+    public function __construct(Packagist $packagist, Request $request)
     {
-        $this->client  = $client;
+        $this->packagist = $packagist;
         $this->request = $request;
-        $this->parser  = $parser;
     }
 
     /**
@@ -45,18 +35,7 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
-        $versions = $this->getVersions($vendor, $package);
-        foreach ($versions as $key => $version) {
-            $versions[$version->getVersion()] = [
-                'source'  => substr($version->getSource()->getUrl(), 0, -4),
-                'version' => $version->getVersion(),
-            ];
-        }
-
-        usort($versions, function ($a, $b) {
-            return -1 * version_compare($a['version'], $b['version']);
-        });
-
+        $versions = $this->packagist->getVersions($vendor, $package);
         return new JsonResponse($versions);
     }
 
@@ -68,46 +47,12 @@ class PackageController
      */
     public function matchVersions($vendor, $package)
     {
-        $versions = $this->getVersions($vendor, $package);
+        $body = json_decode($this->request->getContent(), true);
+        $constraint = isset($body['constraint']) ? $body['constraint'] : null;
+        $minStability = isset($body['minimum-stability']) ? $body['minimum-stability'] : null;
 
-        $body       = json_decode($this->request->getContent(), true);
-        $constraint = isset($body['constraint']) ? $body['constraint'] : '*';
-        $constraint = $this->parser->parseConstraints($constraint);
+        $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint, $minStability);
 
-        $matchedVersions = array_filter($versions, function (Version $version) use ($constraint) {
-            return $constraint->matches(new VersionConstraint('==', $this->parser->normalize($version->getVersion())));
-        });
-
-        return new JsonResponse(array_keys($matchedVersions));
-    }
-
-    /**
-     * @param string $vendor
-     * @param string $package
-     *
-     * @return array
-     */
-    protected function getVersions($vendor, $package)
-    {
-        /* @type Version[] $versions */
-        $package  = $this->client->get("$vendor/$package");
-        $versions = $package->getVersions();
-
-        return array_filter(
-            $versions,
-            function (Version $version) {
-                return !$this->isDevVersion($version);
-            }
-        );
-    }
-
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    protected function isDevVersion(Version $version)
-    {
-        return preg_match('/.*-dev/', $version->getVersion()) or preg_match('/dev-.*/', $version->getVersion());
+        return new JsonResponse($versions);
     }
 }
