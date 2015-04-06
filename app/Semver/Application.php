@@ -57,7 +57,9 @@ class Application
     private function setupProviders()
     {
         foreach ($this->serviceProviders as &$serviceProvider) {
+            /** @var ServiceProvider $serviceProvider */
             $serviceProvider = new $serviceProvider();
+            $serviceProvider->setContainer($this->container);
         }
 
         // Register the service providers.
