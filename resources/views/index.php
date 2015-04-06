@@ -16,7 +16,7 @@
         <h1>Results for <a target="_blank" href="https://packagist.org/packages/{{ package }}">{{ package }}:{{ version }}</a></h1>
         <ul class="versions list-unstyled">
             <li ng-repeat="version in versions" class="version" ng-class="{'version--matching': matches(version.version)}">
-                <a target="_blank" href="{{ version.source }}/tree/{{ version.version }}">{{ version.version }}</a>
+                <a target="_blank" href="{{ version.source }}/releases/tag/{{ version.version }}">{{ version.version }}</a>
             </li>
         </ul>
 
