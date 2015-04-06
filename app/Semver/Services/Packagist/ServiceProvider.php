@@ -11,6 +11,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected $provides = [
         Client::class,
+        Packagist::class,
     ];
 
     /**
@@ -19,5 +20,6 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->container->singleton(Client::class);
+        $this->container->singleton(Packagist::class);
     }
 }
