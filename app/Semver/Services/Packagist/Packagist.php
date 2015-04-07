@@ -13,12 +13,12 @@ use Packagist\Api\Result\Package\Version;
 class Packagist
 {
     /**
-     * @var Client
+     * @type Client
      */
     private $client;
 
     /**
-     * @var VersionParser
+     * @type VersionParser
      */
     private $parser;
 
@@ -43,7 +43,7 @@ class Packagist
         $versions = $this->getRawVersions($vendor, $package);
 
         foreach ($versions as $key => &$version) {
-            /** @type Version $version */
+            /* @type Version $version */
             $versions[$version->getVersion()] = [
                 'source'  => substr($version->getSource()->getUrl(), 0, -4),
                 'version' => $version->getVersion(),
@@ -106,7 +106,7 @@ class Packagist
 
         // Let version selector format the constraint.
         $selector = new VersionSelector(new Pool());
-        $package = new Package("$vendor/$package", $this->parser->normalize($highestVersion), $highestVersion);
+        $package  = new Package("$vendor/$package", $this->parser->normalize($highestVersion), $highestVersion);
 
         return $selector->findRecommendedRequireVersion($package);
     }
@@ -128,8 +128,9 @@ class Packagist
             $versions,
             function (Version $version) use ($minimumStability) {
                 $stability = $this->parser->parseStability($version->getVersion());
+
                 return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$minimumStability];
             }
         );
     }
-} 
+}

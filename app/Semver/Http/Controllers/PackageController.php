@@ -15,18 +15,18 @@ class PackageController
     private $request;
 
     /**
-     * @var Packagist
+     * @type Packagist
      */
     private $packagist;
 
     /**
-     * @param Packagist     $packagist
-     * @param Request       $request
+     * @param Packagist $packagist
+     * @param Request   $request
      */
     public function __construct(Packagist $packagist, Request $request)
     {
         $this->packagist = $packagist;
-        $this->request = $request;
+        $this->request   = $request;
     }
 
     /**
@@ -37,7 +37,7 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
-        $versions = $this->packagist->getVersions($vendor, $package);
+        $versions          = $this->packagist->getVersions($vendor, $package);
         $defaultConstraint = $this->packagist->getDefaultConstraint($vendor, $package);
 
         return new JsonResponse(['default_constraint' => $defaultConstraint, 'versions' => $versions]);
@@ -51,10 +51,10 @@ class PackageController
      */
     public function matchVersions($vendor, $package)
     {
-        $constraint = $this->request->get('constraint', '*');
+        $constraint       = $this->request->get('constraint', '*');
         $minimumStability = $this->request->get('minimum-stability', 'stable');
 
-        if (!in_array($minimumStability, array_keys(BasePackage::$stabilities))) {
+        if (!in_array($minimumStability, array_keys(BasePackage::$stabilities), true)) {
             throw new UnexpectedValueException(sprintf('Unsupported value for minimum-stability: %s', $minimumStability));
         }
 
