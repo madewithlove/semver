@@ -25,5 +25,5 @@
             "Semver\\": "app/Semver"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
