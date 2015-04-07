@@ -1,9 +1,11 @@
 <?php
 namespace Semver\Http\Controllers;
 
+use Composer\Package\BasePackage;
 use Semver\Services\Packagist\Packagist;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use UnexpectedValueException;
 
 class PackageController
 {
@@ -49,11 +51,14 @@ class PackageController
      */
     public function matchVersions($vendor, $package)
     {
-        $body = json_decode($this->request->getContent(), true);
-        $constraint = isset($body['constraint']) ? $body['constraint'] : null;
-        $minStability = isset($body['minimum-stability']) ? $body['minimum-stability'] : null;
+        $constraint = $this->request->get('constraint', '*');
+        $minimumStability = $this->request->get('minimum-stability', 'stable');
 
-        $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint, $minStability);
+        if (!in_array($minimumStability, array_keys(BasePackage::$stabilities))) {
+            throw new UnexpectedValueException(sprintf('Unsupported value for minimum-stability: %s', $minimumStability));
+        }
+
+        $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint, $minimumStability);
 
         return new JsonResponse($versions);
     }

@@ -40,8 +40,10 @@ app.controller('AppController', function ($scope, $http, $location) {
 			version: $scope.version,
 		});
 
-		$http.post('/packages/' + $scope.package + '/match', {
-			constraint: $scope.version
+		$http.get('/packages/' + $scope.package + '/match', {
+			params: {
+				constraint: $scope.version
+			}
 		}).success(function (versions) {
 			$scope.matchingVersions = versions;
 			$scope.errors.matching = false;
