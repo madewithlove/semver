@@ -23,4 +23,8 @@
         <h2>Satisfied?</h2>
         <pre>composer require {{ package }}:{{ version }}</pre>
     </section>
+
+    <section>
+        <?php $this->insert('_partials/social') ?>
+    </section>
 <?php $this->stop() ?>
