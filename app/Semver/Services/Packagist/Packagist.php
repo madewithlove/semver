@@ -2,6 +2,7 @@
 namespace Semver\Services\Packagist;
 
 use Composer\DependencyResolver\Pool;
+use Composer\Package\BasePackage;
 use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\Package;
 use Composer\Package\Version\VersionParser;
@@ -60,13 +61,13 @@ class Packagist
      * @param string $vendor
      * @param string $package
      * @param string $constraint
-     * @param string $minStability
+     * @param string $minimumStability
      *
      * @return array
      */
-    public function getMatchingVersions($vendor, $package, $constraint = '*', $minStability = 'stable')
+    public function getMatchingVersions($vendor, $package, $constraint = '*', $minimumStability = 'stable')
     {
-        $versions = $this->getRawVersions($vendor, $package);
+        $versions = $this->getRawVersions($vendor, $package, $minimumStability);
 
         $constraint = $this->parser->parseConstraints($constraint);
 
@@ -113,10 +114,11 @@ class Packagist
     /**
      * @param string $vendor
      * @param string $package
+     * @param string $minimumStability
      *
      * @return array
      */
-    private function getRawVersions($vendor, $package)
+    private function getRawVersions($vendor, $package, $minimumStability = 'dev')
     {
         /* @type Version[] $versions */
         $package  = $this->client->get("$vendor/$package");
@@ -124,19 +126,10 @@ class Packagist
 
         return array_filter(
             $versions,
-            function (Version $version) {
-                return !$this->isVolatileVersion($version);
+            function (Version $version) use ($minimumStability) {
+                $stability = $this->parser->parseStability($version->getVersion());
+                return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$minimumStability];
             }
         );
-    }
-
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    protected function isVolatileVersion(Version $version)
-    {
-        return preg_match('/.*-dev/', $version->getVersion()) or preg_match('/dev-.*/', $version->getVersion());
     }
 } 
