@@ -36,7 +36,9 @@ class PackageController
     public function versions($vendor, $package)
     {
         $versions = $this->packagist->getVersions($vendor, $package);
-        return new JsonResponse($versions);
+        $defaultConstraint = $this->packagist->getDefaultConstraint($vendor, $package);
+
+        return new JsonResponse(['default_constraint' => $defaultConstraint, 'versions' => $versions]);
     }
 
     /**

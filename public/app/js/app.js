@@ -16,8 +16,8 @@ app.controller('AppController', function ($scope, $http, $location) {
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/' + $scope.package).success(function (versions) {
-			$scope.versions = versions;
+		$http.get('/packages/' + $scope.package).success(function (response) {
+			$scope.versions = response.versions;
 			$scope.errors.versions = false;
 
 			$scope.fetchMatchingVersions();
