@@ -7,7 +7,7 @@
 	}
 
 	input {
-		$color-input: grey(95);
+		$color-input: grey(90);
 		background: $color-input;
 		color: darken($color-input, 15);
 		border: none;
@@ -17,8 +17,12 @@
 		text-align: center;
 		transition: background 0.3s;
 
+		&::placeholder {
+			color: darken($color-input, 5);
+		}
+
 		&:focus {
-			background: darken($color-input, 5);
+			background: lighten($color-input, 5);
 		}
 	}
 
