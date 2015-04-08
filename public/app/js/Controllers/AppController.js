@@ -4,6 +4,7 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 	$scope.defaultVersion = '~1.2.3';
 	$scope.version = $location.search().version || '^0.1.1';
 	$scope.stability = 'stable';
+	$scope.stabilities = ['dev', 'alpha', 'beta', 'RC', 'stable'];
 
 	$scope.errors = {
 		versions: false,
