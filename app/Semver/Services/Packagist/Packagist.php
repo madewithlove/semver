@@ -128,7 +128,7 @@ class Packagist
     private function getRawVersions($vendor, $package, $minimumStability = 'dev')
     {
         $handle   = "$vendor/$package";
-        $lifetime = 60 * 24;
+        $lifetime = 60;
 
         /* @type Version[] $versions */
         $versions = $this->cache->remember($handle, $lifetime, function () use ($handle) {
