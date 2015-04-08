@@ -1,7 +1,13 @@
-footer {
+.layout-footer {
 	text-align: center;
 	color: $color-text;
 	border-top: 1px solid $color-grey;
 	padding-top: 2rem;
 	margin-top: 3rem;
+
+	&__social {
+		margin-bottom: 0.5rem;
+		position: relative;
+		left: 25px;
+	}
 }
