@@ -7,7 +7,9 @@
             <button type="submit" class="btn btn-default">Search</button>
             <input select-on-click placeholder="Version (eg. {{ defaultVersion }})" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
             <select name="stability" id="stability" class="form-control"
-                    ng-model="stability" ng-options="item group by 'Minimum stability' for item in stabilities"></select>
+                    ng-model="stability" ng-options="item group by 'Minimum stability' for item in stabilities"
+                    ng-change="fetchMatchingVersions()">
+            </select>
         </form>
 
         <p class="error" ng-show="versions.length && errors.versions">The package {{ package }} does not exist</p>
