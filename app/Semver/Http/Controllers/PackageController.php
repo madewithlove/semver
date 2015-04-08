@@ -37,7 +37,7 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
-        $this->configureMinimumStability();
+        $this->packagist->setMinimumStability('dev');
 
         $versions          = $this->packagist->getVersions($vendor, $package);
         $defaultConstraint = $this->packagist->getDefaultConstraint($vendor, $package);
