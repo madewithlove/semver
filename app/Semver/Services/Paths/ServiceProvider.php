@@ -23,6 +23,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $paths = [
             'app'   => 'app',
+            'cache' => 'cache',
             'views' => 'resources/views',
         ];
 

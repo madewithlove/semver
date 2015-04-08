@@ -7,6 +7,7 @@ use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\Package;
 use Composer\Package\Version\VersionParser;
 use Composer\Package\Version\VersionSelector;
+use Illuminate\Cache\Repository;
 use Packagist\Api\Client;
 use Packagist\Api\Result\Package\Version;
 
@@ -23,13 +24,20 @@ class Packagist
     private $parser;
 
     /**
+     * @type Repository
+     */
+    private $cache;
+
+    /**
      * @param Client        $client
      * @param VersionParser $parser
+     * @param Repository    $cache
      */
-    public function __construct(Client $client, VersionParser $parser)
+    public function __construct(Client $client, VersionParser $parser, Repository $cache)
     {
         $this->client = $client;
         $this->parser = $parser;
+        $this->cache  = $cache;
     }
 
     /**
@@ -79,7 +87,6 @@ class Packagist
     /**
      * Given a concrete package, this returns a ~ constraint (in the future a ^ constraint)
      * that should be used, for example, in composer.json.
-     *
      * For example:
      *  * 1.2.1         -> ~1.2
      *  * 1.2           -> ~1.2
@@ -120,9 +127,16 @@ class Packagist
      */
     private function getRawVersions($vendor, $package, $minimumStability = 'dev')
     {
+        $handle   = "$vendor/$package";
+        $lifetime = 60;
+
         /* @type Version[] $versions */
-        $package  = $this->client->get("$vendor/$package");
-        $versions = $package->getVersions();
+        $versions = $this->cache->remember($handle, $lifetime, function () use ($handle) {
+            $package  = $this->client->get($handle);
+            $versions = $package->getVersions();
+
+            return $versions;
+        });
 
         return array_filter(
             $versions,
