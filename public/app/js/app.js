@@ -18,7 +18,11 @@ app.controller('AppController', function ($scope, $http, $location) {
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/' + $scope.package).success(function (response) {
+		$http.get('/packages/' + $scope.package, {
+			params: {
+				stability: $scope.stability
+			}
+		}).success(function (response) {
 			$scope.versions = response.versions;
 			$scope.version = $scope.defaultVersion = response.default_constraint;
 			$scope.errors.versions = false;
