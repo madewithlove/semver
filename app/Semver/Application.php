@@ -24,6 +24,7 @@ class Application
         Services\Error\ServiceProvider::class,
         Services\Packagist\ServiceProvider::class,
         Services\Views\ServiceProvider::class,
+        Services\Cache\ServiceProvider::class,
     ];
 
     /**

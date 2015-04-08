@@ -5,6 +5,7 @@ app.controller('AppController', function ($scope, $http, $location) {
 	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
 	$scope.defaultVersion = '~1.2.3';
 	$scope.version = $location.search().version || '^0.1.1';
+	$scope.stability = 'stable';
 	$scope.errors = {
 		versions: false,
 		matching: false,
@@ -17,7 +18,11 @@ app.controller('AppController', function ($scope, $http, $location) {
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/' + $scope.package).success(function (response) {
+		$http.get('/packages/' + $scope.package, {
+			params: {
+				stability: $scope.stability
+			}
+		}).success(function (response) {
 			$scope.versions = response.versions;
 			$scope.version = $scope.defaultVersion = response.default_constraint;
 			$scope.errors.versions = false;
