@@ -26,7 +26,7 @@ class Packagist
     /**
      * @type string
      */
-    protected $minimumStability = 'dev';
+    protected $minimumStability = 'stable';
 
     /**
      * @type Repository
