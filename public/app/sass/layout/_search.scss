@@ -8,6 +8,7 @@
 
 	input {
 		$color-input: grey(90);
+
 		background: $color-input;
 		color: darken($color-input, 15);
 		border: none;
@@ -19,6 +20,11 @@
 
 		&::placeholder {
 			color: darken($color-input, 5);
+		}
+
+		&::selection {
+			background: darken($color-input, 2);
+			color: darken($color-input, 10);
 		}
 
 		&:focus {
