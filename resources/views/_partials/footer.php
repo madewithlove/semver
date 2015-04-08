@@ -1,4 +1,6 @@
-<footer>
+<footer class="layout-footer">
+    <?php $this->insert('_partials/social') ?>
+
     &copy; <?= date('Y') ?> -
     <a target="_blank" href="https://github.com/madewithlove/semver">source</a> -
     <a target="_blank" href="https://github.com/madewithlove/semver/graphs/contributors">creators</a> -
