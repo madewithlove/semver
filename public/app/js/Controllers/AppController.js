@@ -46,7 +46,8 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 
 		$http.get('/packages/' + $scope.package + '/match', {
 			params: {
-				constraint: $scope.version
+				constraint: $scope.version,
+				"minimum-stability": $scope.stability,
 			}
 		}).success(function (versions) {
 			$scope.matchingVersions = versions;

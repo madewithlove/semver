@@ -66,7 +66,7 @@ class PackageController
      */
     protected function configureMinimumStability()
     {
-        $minimumStability = $this->request->get('stability', 'stable');
+        $minimumStability = $this->request->get('minimum-stability', 'stable');
         if (!in_array($minimumStability, array_keys(BasePackage::$stabilities), true)) {
             throw new UnexpectedValueException(sprintf('Unsupported value for minimum-stability: %s', $minimumStability));
         }
