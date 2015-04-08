@@ -24,6 +24,11 @@ class Packagist
     private $parser;
 
     /**
+     * @type string
+     */
+    protected $minimumStability = 'stable';
+
+    /**
      * @type Repository
      */
     private $cache;
@@ -38,6 +43,22 @@ class Packagist
         $this->client = $client;
         $this->parser = $parser;
         $this->cache  = $cache;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMinimumStability()
+    {
+        return $this->minimumStability;
+    }
+
+    /**
+     * @param string $minimumStability
+     */
+    public function setMinimumStability($minimumStability)
+    {
+        $this->minimumStability = $minimumStability;
     }
 
     /**
@@ -69,13 +90,12 @@ class Packagist
      * @param string $vendor
      * @param string $package
      * @param string $constraint
-     * @param string $minimumStability
      *
      * @return array
      */
-    public function getMatchingVersions($vendor, $package, $constraint = '*', $minimumStability = 'stable')
+    public function getMatchingVersions($vendor, $package, $constraint = '*')
     {
-        $versions = $this->getRawVersions($vendor, $package, $minimumStability);
+        $versions = $this->getRawVersions($vendor, $package);
 
         $constraint = $this->parser->parseConstraints($constraint);
 
@@ -121,11 +141,10 @@ class Packagist
     /**
      * @param string $vendor
      * @param string $package
-     * @param string $minimumStability
      *
      * @return array
      */
-    private function getRawVersions($vendor, $package, $minimumStability = 'dev')
+    private function getRawVersions($vendor, $package)
     {
         $handle   = "$vendor/$package";
         $lifetime = 60;
@@ -140,10 +159,10 @@ class Packagist
 
         return array_filter(
             $versions,
-            function (Version $version) use ($minimumStability) {
+            function (Version $version) {
                 $stability = $this->parser->parseStability($version->getVersion());
 
-                return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$minimumStability];
+                return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$this->minimumStability];
             }
         );
     }
