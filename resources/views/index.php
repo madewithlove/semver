@@ -5,7 +5,7 @@
         <form ng-submit="fetchVersions()" ng-init="fetchVersions()">
             <input placeholder="Package" id="package" type="text" ng-model="package">
             <button type="submit" class="btn btn-default">Search</button>
-            <input placeholder="Version" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
+            <input placeholder="Version (eg. {{ defaultVersion }})" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
         </form>
 
         <p class="error" ng-show="versions.length && errors.versions">The package {{ package }} does not exist</p>
