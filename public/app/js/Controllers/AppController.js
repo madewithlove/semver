@@ -3,7 +3,7 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
 	$scope.defaultVersion = '~1.2.3';
 	$scope.version = $location.search().version || '^0.1.1';
-	$scope.stability = 'stable';
+	$scope.stability = $location.search()['minimum-stability'] || 'stable';
 	$scope.stabilities = ['dev', 'alpha', 'beta', 'RC', 'stable'];
 
 	$scope.errors = {
@@ -45,6 +45,7 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 		$location.search({
 			package: $scope.package,
 			version: $scope.version,
+			"minimum-stability": $scope.stability,
 		});
 
 		$http.get('/packages/' + $scope.package + '/match', {
