@@ -5,6 +5,7 @@ app.controller('AppController', function ($scope, $http, $location) {
 	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
 	$scope.defaultVersion = '~1.2.3';
 	$scope.version = $location.search().version || '^0.1.1';
+	$scope.stability = 'stable';
 	$scope.errors = {
 		versions: false,
 		matching: false,

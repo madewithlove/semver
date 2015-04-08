@@ -2,15 +2,18 @@
 	border-bottom: 1px solid $color-grey;
 	padding-bottom: 2rem;
 
-	input, button {
+	input, button, select {
 		margin-right: 1rem;
 	}
 
-	input {
+	input,
+	select {
 		$color-input: grey(90);
 		background: $color-input;
 		color: darken($color-input, 15);
 		border: none;
+		border-radius: 0;
+		box-shadow: none;
 		width: 100%;
 		font-size: 2rem;
 		padding: 0.5em;
@@ -24,6 +27,11 @@
 		&:focus {
 			background: lighten($color-input, 5);
 		}
+	}
+
+	select {
+		width: 250px;
+		height: 2.4em;
 	}
 
 	button {
