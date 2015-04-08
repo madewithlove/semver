@@ -72,8 +72,10 @@ app.controller('AppController', function ($scope, $http, $location) {
 	 */
 	$scope.linkToVersion = function(version) {
 		// Link to a branch
-		if (version.version.indexOf('dev-') !== -1) {
-			return version.source + '/tree/' + version.version.substr(4);
+		if (version.version.indexOf('dev') !== -1) {
+			var branch = version.version.replace(/-?dev-?/, '');
+
+			return version.source + '/tree/' + branch;
 		}
 
 		return version.source + '/releases/tag/' + version.version;
