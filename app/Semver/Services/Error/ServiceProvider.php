@@ -39,7 +39,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->container->add('Whoops\Run', function () {
+        $this->container->add(Run::class, function () {
             $whoops = new Run();
             $whoops->pushHandler(new PrettyPageHandler());
 

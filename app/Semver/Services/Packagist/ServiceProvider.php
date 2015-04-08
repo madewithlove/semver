@@ -1,8 +1,9 @@
 <?php
 namespace Semver\Services\Packagist;
 
+use Guzzle\Http\Client as HttpClient;
+use Guzzle\Http\ClientInterface;
 use League\Container\ServiceProvider as BaseServiceProvider;
-use Packagist\Api\Client;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -10,7 +11,7 @@ class ServiceProvider extends BaseServiceProvider
      * @type array
      */
     protected $provides = [
-        Client::class,
+        ClientInterface::class,
     ];
 
     /**
@@ -18,6 +19,9 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->container->singleton(Client::class);
+        // Alias for Guzzle's ClientInterface for the first argument of Packagist\Api\Client.
+        $this->container->add(ClientInterface::class, function () {
+            $this->container->get(HttpClient::class);
+        });
     }
 }

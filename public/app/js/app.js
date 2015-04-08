@@ -16,8 +16,8 @@ app.controller('AppController', function ($scope, $http, $location) {
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/' + $scope.package).success(function (versions) {
-			$scope.versions = versions;
+		$http.get('/packages/' + $scope.package).success(function (response) {
+			$scope.versions = response.versions;
 			$scope.errors.versions = false;
 
 			$scope.fetchMatchingVersions();
@@ -40,8 +40,10 @@ app.controller('AppController', function ($scope, $http, $location) {
 			version: $scope.version,
 		});
 
-		$http.post('/packages/' + $scope.package + '/match', {
-			constraint: $scope.version
+		$http.get('/packages/' + $scope.package + '/match', {
+			params: {
+				constraint: $scope.version
+			}
 		}).success(function (versions) {
 			$scope.matchingVersions = versions;
 			$scope.errors.matching = false;

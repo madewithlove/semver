@@ -42,7 +42,7 @@ class Application
     public function run()
     {
         /** @type Dispatcher $dispatcher */
-        /** @type Request $request */
+        /* @type Request $request */
         $dispatcher = $this->container->get(RouteCollection::class)->getDispatcher();
         $request    = $this->container->get(Request::class);
 
@@ -57,7 +57,9 @@ class Application
     private function setupProviders()
     {
         foreach ($this->serviceProviders as &$serviceProvider) {
+            /** @type ServiceProvider $serviceProvider */
             $serviceProvider = new $serviceProvider();
+            $serviceProvider->setContainer($this->container);
         }
 
         // Register the service providers.

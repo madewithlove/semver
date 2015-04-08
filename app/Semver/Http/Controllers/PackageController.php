@@ -1,40 +1,32 @@
 <?php
 namespace Semver\Http\Controllers;
 
-use Composer\Package\LinkConstraint\VersionConstraint;
-use Composer\Package\Version\VersionParser;
-use Packagist\Api\Client;
-use Packagist\Api\Result\Package\Version;
+use Composer\Package\BasePackage;
+use Semver\Services\Packagist\Packagist;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use UnexpectedValueException;
 
 class PackageController
 {
-    /**
-     * @type Client
-     */
-    private $client;
-
     /**
      * @type Request
      */
     private $request;
 
     /**
-     * @type VersionParser
+     * @type Packagist
      */
-    private $parser;
+    private $packagist;
 
     /**
-     * @param Request       $request
-     * @param VersionParser $parser
-     * @param Client        $client
+     * @param Packagist $packagist
+     * @param Request   $request
      */
-    public function __construct(Request $request, VersionParser $parser, Client $client)
+    public function __construct(Packagist $packagist, Request $request)
     {
-        $this->client  = $client;
-        $this->request = $request;
-        $this->parser  = $parser;
+        $this->packagist = $packagist;
+        $this->request   = $request;
     }
 
     /**
@@ -45,19 +37,10 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
-        $versions = $this->getVersions($vendor, $package);
-        foreach ($versions as $key => $version) {
-            $versions[$version->getVersion()] = [
-                'source'  => substr($version->getSource()->getUrl(), 0, -4),
-                'version' => $version->getVersion(),
-            ];
-        }
+        $versions          = $this->packagist->getVersions($vendor, $package);
+        $defaultConstraint = $this->packagist->getDefaultConstraint($vendor, $package);
 
-        usort($versions, function ($a, $b) {
-            return -1 * version_compare($a['version'], $b['version']);
-        });
-
-        return new JsonResponse($versions);
+        return new JsonResponse(['default_constraint' => $defaultConstraint, 'versions' => $versions]);
     }
 
     /**
@@ -68,46 +51,15 @@ class PackageController
      */
     public function matchVersions($vendor, $package)
     {
-        $versions = $this->getVersions($vendor, $package);
+        $constraint       = $this->request->get('constraint', '*');
+        $minimumStability = $this->request->get('minimum-stability', 'stable');
 
-        $body       = json_decode($this->request->getContent(), true);
-        $constraint = isset($body['constraint']) ? $body['constraint'] : '*';
-        $constraint = $this->parser->parseConstraints($constraint);
+        if (!in_array($minimumStability, array_keys(BasePackage::$stabilities), true)) {
+            throw new UnexpectedValueException(sprintf('Unsupported value for minimum-stability: %s', $minimumStability));
+        }
 
-        $matchedVersions = array_filter($versions, function (Version $version) use ($constraint) {
-            return $constraint->matches(new VersionConstraint('==', $this->parser->normalize($version->getVersion())));
-        });
+        $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint, $minimumStability);
 
-        return new JsonResponse(array_keys($matchedVersions));
-    }
-
-    /**
-     * @param string $vendor
-     * @param string $package
-     *
-     * @return array
-     */
-    protected function getVersions($vendor, $package)
-    {
-        /* @type Version[] $versions */
-        $package  = $this->client->get("$vendor/$package");
-        $versions = $package->getVersions();
-
-        return array_filter(
-            $versions,
-            function (Version $version) {
-                return !$this->isDevVersion($version);
-            }
-        );
-    }
-
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    protected function isDevVersion(Version $version)
-    {
-        return preg_match('/.*-dev/', $version->getVersion()) or preg_match('/dev-.*/', $version->getVersion());
+        return new JsonResponse($versions);
     }
 }
