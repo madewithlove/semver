@@ -1,9 +1,11 @@
 angular.module('semver').controller('AppController', function ($scope, $http, $location) {
 
-	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
+	var query = $location.search();
+
+	$scope.package = query.package || 'madewithlove/elasticsearcher';
 	$scope.defaultVersion = '~1.2.3';
-	$scope.version = $location.search().version || '^0.1.1';
-	$scope.stability = $location.search()['minimum-stability'] || 'stable';
+	$scope.version = query.version || '^0.1.1';
+	$scope.stability = query['minimum-stability'] || 'stable';
 	$scope.stabilities = ['dev', 'alpha', 'beta', 'RC', 'stable'];
 
 	$scope.errors = {
