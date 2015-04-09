@@ -25,6 +25,6 @@
         </ul>
 
         <h2>Satisfied?</h2>
-        <pre>composer require {{ package }}:{{ version }}</pre>
+        <pre>composer require {{ package }}:{{ version.indexOf('&') || version.indexOf('|') ? '"'+ version + '"': version }}</pre>
     </section>
 <?php $this->stop() ?>

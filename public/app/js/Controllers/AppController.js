@@ -3,6 +3,7 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 	var query = $location.search();
 
 	$scope.package = query.package || 'madewithlove/elasticsearcher';
+	$scope.previousPackage = $scope.package;
 	$scope.defaultVersion = '~1.2.3';
 	$scope.version = query.version || '^0.1.1';
 	$scope.stability = query['minimum-stability'] || 'stable';
@@ -22,7 +23,13 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 	$scope.fetchVersions = function () {
 		$http.get('/packages/' + $scope.package).success(function (response) {
 			$scope.versions = response.versions;
-			$scope.version = $scope.defaultVersion = response.default_constraint;
+			$scope.defaultVersion = response.default_constraint;
+
+			if (!$scope.version || $scope.previousPackage !== $scope.package) {
+				$scope.version = response.default_constraint;
+			}
+
+			$scope.previousPackage = $scope.package;
 			$scope.errors.versions = false;
 
 			$scope.fetchMatchingVersions();
