@@ -125,9 +125,12 @@ class Packagist
 
         // Get highest version.
         $highestVersion = reset($versions);
+        $highestStability = $this->parser->parseStability($highestVersion);
+
         foreach ($versions as $version) {
-            if (version_compare($highestVersion, $version, '<')) {
+            if ($this->isMoreStable($version, $highestStability) || version_compare($highestVersion, $version, '<')) {
                 $highestVersion = $version;
+                $highestStability = $this->parser->parseStability($version);
             }
         }
 
@@ -160,10 +163,38 @@ class Packagist
         return array_filter(
             $versions,
             function (Version $version) {
-                $stability = $this->parser->parseStability($version->getVersion());
-
-                return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$this->minimumStability];
+                return $this->isMoreOrEquallyStable($version->getVersion(), $this->minimumStability);
             }
         );
+    }
+
+    /**
+     * Helper method.
+     *
+     * @param string $version
+     * @param string $requiredStability
+     *
+     * @return bool
+     */
+    private function isMoreOrEquallyStable($version, $requiredStability)
+    {
+        $stability = $this->parser->parseStability($version);
+
+        return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$requiredStability];
+    }
+
+    /**
+     * Helper method.
+     *
+     * @param string $version
+     * @param string $requiredStability
+     *
+     * @return bool
+     */
+    private function isMoreStable($version, $requiredStability)
+    {
+        $stability = $this->parser->parseStability($version);
+
+        return BasePackage::$stabilities[$stability] < BasePackage::$stabilities[$requiredStability];
     }
 }

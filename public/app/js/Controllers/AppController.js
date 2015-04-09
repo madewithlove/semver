@@ -1,9 +1,11 @@
 angular.module('semver').controller('AppController', function ($scope, $http, $location) {
 
-	$scope.package = $location.search().package || 'madewithlove/elasticsearcher';
+	var query = $location.search();
+
+	$scope.package = query.package || 'madewithlove/elasticsearcher';
 	$scope.defaultVersion = '~1.2.3';
-	$scope.version = $location.search().version || '^0.1.1';
-	$scope.stability = 'stable';
+	$scope.version = query.version || '^0.1.1';
+	$scope.stability = query['minimum-stability'] || 'stable';
 	$scope.stabilities = ['dev', 'alpha', 'beta', 'RC', 'stable'];
 
 	$scope.errors = {
@@ -18,11 +20,7 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 	 * Fetches all versions of the specified package
 	 */
 	$scope.fetchVersions = function () {
-		$http.get('/packages/' + $scope.package, {
-			params: {
-				stability: $scope.stability
-			}
-		}).success(function (response) {
+		$http.get('/packages/' + $scope.package).success(function (response) {
 			$scope.versions = response.versions;
 			$scope.version = $scope.defaultVersion = response.default_constraint;
 			$scope.errors.versions = false;
@@ -45,11 +43,13 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 		$location.search({
 			package: $scope.package,
 			version: $scope.version,
+			"minimum-stability": $scope.stability,
 		});
 
 		$http.get('/packages/' + $scope.package + '/match', {
 			params: {
-				constraint: $scope.version
+				constraint: $scope.version,
+				"minimum-stability": $scope.stability,
 			}
 		}).success(function (versions) {
 			$scope.matchingVersions = versions;
