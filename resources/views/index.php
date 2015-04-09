@@ -3,18 +3,11 @@
 <?php $this->start('body') ?>
     <section class="search">
         <form ng-submit="fetchVersions()" ng-init="fetchVersions()">
-            <input placeholder="Package" id="package" type="text" ng-model="package">
+            <input select-on-click placeholder="Package" id="package" type="text" ng-model="package">
             <button type="submit" class="btn btn-default">Search</button>
-            <input placeholder="Version (eg. {{ defaultVersion }})" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
-            <select name="stability" id="stability" ng-model="stability" class="form-control">
-                <optgroup label="Minimum stability">
-                    <option value="stable">stable</option>
-                    <option value="RC">RC</option>
-                    <option value="beta">beta</option>
-                    <option value="alpha">alpha</option>
-                    <option value="dev">dev</option>
-                </optgroup>
-            </select>
+            <input select-on-click placeholder="Version (eg. {{ defaultVersion }})" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
+            <select name="stability" id="stability" class="form-control"
+                    ng-model="stability" ng-options="item group by 'Minimum stability' for item in stabilities"></select>
         </form>
 
         <p class="error" ng-show="versions.length && errors.versions">The package {{ package }} does not exist</p>
