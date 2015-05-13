@@ -5,7 +5,7 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 	$scope.package = query.package || 'madewithlove/elasticsearcher';
 	$scope.previousPackage = $scope.package;
 	$scope.defaultVersion = '~1.2.3';
-	$scope.version = query.version || '^0.1.1';
+	$scope.version = query.version;
 	$scope.stability = query['minimum-stability'] || 'stable';
 	$scope.stabilities = ['dev', 'alpha', 'beta', 'RC', 'stable'];
 
