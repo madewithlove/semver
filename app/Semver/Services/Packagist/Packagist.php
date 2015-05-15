@@ -128,7 +128,12 @@ class Packagist
         $highestStability = $this->parser->parseStability($highestVersion);
 
         foreach ($versions as $version) {
-            if ($this->isMoreStable($version, $highestStability) || version_compare($highestVersion, $version, '<')) {
+            $nomalizedVersion = $this->parser->normalize($version);
+            $nomalizedHighestVersion = $this->parser->normalize($highestVersion);
+
+            if ($this->isMoreStable($version, $highestStability) ||
+                version_compare($nomalizedHighestVersion, $nomalizedVersion, '<')
+            ) {
                 $highestVersion = $version;
                 $highestStability = $this->parser->parseStability($version);
             }
