@@ -77,4 +77,20 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
 		return $scope.matchingVersions.indexOf(version) !== -1;
 	};
 
+	/**
+	 * Compute the link to a version
+	 *
+	 * @param {string} version
+	 *
+	 * @returns {string}
+	 */
+	$scope.linkToVersion = function(version) {
+		// Link to a branch
+		if (version.version.indexOf('dev-') !== -1) {
+			return version.source + '/tree/' + version.version.substr(4);
+		}
+
+		return version.source + '/releases/tag/' + version.version;
+	};
+
 });
