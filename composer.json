@@ -13,14 +13,14 @@
         }
     ],
     "require": {
-        "league/container": "~1.3",
-        "league/route": "~1.1",
-        "knplabs/packagist-api": "~1.2",
-        "filp/whoops": "~1.1",
-        "league/plates": "~3.1",
         "composer/composer": "~1.0@dev",
+        "filp/whoops": "~1.1",
         "illuminate/cache": "~5.0",
-        "illuminate/filesystem": "~5.0"
+        "illuminate/filesystem": "~5.0",
+        "knplabs/packagist-api": "~1.2",
+        "league/container": "~1.3",
+        "league/plates": "~3.1",
+        "league/route": "~1.1"
     },
     "autoload": {
         "psr-4": {
