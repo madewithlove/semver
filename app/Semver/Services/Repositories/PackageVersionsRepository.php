@@ -29,8 +29,7 @@ class PackageVersionsRepository implements PackageVersionsRepositoryInterface
 	public function getVersions($package)
 	{
 		$package  = $this->client->get($package);
-		$versions = $package->getVersions();
 
-		return $versions;
+		return $package->getVersions();
 	}
 }
