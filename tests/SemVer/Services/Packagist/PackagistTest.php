@@ -75,4 +75,22 @@ class PackagistTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($versions['0.2.2']->getVersion(), $result[0]['version']);
 		$this->assertEquals($versions['0.2.1']->getVersion(), $result[1]['version']);
 	}
+
+	/** @test */
+	function it_gets_matched_versions()
+	{
+		$vendor = 'madewithlove';
+		$package = 'elasticsearcher';
+		$packageName = "{$vendor}/{$package}";
+		$versions = $this->buildVersions();
+
+		$this->repository->shouldReceive('getVersions')
+			->with($packageName)
+			->andReturn($versions);
+
+		$result = $this->service->getMatchingVersions($vendor, $package, '>=0.2.2');
+
+		$this->assertCount(1, $result);
+		$this->assertEquals('0.2.2', $result[0]);
+	}
 }
