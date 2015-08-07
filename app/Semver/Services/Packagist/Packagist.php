@@ -7,17 +7,10 @@ use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\Package;
 use Composer\Package\Version\VersionParser;
 use Composer\Package\Version\VersionSelector;
-use Illuminate\Cache\Repository;
-use Packagist\Api\Client;
 use Packagist\Api\Result\Package\Version;
 
 class Packagist
 {
-    /**
-     * @type Client
-     */
-    private $client;
-
     /**
      * @type VersionParser
      */
@@ -29,20 +22,18 @@ class Packagist
     protected $minimumStability = 'stable';
 
     /**
-     * @type Repository
+     * @var PackageVersionsRepository
      */
-    private $cache;
+    private $versionsRepository;
 
     /**
-     * @param Client        $client
      * @param VersionParser $parser
-     * @param Repository    $cache
+     * @param PackageVersionsRepository $versionsRepository
      */
-    public function __construct(Client $client, VersionParser $parser, Repository $cache)
+    public function __construct(VersionParser $parser, PackageVersionsRepository $versionsRepository)
     {
-        $this->client = $client;
         $this->parser = $parser;
-        $this->cache  = $cache;
+        $this->versionsRepository = $versionsRepository;
     }
 
     /**
@@ -152,20 +143,8 @@ class Packagist
      */
     private function getRawVersions($vendor, $package)
     {
-        $handle   = "$vendor/$package";
-        $lifetime = 60;
-
         /* @type Version[] $versions */
-        $versions = $this->cache->remember($handle, $lifetime, function () use ($handle) {
-            $package  = $this->client->get($handle);
-            $versions = $package->getVersions();
-
-            usort($versions, function (Version $a, Version $b) {
-                return -1 * version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
-            });
-
-            return $versions;
-        });
+        $versions = $this->versionsRepository->getVersions("$vendor/$package");
 
         return array_filter(
             $versions,

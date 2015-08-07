@@ -2,7 +2,8 @@
 namespace Semver\Services\Cache;
 
 use Illuminate\Cache\FileStore;
-use Illuminate\Cache\Repository;
+use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Cache\Repository as IlluminateCache;
 use Illuminate\Filesystem\Filesystem;
 use League\Container\ServiceProvider as BaseServiceProvider;
 
@@ -27,7 +28,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->container->singleton(Repository::class, function () {
             $store = new FileStore(new Filesystem(), $this->container->get('paths.cache'));
 
-            return new Repository($store);
+            return new IlluminateCache($store);
         });
     }
 }
