@@ -25,6 +25,7 @@ class Application
         Services\Packagist\ServiceProvider::class,
         Services\Views\ServiceProvider::class,
         Services\Cache\ServiceProvider::class,
+        Services\Repositories\ServiceProvider::class,
     ];
 
     /**
