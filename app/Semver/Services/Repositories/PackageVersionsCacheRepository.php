@@ -14,6 +14,7 @@ class PackageVersionsCacheRepository implements PackageVersionsRepository
 	 * @var Repository
 	 */
 	private $cache;
+
 	/**
 	 * @var PackageVersionsRepository
 	 */
