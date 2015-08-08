@@ -8,7 +8,6 @@ use Semver\Services\Packagist\PackageVersionsRepository as PackageVersionsReposi
 
 class PackageVersionsRepository implements PackageVersionsRepositoryInterface
 {
-
 	/**
 	 * @var Client
 	 */
