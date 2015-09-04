@@ -131,7 +131,7 @@ class Packagist
 
         // Let version selector format the constraint.
         $selector = new VersionSelector(new Pool());
-        $package  = new Package("$vendor/$package", $this->parser->normalize($highestVersion), $highestVersion);
+        $package = new Package("$vendor/$package", $this->parser->normalize($highestVersion), $highestVersion);
 
         return $selector->findRecommendedRequireVersion($package);
     }

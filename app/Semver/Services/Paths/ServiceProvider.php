@@ -22,7 +22,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->container->add('paths.base', realpath(__DIR__.'/../../../..').'/');
 
         $paths = [
-            'app'   => 'app',
+            'app' => 'app',
             'cache' => 'cache',
             'views' => 'resources/views',
         ];
