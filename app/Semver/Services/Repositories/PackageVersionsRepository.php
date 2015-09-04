@@ -30,7 +30,7 @@ class PackageVersionsRepository implements PackageVersionsRepositoryContract
         $versions = $this->client->get($package)->getVersions();
 
         usort($versions, function (Version $a, Version $b) {
-            return version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
+            return -1 * version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
         });
 
         return array_reverse($versions);
