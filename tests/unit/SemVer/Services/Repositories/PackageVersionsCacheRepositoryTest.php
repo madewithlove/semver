@@ -6,7 +6,7 @@ use Illuminate\Cache\NullStore;
 use Illuminate\Cache\Repository;
 use Mockery;
 use PHPUnit_Framework_TestCase;
-use Semver\Services\Packagist\PackageVersionsRepository;
+use Semver\Contracts\Repositories\PackageVersionsRepository;
 
 class PackageVersionsCacheRepositoryTest extends PHPUnit_Framework_TestCase
 {
