@@ -6,7 +6,7 @@ use League\Plates\Engine;
 class HomeController
 {
     /**
-     * @type Engine
+     * @var Engine
      */
     private $views;
 

@@ -10,7 +10,7 @@ use Whoops\Run;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @type array
+     * @var array
      */
     protected $provides = [
         Run::class,
