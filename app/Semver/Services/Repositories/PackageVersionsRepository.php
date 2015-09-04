@@ -27,8 +27,12 @@ class PackageVersionsRepository implements PackageVersionsRepositoryContract
      */
     public function getVersions($package)
     {
-        $package = $this->client->get($package);
+        $versions = $this->client->get($package)->getVersions();
 
-        return $package->getVersions();
+        usort($versions, function (Version $a, Version $b) {
+            return version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
+        });
+
+        return array_reverse($versions);
     }
 }
