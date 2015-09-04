@@ -8,8 +8,6 @@ use Semver\Services\Packagist\PackageVersionsRepository;
 
 class PackageVersionsCacheRepository implements PackageVersionsRepository
 {
-	const CACHE_TTL = 60;
-
 	/**
 	 * @var Repository
 	 */
@@ -21,13 +19,20 @@ class PackageVersionsCacheRepository implements PackageVersionsRepository
 	private $innerRepository;
 
 	/**
+	 * @var int
+	 */
+	private $ttl;
+
+	/**
 	 * @param Repository $cache
 	 * @param PackageVersionsRepository $innerRepository
+	 * @param int $ttl
 	 */
-	public function __construct(Repository $cache, PackageVersionsRepository $innerRepository)
+	public function __construct(Repository $cache, PackageVersionsRepository $innerRepository, $ttl = 60)
 	{
 		$this->cache = $cache;
 		$this->innerRepository = $innerRepository;
+		$this->ttl = $ttl;
 	}
 
 	/**
@@ -36,7 +41,7 @@ class PackageVersionsCacheRepository implements PackageVersionsRepository
 	 */
 	public function getVersions($package)
 	{
-		return $this->cache->remember($package, static::CACHE_TTL, function () use ($package) {
+		return $this->cache->remember($package, $this->ttl, function () use ($package) {
 			return $this->innerRepository->getVersions($package);
 		});
 	}
