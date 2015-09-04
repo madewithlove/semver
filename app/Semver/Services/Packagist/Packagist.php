@@ -8,6 +8,7 @@ use Composer\Package\Package;
 use Composer\Package\Version\VersionParser;
 use Composer\Package\Version\VersionSelector;
 use Packagist\Api\Result\Package\Version;
+use Semver\Contracts\Repositories\PackageVersionsRepository;
 
 class Packagist
 {
