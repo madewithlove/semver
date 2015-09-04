@@ -161,10 +161,10 @@ class Packagist
             $versions = $package->getVersions();
 
             usort($versions, function (Version $a, Version $b) {
-                return version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
+                return -1 * version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
             });
 
-            return array_reverse($versions);
+            return $versions;
         });
 
         return array_filter(
