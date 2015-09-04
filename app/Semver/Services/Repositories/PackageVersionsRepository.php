@@ -1,5 +1,4 @@
 <?php
-
 namespace Semver\Services\Repositories;
 
 use Packagist\Api\Client;
@@ -8,27 +7,28 @@ use Semver\Contracts\Repositories\PackageVersionsRepository as PackageVersionsRe
 
 class PackageVersionsRepository implements PackageVersionsRepositoryContract
 {
-	/**
-	 * @var Client
-	 */
-	private $client;
+    /**
+     * @var Client
+     */
+    private $client;
 
-	/**
-	 * @param Client $client
-	 */
-	public function __construct(Client $client)
-	{
-		$this->client = $client;
-	}
+    /**
+     * @param Client $client
+     */
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
 
-	/**
-	 * @param string $package vendor/package
-	 * @return Version[]
-	 */
-	public function getVersions($package)
-	{
-		$package  = $this->client->get($package);
+    /**
+     * @param string $package vendor/package
+     *
+     * @return Version[]
+     */
+    public function getVersions($package)
+    {
+        $package = $this->client->get($package);
 
-		return $package->getVersions();
-	}
+        return $package->getVersions();
+    }
 }

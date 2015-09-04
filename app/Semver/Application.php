@@ -46,7 +46,7 @@ class Application
         /** @type Dispatcher $dispatcher */
         /* @type Request $request */
         $dispatcher = $this->container->get(RouteCollection::class)->getDispatcher();
-        $request    = $this->container->get(Request::class);
+        $request = $this->container->get(Request::class);
 
         $response = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo());
 

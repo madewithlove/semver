@@ -66,7 +66,7 @@ class Packagist
         foreach ($versions as $key => &$version) {
             /* @type Version $version */
             $versions[$version->getVersion()] = [
-                'source'  => substr($version->getSource()->getUrl(), 0, -4),
+                'source' => substr($version->getSource()->getUrl(), 0, -4),
                 'version' => $version->getVersion(),
             ];
         }
@@ -133,7 +133,7 @@ class Packagist
 
         // Let version selector format the constraint.
         $selector = new VersionSelector(new Pool());
-        $package  = new Package("$vendor/$package", $this->parser->normalize($highestVersion), $highestVersion);
+        $package = new Package("$vendor/$package", $this->parser->normalize($highestVersion), $highestVersion);
 
         return $selector->findRecommendedRequireVersion($package);
     }
