@@ -71,19 +71,13 @@ class Packagist
     {
         $versions = $this->getRawVersions($vendor, $package);
 
-        foreach ($versions as $key => &$version) {
-            /* @type Version $version */
-            $versions[$version->getVersion()] = [
-                'source'  => substr($version->getSource()->getUrl(), 0, -4),
-                'version' => $version->getVersion(),
-            ];
-        }
+        return array_map(function (Version $version) {
+            // Transform the output to only include fields we need.
+            $source = substr($version->getSource()->getUrl(), 0, -4); // Strip .git
+            $version = $this->replaceBranchAlias($version->getVersion(), $version->getExtra());
 
-        usort($versions, function ($a, $b) {
-            return -1 * version_compare($a['version'], $b['version']);
-        });
-
-        return $versions;
+            return compact('source', 'version');
+        }, $versions);
     }
 
     /**
@@ -99,9 +93,13 @@ class Packagist
 
         $constraint = $this->parser->parseConstraints($constraint);
 
-        return array_keys(array_filter($versions, function (Version $version) use ($constraint) {
+        $matching = array_filter($versions, function (Version $version) use ($constraint) {
             return $constraint->matches(new VersionConstraint('==', $this->parser->normalize($version->getVersion())));
-        }));
+        });
+
+        return array_values(array_map(function (Version $version) {
+            return $this->replaceBranchAlias($version->getVersion(), $version->getExtra());
+        }, $matching));
     }
 
     /**
@@ -162,7 +160,11 @@ class Packagist
             $package  = $this->client->get($handle);
             $versions = $package->getVersions();
 
-            return $versions;
+            usort($versions, function (Version $a, Version $b) {
+                return version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
+            });
+
+            return array_reverse($versions);
         });
 
         return array_filter(
@@ -201,5 +203,27 @@ class Packagist
         $stability = $this->parser->parseStability($version);
 
         return BasePackage::$stabilities[$stability] < BasePackage::$stabilities[$requiredStability];
+    }
+
+    /**
+     * Replace 'dev-*' version names with their branch aliases.
+     *
+     * @param string $version
+     * @param array  $extras
+     *
+     * @return string
+     */
+    private function replaceBranchAlias($version, array $extras = null)
+    {
+        if ($extras && isset($extras['branch-alias'])) {
+            foreach ($extras['branch-alias'] as $branch => $alias) {
+                if ($version === $branch) {
+                    $version = $alias;
+                    break;
+                }
+            }
+        }
+
+        return $version;
     }
 }
