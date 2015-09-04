@@ -5,7 +5,7 @@ namespace Semver\Services\Repositories;
 use Illuminate\Contracts\Cache\Repository;
 use League\Container\ServiceProvider as BaseServiceProvider;
 use Packagist\Api\Client;
-use Semver\Services\Packagist\PackageVersionsRepository as PackageVersionsRepositoryInterface;
+use Semver\Contracts\Repositories\PackageVersionsRepository as PackageVersionsRepositoryContract;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -13,7 +13,7 @@ class ServiceProvider extends BaseServiceProvider
 	 * @var array
 	 */
 	protected $provides = [
-		PackageVersionsRepositoryInterface::class,
+		PackageVersionsRepositoryContract::class,
 	];
 
 	/**
@@ -25,7 +25,7 @@ class ServiceProvider extends BaseServiceProvider
 	 */
 	public function register()
 	{
-		$this->container->singleton(PackageVersionsRepositoryInterface::class, function() {
+		$this->container->singleton(PackageVersionsRepositoryContract::class, function() {
 			return new PackageVersionsCacheRepository(
 				$this->container->get(Repository::class),
 				$this->container->get(PackageVersionsRepository::class)

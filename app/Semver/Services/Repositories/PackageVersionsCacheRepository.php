@@ -4,7 +4,7 @@ namespace Semver\Services\Repositories;
 
 use Illuminate\Contracts\Cache\Repository;
 use Packagist\Api\Result\Package\Version;
-use Semver\Services\Packagist\PackageVersionsRepository;
+use Semver\Contracts\Repositories\PackageVersionsRepository;
 
 class PackageVersionsCacheRepository implements PackageVersionsRepository
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Semver\Services\Packagist;
+namespace Semver\Contracts\Repositories;
 
 use Packagist\Api\Result\Package\Version;
 

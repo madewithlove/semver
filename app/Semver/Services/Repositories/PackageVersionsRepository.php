@@ -4,9 +4,9 @@ namespace Semver\Services\Repositories;
 
 use Packagist\Api\Client;
 use Packagist\Api\Result\Package\Version;
-use Semver\Services\Packagist\PackageVersionsRepository as PackageVersionsRepositoryInterface;
+use Semver\Contracts\Repositories\PackageVersionsRepository as PackageVersionsRepositoryContract;
 
-class PackageVersionsRepository implements PackageVersionsRepositoryInterface
+class PackageVersionsRepository implements PackageVersionsRepositoryContract
 {
 	/**
 	 * @var Client
