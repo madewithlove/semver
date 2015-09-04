@@ -10,12 +10,12 @@ use UnexpectedValueException;
 class PackageController
 {
     /**
-     * @type Request
+     * @var Request
      */
     private $request;
 
     /**
-     * @type Packagist
+     * @var Packagist
      */
     private $packagist;
 

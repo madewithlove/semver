@@ -7,7 +7,7 @@ use League\Plates\Engine;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @type array
+     * @var array
      */
     protected $provides = [
         Engine::class,

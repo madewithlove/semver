@@ -13,12 +13,12 @@ use Semver\Contracts\Repositories\PackageVersionsRepository;
 class Packagist
 {
     /**
-     * @type VersionParser
+     * @var VersionParser
      */
     private $parser;
 
     /**
-     * @type string
+     * @var string
      */
     protected $minimumStability = 'stable';
 
@@ -99,6 +99,7 @@ class Packagist
     /**
      * Given a concrete package, this returns a ~ constraint (in the future a ^ constraint)
      * that should be used, for example, in composer.json.
+     *
      * For example:
      *  * 1.2.1         -> ~1.2
      *  * 1.2           -> ~1.2

@@ -10,7 +10,7 @@ use League\Container\ServiceProvider as BaseServiceProvider;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @type array
+     * @var array
      */
     protected $provides = [
         Repository::class,

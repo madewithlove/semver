@@ -8,7 +8,7 @@ use League\Route\Strategy\UriStrategy;
 class RoutesServiceProvider extends ServiceProvider
 {
     /**
-     * @type array
+     * @var array
      */
     protected $provides = [
         RouteCollection::class,
