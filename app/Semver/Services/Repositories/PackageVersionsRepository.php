@@ -33,6 +33,6 @@ class PackageVersionsRepository implements PackageVersionsRepositoryContract
             return -1 * version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
         });
 
-        return array_reverse($versions);
+        return $versions;
     }
 }
