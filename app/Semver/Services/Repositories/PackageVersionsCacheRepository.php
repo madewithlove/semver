@@ -1,43 +1,48 @@
 <?php
-
 namespace Semver\Services\Repositories;
 
 use Illuminate\Contracts\Cache\Repository;
 use Packagist\Api\Result\Package\Version;
-use Semver\Services\Packagist\PackageVersionsRepository;
+use Semver\Contracts\Repositories\PackageVersionsRepository;
 
 class PackageVersionsCacheRepository implements PackageVersionsRepository
 {
-	const CACHE_TTL = 60;
+    /**
+     * @var Repository
+     */
+    private $cache;
 
-	/**
-	 * @var Repository
-	 */
-	private $cache;
+    /**
+     * @var PackageVersionsRepository
+     */
+    private $innerRepository;
 
-	/**
-	 * @var PackageVersionsRepository
-	 */
-	private $innerRepository;
+    /**
+     * @var int
+     */
+    private $ttl;
 
-	/**
-	 * @param Repository $cache
-	 * @param PackageVersionsRepository $innerRepository
-	 */
-	public function __construct(Repository $cache, PackageVersionsRepository $innerRepository)
-	{
-		$this->cache = $cache;
-		$this->innerRepository = $innerRepository;
-	}
+    /**
+     * @param Repository                $cache
+     * @param PackageVersionsRepository $innerRepository
+     * @param int                       $ttl
+     */
+    public function __construct(Repository $cache, PackageVersionsRepository $innerRepository, $ttl = 60)
+    {
+        $this->cache = $cache;
+        $this->innerRepository = $innerRepository;
+        $this->ttl = $ttl;
+    }
 
-	/**
-	 * @param string $package vendor/package
-	 * @return Version[]
-	 */
-	public function getVersions($package)
-	{
-		return $this->cache->remember($package, static::CACHE_TTL, function () use ($package) {
-			return $this->innerRepository->getVersions($package);
-		});
-	}
+    /**
+     * @param string $package vendor/package
+     *
+     * @return Version[]
+     */
+    public function getVersions($package)
+    {
+        return $this->cache->remember($package, $this->ttl, function () use ($package) {
+            return $this->innerRepository->getVersions($package);
+        });
+    }
 }

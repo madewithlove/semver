@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 class Application
 {
     /**
-     * @type ContainerInterface
+     * @var ContainerInterface
      */
     private $container;
 
     /**
-     * @type string[]
+     * @var string[]
      */
     protected $serviceProviders = [
         Http\Support\RoutesServiceProvider::class,
@@ -43,10 +43,10 @@ class Application
      */
     public function run()
     {
-        /** @type Dispatcher $dispatcher */
+        /** @var Dispatcher $dispatcher */
         /* @type Request $request */
         $dispatcher = $this->container->get(RouteCollection::class)->getDispatcher();
-        $request    = $this->container->get(Request::class);
+        $request = $this->container->get(Request::class);
 
         $response = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo());
 
@@ -59,7 +59,7 @@ class Application
     private function setupProviders()
     {
         foreach ($this->serviceProviders as &$serviceProvider) {
-            /** @type ServiceProvider $serviceProvider */
+            /** @var ServiceProvider $serviceProvider */
             $serviceProvider = new $serviceProvider();
             $serviceProvider->setContainer($this->container);
         }

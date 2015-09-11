@@ -30,6 +30,7 @@
     "minimum-stability": "stable",
     "require-dev": {
         "phpunit/phpunit": "^4.8",
-        "mockery/mockery": "^0.9.4"
+        "mockery/mockery": "^0.9.4",
+        "fabpot/php-cs-fixer": "^1.10"
     }
 }
