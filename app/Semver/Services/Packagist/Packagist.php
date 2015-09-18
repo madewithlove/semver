@@ -112,7 +112,11 @@ class Packagist
     public function getDefaultConstraint($vendor, $package)
     {
         // Get versions.
-        $versions = array_keys($this->getRawVersions($vendor, $package));
+        $versions = $this->getRawVersions($vendor, $package);
+
+        $versions = array_map(function (Version $version) {
+            return $version->getVersion();
+        }, $versions);
 
         // Get highest version.
         $highestVersion = reset($versions);
@@ -141,7 +145,7 @@ class Packagist
      * @param string $vendor
      * @param string $package
      *
-     * @return array
+     * @return Version[]
      */
     private function getRawVersions($vendor, $package)
     {
