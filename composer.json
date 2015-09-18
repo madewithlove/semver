@@ -27,6 +27,11 @@
             "Semver\\": "app/Semver"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Semver\\Unit\\": "tests/unit/Semver"
+        }
+    },
     "minimum-stability": "stable",
     "require-dev": {
         "phpunit/phpunit": "^4.8",

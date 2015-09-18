@@ -1,24 +1,33 @@
 <?php
-
-namespace Semver\Services\Repositories;
+namespace Semver\Unit\Services\Repositories;
 
 use Illuminate\Cache\NullStore;
 use Illuminate\Cache\Repository;
 use Mockery;
 use PHPUnit_Framework_TestCase;
 use Semver\Contracts\Repositories\PackageVersionsRepository;
+use Semver\Services\Repositories\PackageVersionsCacheRepository;
 
 class PackageVersionsCacheRepositoryTest extends PHPUnit_Framework_TestCase
 {
-	/** @var  PackageVersionsRepository|Mockery\Mock */
+	/**
+	 * @var PackageVersionsRepository|Mockery\Mock
+	 */
 	private $innerRepository;
 
-	/** @var  Repository|Mockery\Mock */
+	/**
+	 * @var Repository|Mockery\Mock
+	 */
 	private $cache;
 
-	/** @var  PackageVersionsCacheRepository */
+	/**
+	 * @var PackageVersionsCacheRepository
+	 */
 	private $repository;
 
+	/**
+	 * Set up.
+	 */
 	public function setUp()
 	{
 		$this->innerRepository = Mockery::mock(PackageVersionsRepository::class);
@@ -26,12 +35,17 @@ class PackageVersionsCacheRepositoryTest extends PHPUnit_Framework_TestCase
 		$this->repository = new PackageVersionsCacheRepository($this->cache, $this->innerRepository);
 	}
 
+	/**
+	 * Tear down.
+	 */
 	public function tearDown()
 	{
 		Mockery::close();
 	}
 
-	/** @test */
+	/**
+	 * @test
+	 */
 	function it_calls_inner_repository_when_no_cache_exists()
 	{
 		$packageName = 'madewithlove/elasticsearcher';
@@ -53,7 +67,9 @@ class PackageVersionsCacheRepositoryTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals('lorem', $this->repository->getVersions($packageName));
 	}
 
-	/** @test */
+	/**
+	 * @test
+	 */
 	function it_gets_cached_result()
 	{
 		$packageName = 'madewithlove/elasticsearcher';

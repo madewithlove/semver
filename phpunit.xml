@@ -13,7 +13,7 @@
          verbose="true"
         >
     <testsuites>
-        <testsuite name="SemVer Test Suite">
+        <testsuite name="Semver Test Suite">
             <directory suffix="Test.php">./tests/unit</directory>
         </testsuite>
     </testsuites>
