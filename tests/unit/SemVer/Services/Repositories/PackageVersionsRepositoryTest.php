@@ -10,42 +10,42 @@ use Semver\Unit\Stubs\BuildVersions;
 
 class PackageVersionsRepositoryTest extends PHPUnit_Framework_TestCase
 {
-	use BuildVersions;
+    use BuildVersions;
 
-	/**
-	 * Tear down.
-	 */
-	public function tearDown()
-	{
-		Mockery::close();
-	}
+    /**
+     * Tear down.
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @test
-	 */
-	function it_calls_packagist_api()
-	{
-		// Arrange
-		$packagistClient = Mockery::mock(Client::class);
-		$packages = Mockery::mock(Package::class);
-		$repository = new PackageVersionsRepository($packagistClient);
-		$packageName = 'madewithlove/elasticsearcher';
+    /**
+     * @test
+     */
+    public function it_calls_packagist_api()
+    {
+        // Arrange
+        $packagistClient = Mockery::mock(Client::class);
+        $packages = Mockery::mock(Package::class);
+        $repository = new PackageVersionsRepository($packagistClient);
+        $packageName = 'madewithlove/elasticsearcher';
 
-		$packages->shouldReceive('getVersions')
-			->once()
-			->andReturn($this->buildVersions());
+        $packages->shouldReceive('getVersions')
+            ->once()
+            ->andReturn($this->buildVersions());
 
-		$packagistClient->shouldReceive('get')
-			->with($packageName)
-			->once()
-			->andReturn($packages);
+        $packagistClient->shouldReceive('get')
+            ->with($packageName)
+            ->once()
+            ->andReturn($packages);
 
-		// Act
-		$result = $repository->getVersions($packageName);
+        // Act
+        $result = $repository->getVersions($packageName);
 
-		// Assert
-		$this->assertCount(2, $result);
-		$this->assertEquals('0.2.2', $result[0]->getVersion());
-		$this->assertEquals('0.2.1', $result[1]->getVersion());
-	}
+        // Assert
+        $this->assertCount(2, $result);
+        $this->assertEquals('0.2.2', $result[0]->getVersion());
+        $this->assertEquals('0.2.1', $result[1]->getVersion());
+    }
 }

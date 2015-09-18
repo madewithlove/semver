@@ -10,78 +10,78 @@ use Semver\Services\Repositories\PackageVersionsCacheRepository;
 
 class PackageVersionsCacheRepositoryTest extends PHPUnit_Framework_TestCase
 {
-	/**
-	 * @var PackageVersionsRepository|Mockery\Mock
-	 */
-	private $innerRepository;
+    /**
+     * @var PackageVersionsRepository|Mockery\Mock
+     */
+    private $innerRepository;
 
-	/**
-	 * @var Repository|Mockery\Mock
-	 */
-	private $cache;
+    /**
+     * @var Repository|Mockery\Mock
+     */
+    private $cache;
 
-	/**
-	 * @var PackageVersionsCacheRepository
-	 */
-	private $repository;
+    /**
+     * @var PackageVersionsCacheRepository
+     */
+    private $repository;
 
-	/**
-	 * Set up.
-	 */
-	public function setUp()
-	{
-		$this->innerRepository = Mockery::mock(PackageVersionsRepository::class);
-		$this->cache = Mockery::mock(Repository::class . '[get, put]', [new NullStore])->makePartial();
-		$this->repository = new PackageVersionsCacheRepository($this->cache, $this->innerRepository);
-	}
+    /**
+     * Set up.
+     */
+    public function setUp()
+    {
+        $this->innerRepository = Mockery::mock(PackageVersionsRepository::class);
+        $this->cache = Mockery::mock(Repository::class.'[get, put]', [new NullStore()])->makePartial();
+        $this->repository = new PackageVersionsCacheRepository($this->cache, $this->innerRepository);
+    }
 
-	/**
-	 * Tear down.
-	 */
-	public function tearDown()
-	{
-		Mockery::close();
-	}
+    /**
+     * Tear down.
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @test
-	 */
-	function it_calls_inner_repository_when_no_cache_exists()
-	{
-		$packageName = 'madewithlove/elasticsearcher';
+    /**
+     * @test
+     */
+    public function it_calls_inner_repository_when_no_cache_exists()
+    {
+        $packageName = 'madewithlove/elasticsearcher';
 
-		$this->cache->shouldReceive('get')
-			->with($packageName)
-			->once()
-			->andReturn(null);
+        $this->cache->shouldReceive('get')
+            ->with($packageName)
+            ->once()
+            ->andReturn(null);
 
-		$this->cache->shouldReceive('put')
-			->with($packageName, 'lorem', 60)
-			->once();
+        $this->cache->shouldReceive('put')
+            ->with($packageName, 'lorem', 60)
+            ->once();
 
-		$this->innerRepository->shouldReceive('getVersions')
-			->with($packageName)
-			->once()
-			->andReturn('lorem');
+        $this->innerRepository->shouldReceive('getVersions')
+            ->with($packageName)
+            ->once()
+            ->andReturn('lorem');
 
-		$this->assertEquals('lorem', $this->repository->getVersions($packageName));
-	}
+        $this->assertEquals('lorem', $this->repository->getVersions($packageName));
+    }
 
-	/**
-	 * @test
-	 */
-	function it_gets_cached_result()
-	{
-		$packageName = 'madewithlove/elasticsearcher';
+    /**
+     * @test
+     */
+    public function it_gets_cached_result()
+    {
+        $packageName = 'madewithlove/elasticsearcher';
 
-		$this->cache->shouldReceive('get')
-			->with($packageName)
-			->once()
-			->andReturn('cached');
+        $this->cache->shouldReceive('get')
+            ->with($packageName)
+            ->once()
+            ->andReturn('cached');
 
-		$this->cache->shouldReceive('put')->never();
-		$this->innerRepository->shouldReceive('getVersions')->never();
+        $this->cache->shouldReceive('put')->never();
+        $this->innerRepository->shouldReceive('getVersions')->never();
 
-		$this->assertEquals('cached', $this->repository->getVersions($packageName));
-	}
+        $this->assertEquals('cached', $this->repository->getVersions($packageName));
+    }
 }

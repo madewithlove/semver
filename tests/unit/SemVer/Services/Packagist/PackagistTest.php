@@ -10,56 +10,56 @@ use Semver\Unit\Stubs\BuildVersions;
 
 class PackagistTest extends PHPUnit_Framework_TestCase
 {
-	use BuildVersions;
+    use BuildVersions;
 
-	/**
-	 * @var PackageVersionsRepository|Mockery\Mock
-	 */
-	private $repository;
+    /**
+     * @var PackageVersionsRepository|Mockery\Mock
+     */
+    private $repository;
 
-	/**
-	 * @var Packagist
-	 */
-	private $service;
+    /**
+     * @var Packagist
+     */
+    private $service;
 
-	/**
-	 * Set up.
-	 */
-	public function setUp()
-	{
-		$this->repository = Mockery::mock(PackageVersionsRepository::class);
+    /**
+     * Set up.
+     */
+    public function setUp()
+    {
+        $this->repository = Mockery::mock(PackageVersionsRepository::class);
 
-		$this->service = new Packagist(
-			new VersionParser(),
-			$this->repository
-		);
-	}
+        $this->service = new Packagist(
+            new VersionParser(),
+            $this->repository
+        );
+    }
 
-	/**
-	 * Tear down.
-	 */
-	public function tearDown()
-	{
-		Mockery::close();
-	}
+    /**
+     * Tear down.
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @test
-	 */
-	function it_gets_matched_versions()
-	{
-		$vendor = 'madewithlove';
-		$package = 'elasticsearcher';
-		$packageName = "{$vendor}/{$package}";
-		$versions = $this->buildVersions();
+    /**
+     * @test
+     */
+    public function it_gets_matched_versions()
+    {
+        $vendor = 'madewithlove';
+        $package = 'elasticsearcher';
+        $packageName = "{$vendor}/{$package}";
+        $versions = $this->buildVersions();
 
-		$this->repository->shouldReceive('getVersions')
-			->with($packageName)
-			->andReturn($versions);
+        $this->repository->shouldReceive('getVersions')
+            ->with($packageName)
+            ->andReturn($versions);
 
-		$result = $this->service->getMatchingVersions($vendor, $package, '>=0.2.2');
+        $result = $this->service->getMatchingVersions($vendor, $package, '>=0.2.2');
 
-		$this->assertCount(1, $result);
-		$this->assertEquals('0.2.2', $result[0]);
-	}
+        $this->assertCount(1, $result);
+        $this->assertEquals('0.2.2', $result[0]);
+    }
 }
