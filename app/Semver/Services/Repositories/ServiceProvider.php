@@ -1,11 +1,9 @@
 <?php
-namespace Semver\Services\Cache;
+namespace Semver\Services\Repositories;
 
-use Illuminate\Cache\FileStore;
-use Illuminate\Cache\Repository as IlluminateCache;
 use Illuminate\Contracts\Cache\Repository;
-use Illuminate\Filesystem\Filesystem;
 use League\Container\ServiceProvider as BaseServiceProvider;
+use Semver\Contracts\Repositories\PackageVersionsRepository as PackageVersionsRepositoryContract;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -13,7 +11,7 @@ class ServiceProvider extends BaseServiceProvider
      * @var array
      */
     protected $provides = [
-        Repository::class,
+        PackageVersionsRepositoryContract::class,
     ];
 
     /**
@@ -23,10 +21,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->container->singleton(Repository::class, function () {
-            $store = new FileStore(new Filesystem(), $this->container->get('paths.cache'));
-
-            return new IlluminateCache($store);
+        $this->container->singleton(PackageVersionsRepositoryContract::class, function () {
+            return new PackageVersionsCacheRepository(
+                $this->container->get(Repository::class),
+                $this->container->get(PackageVersionsRepository::class)
+            );
         });
     }
 }

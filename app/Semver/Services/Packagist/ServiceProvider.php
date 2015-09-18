@@ -8,7 +8,7 @@ use League\Container\ServiceProvider as BaseServiceProvider;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
-     * @type array
+     * @var array
      */
     protected $provides = [
         ClientInterface::class,
@@ -21,7 +21,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         // Alias for Guzzle's ClientInterface for the first argument of Packagist\Api\Client.
         $this->container->add(ClientInterface::class, function () {
-            $this->container->get(HttpClient::class);
+            return $this->container->get(HttpClient::class);
         });
     }
 }

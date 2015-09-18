@@ -10,12 +10,12 @@ use UnexpectedValueException;
 class PackageController
 {
     /**
-     * @type Request
+     * @var Request
      */
     private $request;
 
     /**
-     * @type Packagist
+     * @var Packagist
      */
     private $packagist;
 
@@ -26,7 +26,7 @@ class PackageController
     public function __construct(Packagist $packagist, Request $request)
     {
         $this->packagist = $packagist;
-        $this->request   = $request;
+        $this->request = $request;
     }
 
     /**
@@ -39,7 +39,7 @@ class PackageController
     {
         $this->packagist->setMinimumStability('dev');
 
-        $versions          = $this->packagist->getVersions($vendor, $package);
+        $versions = $this->packagist->getVersions($vendor, $package);
         $defaultConstraint = $this->packagist->getDefaultConstraint($vendor, $package);
 
         return new JsonResponse(['default_constraint' => $defaultConstraint, 'versions' => $versions]);
@@ -56,13 +56,13 @@ class PackageController
         $this->configureMinimumStability();
 
         $constraint = $this->request->get('constraint', '*');
-        $versions   = $this->packagist->getMatchingVersions($vendor, $package, $constraint);
+        $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint);
 
         return new JsonResponse($versions);
     }
 
     /**
-     * Configured the minimum stability to be used when fetching versions
+     * Configured the minimum stability to be used when fetching versions.
      */
     protected function configureMinimumStability()
     {
