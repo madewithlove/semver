@@ -7,7 +7,7 @@
     <link rel="canonical" href="http://semver.mwl.be">
     <title>Packagist Semver Checker - madewithlove</title>
     <meta name="description" content="Semver version constraint checker for packagist.">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/builds/css/styles.css" />
     <!-- favicons -->
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
