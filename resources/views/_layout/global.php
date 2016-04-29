@@ -17,7 +17,7 @@
 <body ng-app="semver" ng-controller="AppController">
     <main class="container" ng-cloak>
         <?php $this->insert('_partials/header') ?>
-        <?= $this->section('body') ?>
+        <?= $this->section('content') ?>
     </main>
 
     <?php $this->insert('_partials/footer') ?>
