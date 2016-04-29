@@ -1,16 +1,19 @@
 <?php
 namespace Semver;
 
-use League\Container\ContainerInterface;
-use League\Container\ServiceProvider;
+use League\Container\Container;
+use League\Container\ReflectionContainer;
+use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Route\Dispatcher;
 use League\Route\RouteCollection;
-use Symfony\Component\HttpFoundation\Request;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response;
+use Zend\Diactoros\Response\SapiEmitter;
 
 class Application
 {
     /**
-     * @var ContainerInterface
+     * @var Container
      */
     private $container;
 
@@ -29,11 +32,12 @@ class Application
     ];
 
     /**
-     * @param ContainerInterface $container
+     * @param Container $container
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->container->delegate(new ReflectionContainer());
 
         $this->setupProviders();
     }
@@ -44,13 +48,14 @@ class Application
     public function run()
     {
         /** @var Dispatcher $dispatcher */
-        /* @type Request $request */
-        $dispatcher = $this->container->get(RouteCollection::class)->getDispatcher();
-        $request = $this->container->get(Request::class);
+        /* @type ServerRequestInterface $request */
+        $request = $this->container->get(ServerRequestInterface::class);
+        $response = new Response();
+        $dispatcher = $this->container->get(RouteCollection::class);
 
-        $response = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo());
+        $response = $dispatcher->dispatch($request, $response);
 
-        $response->send();
+        (new SapiEmitter())->emit($response);
     }
 
     /**
@@ -59,18 +64,18 @@ class Application
     private function setupProviders()
     {
         foreach ($this->serviceProviders as &$serviceProvider) {
-            /** @var ServiceProvider $serviceProvider */
+            /** @var AbstractServiceProvider $serviceProvider */
             $serviceProvider = new $serviceProvider();
             $serviceProvider->setContainer($this->container);
         }
 
         // Register the service providers.
-        array_walk($this->serviceProviders, function (ServiceProvider $serviceProvider) {
+        array_walk($this->serviceProviders, function (AbstractServiceProvider $serviceProvider) {
             $this->container->addServiceProvider($serviceProvider);
         });
 
         // Call the boot methods.
-        array_walk($this->serviceProviders, function (ServiceProvider $serviceProvider) {
+        array_walk($this->serviceProviders, function (AbstractServiceProvider $serviceProvider) {
             if (method_exists($serviceProvider, 'boot')) {
                 $this->container->call([$serviceProvider, 'boot']);
             }

@@ -1,11 +1,12 @@
 <?php
 namespace Semver\Http\Support;
 
-use League\Container\ServiceProvider;
+use League\Container\ServiceProvider\AbstractServiceProvider;
+use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use League\Route\RouteCollection;
-use League\Route\Strategy\UriStrategy;
+use League\Route\Strategy\ParamStrategy;
 
-class RoutesServiceProvider extends ServiceProvider
+class RoutesServiceProvider extends AbstractServiceProvider
 {
     /**
      * @var array
@@ -14,14 +15,6 @@ class RoutesServiceProvider extends ServiceProvider
         RouteCollection::class,
         'routes.file',
     ];
-
-    /**
-     * @param RouteCollection $router
-     */
-    public function boot(RouteCollection $router)
-    {
-        include $this->container->get('routes.file');
-    }
 
     /**
      * Register method,.
@@ -33,11 +26,22 @@ class RoutesServiceProvider extends ServiceProvider
         });
 
         // Bind a route collection to the container.
-        $this->container->singleton(RouteCollection::class, function () {
+        $this->container->share(RouteCollection::class, function () {
+            $strategy = new ParamStrategy();
+            $strategy->setContainer($this->container);
+
             $routes = new RouteCollection($this->container);
-            $routes->setStrategy(new UriStrategy());
+            $routes->setStrategy($strategy);
 
             return $routes;
         });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function boot(RouteCollection $router)
+    {
+        include $this->container->get('routes.file');
     }
 }

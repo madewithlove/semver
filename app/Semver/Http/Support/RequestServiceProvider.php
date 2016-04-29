@@ -1,16 +1,17 @@
 <?php
 namespace Semver\Http\Support;
 
-use League\Container\ServiceProvider;
-use Symfony\Component\HttpFoundation\Request;
+use League\Container\ServiceProvider\AbstractServiceProvider;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\ServerRequestFactory;
 
-class RequestServiceProvider extends ServiceProvider
+class RequestServiceProvider extends AbstractServiceProvider
 {
     /**
      * @var array
      */
     protected $provides = [
-        Request::class,
+        ServerRequestInterface::class,
     ];
 
     /**
@@ -19,8 +20,8 @@ class RequestServiceProvider extends ServiceProvider
     public function register()
     {
         // Bind the Symfony request to the container.
-        $this->container->singleton(Request::class, function () {
-            return Request::createFromGlobals();
+        $this->container->share(ServerRequestInterface::class, function () {
+            return ServerRequestFactory::fromGlobals();
         });
     }
 }

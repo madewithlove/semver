@@ -2,7 +2,7 @@
 namespace Semver\Services\Repositories;
 
 use Illuminate\Contracts\Cache\Repository;
-use League\Container\ServiceProvider as BaseServiceProvider;
+use League\Container\ServiceProvider\AbstractServiceProvider as BaseServiceProvider;
 use Semver\Contracts\Repositories\PackageVersionsRepository as PackageVersionsRepositoryContract;
 
 class ServiceProvider extends BaseServiceProvider
@@ -21,7 +21,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->container->singleton(PackageVersionsRepositoryContract::class, function () {
+        $this->container->share(PackageVersionsRepositoryContract::class, function () {
             return new PackageVersionsCacheRepository(
                 $this->container->get(Repository::class),
                 $this->container->get(PackageVersionsRepository::class)
