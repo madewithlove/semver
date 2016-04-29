@@ -9,5 +9,9 @@
   "devDependencies": {
     "madewithlove-webpack-config": "^4.0.0",
     "webpack": "^1.13.0"
+  },
+  "scripts": {
+    "build": "webpack --progress --bail",
+    "build:production": "NODE_ENV=production npm run build"
   }
 }
