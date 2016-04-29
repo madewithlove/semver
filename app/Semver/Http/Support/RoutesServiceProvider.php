@@ -1,8 +1,8 @@
 <?php
+
 namespace Semver\Http\Support;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use League\Route\RouteCollection;
 use League\Route\Strategy\ParamStrategy;
 

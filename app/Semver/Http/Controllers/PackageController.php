@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Http\Controllers;
 
 use Composer\Package\BasePackage;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Services\Paths;
 
 use League\Container\ServiceProvider\AbstractServiceProvider as BaseServiceProvider;

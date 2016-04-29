@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Services\Repositories;
 
 use Illuminate\Contracts\Cache\Repository;

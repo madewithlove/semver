@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Services\Cache;
 
 use Illuminate\Cache\FileStore;

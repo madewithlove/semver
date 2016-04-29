@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Services\Packagist;
 
 use Composer\DependencyResolver\Pool;
@@ -28,7 +29,7 @@ class Packagist
     private $versionsRepository;
 
     /**
-     * @param VersionParser $parser
+     * @param VersionParser             $parser
      * @param PackageVersionsRepository $versionsRepository
      */
     public function __construct(VersionParser $parser, PackageVersionsRepository $versionsRepository)

@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Services\Packagist;
 
 use Guzzle\Http\Client as HttpClient;

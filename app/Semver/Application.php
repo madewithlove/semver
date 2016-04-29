@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver;
 
 use League\Container\Container;
@@ -47,7 +48,7 @@ class Application
      */
     public function run()
     {
-        /** @var Dispatcher $dispatcher */
+        /* @var Dispatcher $dispatcher */
         /* @type ServerRequestInterface $request */
         $request = $this->container->get(ServerRequestInterface::class);
         $response = new Response();

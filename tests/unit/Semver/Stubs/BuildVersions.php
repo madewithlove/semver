@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Unit\Stubs;
 
 use Packagist\Api\Result\Package\Source;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Http\Support;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
