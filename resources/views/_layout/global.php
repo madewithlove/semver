@@ -8,7 +8,7 @@
     <title>Packagist Semver Checker - madewithlove</title>
     <meta name="description" content="Semver version constraint checker for packagist.">
     <link href='//fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/builds/css/styles.css" />
+    <link rel="stylesheet" href="/builds/main.css" />
     <!-- favicons -->
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
@@ -17,13 +17,13 @@
 <body ng-app="semver" ng-controller="AppController">
     <main class="container" ng-cloak>
         <?php $this->insert('_partials/header') ?>
-        <?= $this->section('body') ?>
+        <?= $this->section('content') ?>
     </main>
 
     <?php $this->insert('_partials/footer') ?>
     <?php $this->insert('_partials/ga') ?>
 
-    <script src="/builds/js/scripts.js"></script>
+    <script src="/builds/main.js"></script>
+    <script src="https://rawgit.com/madewithlove/projects-banner/gh-pages/dist/madewithlove-projects-banner.min.js"></script>
 </body>
 </html>
-<?php

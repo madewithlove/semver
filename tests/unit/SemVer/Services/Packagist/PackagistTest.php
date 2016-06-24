@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Unit\Services\Packagist;
 
 use Composer\Package\Version\VersionParser;

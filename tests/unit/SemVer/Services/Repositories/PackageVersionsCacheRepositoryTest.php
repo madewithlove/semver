@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Unit\Services\Repositories;
 
 use Illuminate\Cache\NullStore;

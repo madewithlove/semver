@@ -1,4 +1,5 @@
 <?php
+
 namespace Semver\Services\Repositories;
 
 use Packagist\Api\Client;

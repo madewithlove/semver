@@ -1,7 +1,8 @@
 <?php
+
 namespace Semver\Services\Paths;
 
-use League\Container\ServiceProvider as BaseServiceProvider;
+use League\Container\ServiceProvider\AbstractServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
