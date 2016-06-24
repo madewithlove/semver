@@ -24,6 +24,6 @@
     <?php $this->insert('_partials/ga') ?>
 
     <script src="/builds/main.js"></script>
-    <script src="https://rawgit.com/madewithlove/projects-banner/gh-pages/dist/madewithlove-projects-banner.min.js"></script>
+    <script src="http://projects-banner.madewithlove.be/dist/madewithlove-projects-banner.min.js"></script>
 </body>
 </html>
