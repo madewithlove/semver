@@ -1,12 +1,13 @@
 <?php
+
 namespace Semver\Services\Packagist;
 
 use Composer\DependencyResolver\Pool;
 use Composer\Package\BasePackage;
-use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\Package;
 use Composer\Package\Version\VersionParser;
 use Composer\Package\Version\VersionSelector;
+use Composer\Semver\Constraint\Constraint;
 use Packagist\Api\Result\Package\Version;
 use Semver\Contracts\Repositories\PackageVersionsRepository;
 
@@ -28,7 +29,7 @@ class Packagist
     private $versionsRepository;
 
     /**
-     * @param VersionParser $parser
+     * @param VersionParser             $parser
      * @param PackageVersionsRepository $versionsRepository
      */
     public function __construct(VersionParser $parser, PackageVersionsRepository $versionsRepository)
@@ -86,7 +87,7 @@ class Packagist
         $constraint = $this->parser->parseConstraints($constraint);
 
         $matching = array_filter($versions, function (Version $version) use ($constraint) {
-            return $constraint->matches(new VersionConstraint('==', $this->parser->normalize($version->getVersion())));
+            return $constraint->matches(new Constraint('==', $this->parser->normalize($version->getVersion())));
         });
 
         return array_values(array_map(function (Version $version) {

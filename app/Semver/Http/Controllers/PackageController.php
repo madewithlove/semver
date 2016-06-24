@@ -1,29 +1,30 @@
 <?php
+
 namespace Semver\Http\Controllers;
 
 use Composer\Package\BasePackage;
+use Psr\Http\Message\ServerRequestInterface;
 use Semver\Services\Packagist\Packagist;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use UnexpectedValueException;
+use Zend\Diactoros\Response\JsonResponse;
 
 class PackageController
 {
-    /**
-     * @var Request
-     */
-    private $request;
-
     /**
      * @var Packagist
      */
     private $packagist;
 
     /**
-     * @param Packagist $packagist
-     * @param Request   $request
+     * @var ServerRequestInterface
      */
-    public function __construct(Packagist $packagist, Request $request)
+    private $request;
+
+    /**
+     * @param Packagist              $packagist
+     * @param ServerRequestInterface $request
+     */
+    public function __construct(Packagist $packagist, ServerRequestInterface $request)
     {
         $this->packagist = $packagist;
         $this->request = $request;
@@ -55,7 +56,7 @@ class PackageController
     {
         $this->configureMinimumStability();
 
-        $constraint = $this->request->get('constraint', '*');
+        $constraint = $this->request->getAttribute('constraint', '*');
         $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint);
 
         return new JsonResponse($versions);
@@ -66,7 +67,7 @@ class PackageController
      */
     protected function configureMinimumStability()
     {
-        $minimumStability = $this->request->get('minimum-stability', 'stable');
+        $minimumStability = $this->request->getAttribute('minimum-stability', 'stable');
         if (!in_array($minimumStability, array_keys(BasePackage::$stabilities), true)) {
             throw new UnexpectedValueException(sprintf('Unsupported value for minimum-stability: %s', $minimumStability));
         }

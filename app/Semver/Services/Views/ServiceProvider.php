@@ -1,7 +1,8 @@
 <?php
+
 namespace Semver\Services\Views;
 
-use League\Container\ServiceProvider as BaseServiceProvider;
+use League\Container\ServiceProvider\AbstractServiceProvider as BaseServiceProvider;
 use League\Plates\Engine;
 
 class ServiceProvider extends BaseServiceProvider
