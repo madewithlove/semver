@@ -56,7 +56,8 @@ class PackageController
     {
         $this->configureMinimumStability();
 
-        $constraint = $this->request->getAttribute('constraint', '*');
+        $queryParams = $this->request->getQueryParams();
+        $constraint = isset($queryParams['constraint']) ? $queryParams['constraint'] : '*';
         $versions = $this->packagist->getMatchingVersions($vendor, $package, $constraint);
 
         return new JsonResponse($versions);
@@ -67,7 +68,8 @@ class PackageController
      */
     protected function configureMinimumStability()
     {
-        $minimumStability = $this->request->getAttribute('minimum-stability', 'stable');
+        $queryParams = $this->request->getQueryParams();
+        $minimumStability = isset($queryParams['minimum-stability']) ? $queryParams['minimum-stability'] : 'stable';
         if (!in_array($minimumStability, array_keys(BasePackage::$stabilities), true)) {
             throw new UnexpectedValueException(sprintf('Unsupported value for minimum-stability: %s', $minimumStability));
         }
