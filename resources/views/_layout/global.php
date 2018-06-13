@@ -15,6 +15,14 @@
     <link rel="apple-touch-icon-precomposed" href="/favicon.png">
 </head>
 <body ng-app="semver" ng-controller="AppController">
+    <header class="header">
+        <div class="container">
+            <a href="https://madewithlove.be" title="go to the madewitlove website" class="logo">
+                <img src="img/logo-new.svg" alt="the madewithlove logo" />
+            </a>
+        </div>
+    </header>
+
     <main class="container" ng-cloak>
         <?php $this->insert('_partials/header') ?>
         <?= $this->section('content') ?>

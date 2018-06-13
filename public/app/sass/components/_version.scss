@@ -1,22 +1,5 @@
 .version {
-	list-style-type: none;
-	padding: 0.5em 1em;
-	margin: 0 1rem 1rem 0;
-	background: $color-grey;
-	border-radius: 0.25em;
-	font-family: Monaco, Consolas, monospace;
-	transition: all 0.1s;
-
-	a, a:hover {
-		color: $color-text;
-	}
-
-	&--matching {
-		background: $color-green;
-
-		a, a:hover {
-			color: white;
-			font-weight: bold;
-		}
-	}
+    list-style-type: none;
+    margin: 0 1rem 1rem 0;
+    font-family: Monaco, Consolas, monospace;
 }
