@@ -7,14 +7,24 @@
 
     .container {
         display: flex;
-        justify-content: flex-start;
+        flex-flow: row nowrap;
         align-items: center;
-        height: 100%;
+        justify-content: flex-start;
+    }
+
+    h1 {
+        margin: 4px 0 0 10px;
+        padding: 4px 0 4px 10px;
+
+        border-left: 1px solid #ed2324;
+
+        font-size: 20px;
     }
 }
 
 .logo {
     background: none;
+    padding: 4px 0 0 0;
 
     &,
     img {

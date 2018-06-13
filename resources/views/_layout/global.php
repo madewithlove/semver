@@ -20,6 +20,8 @@
             <a href="https://madewithlove.be" title="go to the madewitlove website" class="logo">
                 <img src="img/logo-new.svg" alt="the madewithlove logo" />
             </a>
+
+            <h1>Packagist Semver Checker</h1>
         </div>
     </header>
 
@@ -32,6 +34,5 @@
     <?php $this->insert('_partials/ga') ?>
 
     <script src="/builds/main.js"></script>
-    <script src="https://rawgit.com/madewithlove/projects-banner/gh-pages/dist/madewithlove-projects-banner.min.js"></script>
 </body>
 </html>

@@ -12,3 +12,13 @@
 
 @import 'components/errors';
 @import 'components/version';
+
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  min-height: 100%;
+}
