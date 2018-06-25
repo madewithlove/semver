@@ -21,19 +21,19 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
      * Fetches all versions of the specified package
      */
     $scope.fetchVersions = function () {
-        $http.get('/packages/' + $scope.package).success(function (response) {
-            $scope.versions = response.versions;
-            $scope.defaultVersion = response.default_constraint;
+        $http.get('/packages/' + $scope.package).then(function (response) {
+            $scope.versions = response.data.versions;
+            $scope.defaultVersion = response.data.default_constraint;
 
             if (!$scope.version || $scope.previousPackage !== $scope.package) {
-                $scope.version = response.default_constraint;
+                $scope.version = response.data.default_constraint;
             }
 
             $scope.previousPackage = $scope.package;
             $scope.errors.versions = false;
 
             $scope.fetchMatchingVersions();
-        }).error(function () {
+        }, function () {
             $scope.errors.versions = true;
         });
     };
@@ -44,6 +44,19 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
     $scope.fetchMatchingVersions = function () {
         if (!$scope.version) {
             return;
+        }
+
+        var parts = $scope.version.split('@');
+
+        if ($scope.stabilities.indexOf(parts[1]) != -1) {
+            $scope.version = parts[0];
+            $scope.stability = parts[1];
+        }
+
+        if ($scope.stability != 'stable') {
+            $scope.version_suffix = '@' + $scope.stability;
+        } else {
+            $scope.version_suffix = '';
         }
 
         // Update URL
@@ -58,10 +71,10 @@ angular.module('semver').controller('AppController', function ($scope, $http, $l
                 constraint: $scope.version,
                 "minimum-stability": $scope.stability,
             }
-        }).success(function (versions) {
-            $scope.matchingVersions = versions;
+        }).then(function (response) {
+            $scope.matchingVersions = response.data;
             $scope.errors.matching = false;
-        }).error(function () {
+        }, function () {
             $scope.errors.matching = true;
         });
     };
