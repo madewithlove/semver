@@ -3,11 +3,31 @@ body {
 }
 
 a {
-	color: $color-green;
-	transition: color 0.3s;
+    transition: color .3s ease-in-out, background .3s linear;
 
-	&:hover {
-		color: lighten($color-green, 10);
-		text-decoration: none;
-	}
+    position: relative;
+
+    color: #ed2324;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline;
+    padding-bottom: .8rem;
+    background: linear-gradient(to right, #ed2324 100%, #ed2324 100%);
+    background-size: 0 2px;
+    background-repeat: no-repeat;
+    background-position: center 85%;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: #1f1f1f;
+        text-decoration: none;
+        background-size: 100% 2px;
+    }
+
+    &:has(> img) {
+        &::after {
+            display: none;
+        }
+    }
 }

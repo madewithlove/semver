@@ -1,18 +1,32 @@
-.layout-footer {
-	text-align: center;
-	color: $color-text;
-	border-top: 1px solid $color-grey;
-	padding-top: 2rem;
-	margin-top: 3rem;
-	margin-bottom: 1rem;
+.footer {
+    width: 100%;
+    justify-self: flex-end;
+    margin-top: auto;
 
-	&__social {
-		margin-bottom: 0.5rem;
-		position: relative;
-	}
+    border-top: 1px solid #efefef;
 
-	& .logo {
-		width: 3.2rem;
-		margin: 1.4rem auto;
-	}
+    &__copyright {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+        justify-content: flex-start;
+        width: 100%;
+        padding-top: 1.6rem;
+        padding-bottom: 2rem;
+
+        color: #000;
+        font-size: 12px;
+
+        a {
+            display: inline-block;
+            margin: 0 0 0 20px;
+
+            color: #000;
+
+            &:last-child {
+                margin-left: auto;
+                justify-self: flex-end;
+            }
+        }
+    }
 }
