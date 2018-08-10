@@ -2,7 +2,7 @@
 
 <section class="search">
     <form ng-submit="fetchVersions()" ng-init="fetchVersions()">
-        <input select-on-click placeholder="Package" id="package" type="text" ng-model="package">
+        <input select-on-click placeholder="Package" id="package" type="text" ng-model="package" autofocus>
         <button type="submit" class="button">Search</button>
         <input select-on-click placeholder="Version (eg. {{ defaultVersion }})" id="version" type="text" ng-model="version" ng-change="fetchMatchingVersions()">
         <select name="stability" id="stability" class="form-control"
