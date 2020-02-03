@@ -3,9 +3,9 @@
 namespace Semver\Services\Error;
 
 use ErrorException;
-use Throwable;
 use League\Container\ServiceProvider\AbstractServiceProvider as BaseServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
+use Throwable;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
