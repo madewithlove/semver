@@ -13,6 +13,7 @@ class ServiceProvider extends BaseServiceProvider
         'paths.app',
         'paths.base',
         'paths.views',
+        'paths.cache',
     ];
 
     /**
