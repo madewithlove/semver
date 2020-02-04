@@ -24,9 +24,7 @@ class PackageVersionsCacheRepository implements PackageVersionsRepository
     private $ttl;
 
     /**
-     * @param Repository                $cache
-     * @param PackageVersionsRepository $innerRepository
-     * @param int                       $ttl
+     * @param int $ttl
      */
     public function __construct(Repository $cache, PackageVersionsRepository $innerRepository, $ttl = 60)
     {

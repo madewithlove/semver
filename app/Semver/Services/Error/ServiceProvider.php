@@ -3,9 +3,9 @@
 namespace Semver\Services\Error;
 
 use ErrorException;
-use Exception;
 use League\Container\ServiceProvider\AbstractServiceProvider as BaseServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
+use Throwable;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
@@ -29,7 +29,7 @@ class ServiceProvider extends BaseServiceProvider implements BootableServiceProv
             }
         });
 
-        set_exception_handler(function (Exception $exception) {
+        set_exception_handler(function (Throwable $exception) {
             $this->container->call(function (Run $whoops) use ($exception) {
                 $whoops->handleException($exception);
             });

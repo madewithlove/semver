@@ -20,10 +20,6 @@ class PackageController
      */
     private $request;
 
-    /**
-     * @param Packagist              $packagist
-     * @param ServerRequestInterface $request
-     */
     public function __construct(Packagist $packagist, ServerRequestInterface $request)
     {
         $this->packagist = $packagist;

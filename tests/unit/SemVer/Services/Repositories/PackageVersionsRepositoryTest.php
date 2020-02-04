@@ -5,6 +5,7 @@ namespace Semver\Unit\Services\Repositories;
 use Mockery;
 use Packagist\Api\Client;
 use Packagist\Api\Result\Package;
+use Packagist\Api\Result\Package\Version;
 use PHPUnit_Framework_TestCase;
 use Semver\Services\Repositories\PackageVersionsRepository;
 use Semver\Unit\Stubs\BuildVersions;
@@ -46,7 +47,11 @@ class PackageVersionsRepositoryTest extends PHPUnit_Framework_TestCase
 
         // Assert
         $this->assertCount(2, $result);
-        $this->assertEquals('0.2.2', $result[0]->getVersion());
-        $this->assertEquals('0.2.1', $result[1]->getVersion());
+        $this->assertEquals(
+            ['0.2.1', '0.2.2'],
+            array_map(function (Version $version) {
+                return $version->getVersion();
+            }, $result)
+        );
     }
 }

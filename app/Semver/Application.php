@@ -32,9 +32,6 @@ class Application
         Services\Repositories\ServiceProvider::class,
     ];
 
-    /**
-     * @param Container $container
-     */
     public function __construct(Container $container)
     {
         $this->container = $container;
