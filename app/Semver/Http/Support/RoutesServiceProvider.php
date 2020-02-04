@@ -5,6 +5,8 @@ namespace Semver\Http\Support;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Route\RouteCollection;
 use League\Route\Strategy\ParamStrategy;
+use Semver\Http\Controllers\HomeController;
+use Semver\Http\Controllers\PackageController;
 
 class RoutesServiceProvider extends AbstractServiceProvider
 {
@@ -13,7 +15,6 @@ class RoutesServiceProvider extends AbstractServiceProvider
      */
     protected $provides = [
         RouteCollection::class,
-        'routes.file',
     ];
 
     /**
@@ -21,10 +22,6 @@ class RoutesServiceProvider extends AbstractServiceProvider
      */
     public function register()
     {
-        $this->container->add('routes.file', function () {
-            return $this->container->get('paths.app').'routes.php';
-        });
-
         // Bind a route collection to the container.
         $this->container->share(RouteCollection::class, function () {
             $strategy = new ParamStrategy();
@@ -42,6 +39,8 @@ class RoutesServiceProvider extends AbstractServiceProvider
      */
     public function boot(RouteCollection $router)
     {
-        include $this->container->get('routes.file');
+        $router->get('/', HomeController::class.'::index');
+        $router->get('/packages/{vendor}/{package}', PackageController::class.'::versions');
+        $router->get('/packages/{vendor}/{package}/match', PackageController::class.'::matchVersions');
     }
 }

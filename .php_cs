@@ -13,13 +13,15 @@ return Config::create()
              ->setRiskyAllowed(true)
              ->setRules([
                  '@Symfony' => true,
-                 'align_double_arrow' => false,
-                 'align_equals' => false,
-                 'concat_with_spaces' => false,
+                 'binary_operator_spaces' => [
+                    'align_double_arrow' => false,
+                    'align_equals' => false,
+                 ],
+                 'concat_space' => false,
                  'ereg_to_preg' => true,
                  'header_comment' => false,
                  'linebreak_after_opening_tag' => true,
-                 'long_array_syntax' => false,
+                 'array_syntax' => 'short_array',
                  'no_blank_lines_before_namespace' => false,
                  'no_multiline_whitespace_before_semicolons' => true,
                  'no_php4_constructor' => true,
@@ -31,11 +33,11 @@ return Config::create()
                  'php_unit_construct' => true,
                  'php_unit_strict' => false,
                  'phpdoc_order' => true,
-                 'phpdoc_property' => true,
-                 'phpdoc_var_to_type' => false,
                  'psr0' => true,
-                 'short_array_syntax' => true,
+                 'array_syntax' => [
+                     'syntax' => 'short',
+                 ],
                  'strict_comparison' => true,
                  'strict_param' => true,
              ])
-             ->finder($finder);
+             ->setFinder($finder);

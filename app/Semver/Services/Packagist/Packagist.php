@@ -28,10 +28,6 @@ class Packagist
      */
     private $versionsRepository;
 
-    /**
-     * @param VersionParser             $parser
-     * @param PackageVersionsRepository $versionsRepository
-     */
     public function __construct(VersionParser $parser, PackageVersionsRepository $versionsRepository)
     {
         $this->parser = $parser;

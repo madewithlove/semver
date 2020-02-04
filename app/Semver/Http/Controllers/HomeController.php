@@ -11,9 +11,6 @@ class HomeController
      */
     private $views;
 
-    /**
-     * @param Engine $views
-     */
     public function __construct(Engine $views)
     {
         $this->views = $views;
