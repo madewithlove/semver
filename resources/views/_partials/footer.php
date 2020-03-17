@@ -6,7 +6,7 @@
             <a target="_blank" href="https://github.com/madewithlove/semver">source</a>
             <a target="_blank" href="http://app.changehub.io/projects/madewithlove/semver/releases">changelog</a>
             <a target="_blank" href="https://github.com/madewithlove/semver/graphs/contributors">creators</a>
-            <a target="_blank" href="https://madewithlove.be/friyay-projects">This is a madewithlove Friyay project</a>
+            <a target="_blank" href="https://madewithlove.com/company/playground">This is a madewithlove Friyay project</a>
         </div>
     </div>
 </footer>
