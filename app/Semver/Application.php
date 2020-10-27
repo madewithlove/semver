@@ -48,6 +48,12 @@ class Application
         /* @var Dispatcher $dispatcher */
         /* @type ServerRequestInterface $request */
         $request = $this->container->get(ServerRequestInterface::class);
+
+        // Hack to fix issue with phar in URI
+        if($request->getUri()->getPath() == '/packages/psalm/phar') {
+            $request = $request->withUri($request->getUri()->withPath('/packages/psalm/p-h-a-r'));
+        }
+
         $response = new Response();
         $dispatcher = $this->container->get(RouteCollection::class);
 

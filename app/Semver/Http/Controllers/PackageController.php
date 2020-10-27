@@ -34,6 +34,9 @@ class PackageController
      */
     public function versions($vendor, $package)
     {
+        // Hack to fix issue with phar in URI
+        $package = $package == 'p-h-a-r' ? 'phar' : $package;
+
         $this->packagist->setMinimumStability('dev');
 
         $versions = $this->packagist->getVersions($vendor, $package);
