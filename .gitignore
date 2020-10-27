@@ -6,3 +6,6 @@ public/builds
 node_modules
 public/components
 vendor
+
+# Settings
+.env

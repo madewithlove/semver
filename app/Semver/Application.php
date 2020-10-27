@@ -2,6 +2,7 @@
 
 namespace Semver;
 
+use Dotenv\Dotenv;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use League\Container\ServiceProvider\AbstractServiceProvider;
@@ -45,6 +46,9 @@ class Application
      */
     public function run()
     {
+        $dotenv = Dotenv::createImmutable($this->container->get('paths.base'));
+        $dotenv->load();
+
         /* @var Dispatcher $dispatcher */
         /* @type ServerRequestInterface $request */
         $request = $this->container->get(ServerRequestInterface::class);
