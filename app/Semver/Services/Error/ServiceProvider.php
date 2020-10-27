@@ -43,7 +43,12 @@ class ServiceProvider extends BaseServiceProvider implements BootableServiceProv
     {
         $this->container->add(Run::class, function () {
             $whoops = new Run();
-            $whoops->pushHandler(new PrettyPageHandler());
+
+            if (isset($_ENV['ENV']) && $_ENV['ENV'] == 'production') {
+                $whoops->pushHandler(new SimplePageHandler());
+            } else {
+                $whoops->pushHandler(new PrettyPageHandler());
+            }
 
             return $whoops;
         });
