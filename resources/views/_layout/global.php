@@ -10,9 +10,8 @@
     <link href='//fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/builds/main.css" />
     <!-- favicons -->
-    <link rel="shortcut icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"/>
 </head>
 <body ng-app="semver" ng-controller="AppController">
     <header class="header">
