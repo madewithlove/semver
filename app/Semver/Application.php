@@ -58,6 +58,10 @@ class Application
             $request = $request->withUri($request->getUri()->withPath('/packages/psalm/p-h-a-r'));
         }
 
+        if ($request->getUri()->getPath() == '/packages/psalm/phar/match') {
+            $request = $request->withUri($request->getUri()->withPath('/packages/psalm/p-h-a-r/match'));
+        }
+
         $response = new Response();
         $dispatcher = $this->container->get(RouteCollection::class);
 
