@@ -53,6 +53,9 @@ class PackageController
      */
     public function matchVersions($vendor, $package)
     {
+        // Hack to fix issue with phar in URI
+        $package = $package == 'p-h-a-r' ? 'phar' : $package;
+
         $this->configureMinimumStability();
 
         $queryParams = $this->request->getQueryParams();
