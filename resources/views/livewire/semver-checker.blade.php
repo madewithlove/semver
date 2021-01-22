@@ -27,7 +27,7 @@
     </section>
 
     <section>
-        <h1>Results for <a target="_blank" href="https://packagist.org/packages/">:</a></h1>
+        <h1>Results for <a target="_blank" href="https://packagist.org/packages/">{{ $packageName }}:{{ $version }}</a></h1>
         <ul>
             @if ($package)
                 @foreach ($package->getVersions() as $packageVersion)
