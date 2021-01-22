@@ -1,16 +1,18 @@
 {
-  "name": "semver",
-  "private": true,
-  "dependencies": {
-    "angular": "^1.5.5",
-    "bootstrap-sass": "^3.3.6"
-  },
-  "devDependencies": {
-    "madewithlove-webpack-config": "^4.0.0",
-    "webpack": "^1.13.0"
-  },
-  "scripts": {
-    "build": "webpack --progress --bail",
-    "build:production": "NODE_ENV=production npm run build"
-  }
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14"
+    }
 }

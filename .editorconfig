@@ -1,19 +1,15 @@
 root = true
 
-[**]
-indent_style = space
-indent_size = 4
+[*]
+charset = utf-8
 end_of_line = lf
 insert_final_newline = true
-charset = utf-8
+indent_style = space
+indent_size = 4
 trim_trailing_whitespace = true
 
-[composer.json]
-indent_style = tab
+[*.md]
+trim_trailing_whitespace = false
 
-[*.yml]
-indent_style = space
-
-[package.json]
-indent_style = space
+[*.{yml,yaml}]
 indent_size = 2
