@@ -14,4 +14,13 @@ class SemverChecker extends Component
     {
         return view('livewire.semver-checker');
     }
+
+    public function getStabilityFlagProperty(): string
+    {
+        if ($this->stability === 'stable') {
+            return '';
+        }
+
+        return '@' . $this->stability;
+    }
 }
