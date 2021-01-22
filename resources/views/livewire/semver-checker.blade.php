@@ -9,8 +9,14 @@
         <form>
             <input wire:model="package" placeholder="Package" id="package" type="text" autofocus="">
             <button type="submit">Search</button>
-            <input placeholder="Version (eg. ^1.5)" id="version" type="text">
-            <select name="stability" id="stability" ><optgroup label="Minimum stability"><option label="dev" value="string:dev" selected="selected">dev</option><option label="alpha" value="string:alpha">alpha</option><option label="beta" value="string:beta">beta</option><option label="RC" value="string:RC">RC</option><option label="stable" value="string:stable">stable</option></optgroup></select>
+            <input wire:model="version" placeholder="Version (eg. ^1.5)" id="version" type="text">
+            <select name="stability" id="stability" wire:model="stability">
+                <option label="dev" value="dev">dev</option>
+                <option label="alpha" value="alpha">alpha</option>
+                <option label="beta" value="beta">beta</option>
+                <option label="RC" value="RC">RC</option>
+                <option label="stable" value="stable">stable</option>
+            </select>
         </form>
 
         <p class="hide" ng-show="versions.length &amp;&amp; errors.versions">The package  does not exist</p>
@@ -26,6 +32,6 @@
         </ul>
 
         <h2>Satisfied?</h2>
-        <pre>composer require {{ $package }}:"@dev"</pre>
+        <pre>composer require {{ $package }}:"@{{ $version }}"</pre>
     </section>
 </main>

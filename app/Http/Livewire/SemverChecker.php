@@ -7,6 +7,8 @@ use Livewire\Component;
 class SemverChecker extends Component
 {
     public string $package = 'madewithlove/htaccess-cli';
+    public string $version = 'dev-main';
+    public string $stability = 'stable';
 
     public function render()
     {
