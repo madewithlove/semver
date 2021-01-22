@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Packagist\Api\Client;
+use Throwable;
 
 class SemverChecker extends Component
 {
@@ -13,7 +14,11 @@ class SemverChecker extends Component
 
     public function render(Client $client)
     {
-        $package = $client->get($this->packageName);
+        try {
+            $package = $client->get($this->packageName);
+        } catch (Throwable $e) {
+            $package = null;
+        }
 
         return view(
             'livewire.semver-checker',

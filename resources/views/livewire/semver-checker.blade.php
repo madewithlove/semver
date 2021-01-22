@@ -19,18 +19,23 @@
             </select>
         </form>
 
-        <p class="hide" ng-show="versions.length &amp;&amp; errors.versions">The package  does not exist</p>
+        @if ($package === null)
+            <p>The package does not exist</p>
+        @endif
+
         <p class="hide" ng-show="versions.length &amp;&amp; errors.matching">Invalid version constraint</p>
     </section>
 
     <section>
         <h1>Results for <a target="_blank" href="https://packagist.org/packages/">:</a></h1>
         <ul>
-            @foreach ($package->getVersions() as $packageVersion)
-                <li>
-                    <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $packageVersion->getVersion() }}">{{ $packageVersion->getVersion() }}</a>
-                </li>
-            @endforeach
+            @if ($package)
+                @foreach ($package->getVersions() as $packageVersion)
+                    <li>
+                        <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $packageVersion->getVersion() }}">{{ $packageVersion->getVersion() }}</a>
+                    </li>
+                @endforeach
+            @endif
         </ul>
 
         <h2>Satisfied?</h2>
