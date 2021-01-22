@@ -7,7 +7,7 @@
 
     <section>
         <form>
-            <input placeholder="Package" id="package" type="text" autofocus="">
+            <input wire:model="package" placeholder="Package" id="package" type="text" autofocus="">
             <button type="submit">Search</button>
             <input placeholder="Version (eg. ^1.5)" id="version" type="text">
             <select name="stability" id="stability" ><optgroup label="Minimum stability"><option label="dev" value="string:dev" selected="selected">dev</option><option label="alpha" value="string:alpha">alpha</option><option label="beta" value="string:beta">beta</option><option label="RC" value="string:RC">RC</option><option label="stable" value="string:stable">stable</option></optgroup></select>
@@ -26,6 +26,6 @@
         </ul>
 
         <h2>Satisfied?</h2>
-        <pre>composer require :"@dev"</pre>
+        <pre>composer require {{ $package }}:"@dev"</pre>
     </section>
 </main>
