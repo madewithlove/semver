@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Packagist\CachedApiClient;
+use App\Packagist\Client;
 use Livewire\Component;
 use Throwable;
 
@@ -12,7 +12,7 @@ class SemverChecker extends Component
     public string $version = 'dev-main';
     public string $stability = 'stable';
 
-    public function render(CachedApiClient $client)
+    public function render(Client $client)
     {
         try {
             $package = $client->getPackage($this->packageName);
