@@ -2,6 +2,7 @@
 
 namespace App\Packagist;
 
+use Illuminate\Support\Facades\Cache;
 use Packagist\Api\Result\Package;
 
 final class CachedApiClient implements Client
@@ -15,7 +16,8 @@ final class CachedApiClient implements Client
 
     public function getPackage(string $packageName): ?Package
     {
-        // @todo add cache
-        return $this->client->getPackage($packageName);
+        return Cache::remember('package-' . $packageName, 60 * 60, function () use ($packageName): ?Package {
+            return $this->client->getPackage($packageName);
+        });
     }
 }
