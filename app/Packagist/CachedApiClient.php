@@ -13,7 +13,7 @@ final class CachedApiClient implements Client
         $this->client = $client;
     }
 
-    public function getPackage(string $packageName): Package
+    public function getPackage(string $packageName): ?Package
     {
         // @todo add cache
         return $this->client->getPackage($packageName);

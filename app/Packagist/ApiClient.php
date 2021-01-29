@@ -4,6 +4,7 @@ namespace App\Packagist;
 
 use Packagist\Api\Client as BaseClient;
 use Packagist\Api\Result\Package;
+use Throwable;
 
 final class ApiClient implements Client
 {
@@ -14,8 +15,12 @@ final class ApiClient implements Client
         $this->client = $client;
     }
 
-    public function getPackage(string $packageName): Package
+    public function getPackage(string $packageName): ?Package
     {
-        return $this->client->get($packageName);
+        try {
+            return $this->client->get($packageName);
+        } catch (Throwable $e) {
+            return null;
+        }
     }
 }

@@ -6,5 +6,5 @@ use Packagist\Api\Result\Package;
 
 interface Client
 {
-    public function getPackage(string $packageName): Package;
+    public function getPackage(string $packageName): ?Package;
 }
