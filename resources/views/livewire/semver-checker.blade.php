@@ -5,7 +5,7 @@
 
     <section>
         <form class="flex">
-            <input wire:model="package" placeholder="Package" id="package" type="text" autofocus="" class="flex-grow text-center bg-gray-200 p-3 text-gray-600 outline-none focus:bg-gray-100">
+            <input wire:model="packageName" placeholder="Package" id="package" type="text" autofocus="" class="flex-grow text-center bg-gray-200 p-3 text-gray-600 outline-none focus:bg-gray-100">
             <button type="submit" class="p-3 bg-red-500 text-white font-bold text-sm mx-3">Search</button>
             <input wire:model="version" placeholder="Version (eg. ^1.5)" id="version" type="text"  class="flex-grow text-center bg-gray-200 p-3 text-gray-600 outline-none focus:bg-gray-100">
             <select name="stability" id="stability" wire:model="stability" class="bg-gray-200 p-3 pr-5 ml-3 text-gray-600 outline-none focus:bg-gray-100">
@@ -17,19 +17,27 @@
             </select>
         </form>
 
-        <p class="hidden">The package  does not exist</p>
-        <p class="hidden">Invalid version constraint</p>
-    </section>
+        <section class="text-center mt-5 pt-5 border-t border-gray-100">
+            <h1 class="text-lg text-gray-600 font-medium">Results for <a target="_blank" href="https://packagist.org/packages/">:</a></h1>
 
-    <section class="text-center mt-5 pt-5 border-t border-gray-100">
-        <h1 class="text-lg text-gray-600 font-medium">Results for <a target="_blank" href="https://packagist.org/packages/">:</a></h1>
-        <ul>
-            <li ng-repeat="version in versions">
-                <a target="_blank" href="https://github.com/madewithlove/htaccess-api-client/releases/tag/v1.5.0">v1.5.0</a>
-            </li>
-        </ul>
+            @if ($package === null)
+                <p>The package does not exist</p>
+            @endif
+
+            <p class="hidden" ng-show="versions.length &amp;&amp; errors.matching">Invalid version constraint</p>
+
+            <ul>
+                @if ($package)
+                    @foreach ($package->getVersions() as $packageVersion)
+                        <li>
+                            <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $packageVersion->getVersion() }}">{{ $packageVersion->getVersion() }}</a>
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
+        </section>
 
         <h2 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h2>
-        <pre class="bg-gray-200 p-3 text-sm text-gray-600">composer require {{ $package }}:"{{ $version }}{{ $this->stabilityFlag }}"</pre>
+        <pre class="bg-gray-200 p-3 text-sm text-gray-600">composer require {{ $packageName }}:"{{ $version }}{{ $this->stabilityFlag }}"</pre>
     </section>
 </div>
