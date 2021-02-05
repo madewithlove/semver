@@ -18,7 +18,11 @@ final class ApiClient implements Client
     public function getPackage(string $packageName): ?Package
     {
         try {
-            return $this->client->get($packageName);
+            $result = $this->client->get($packageName);
+            if (is_array($result)) {
+                return $result[0];
+            }
+            return $result;
         } catch (Throwable $e) {
             return null;
         }
