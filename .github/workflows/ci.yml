@@ -25,7 +25,7 @@ jobs:
           update: true
 
       - name: 🔢 Create .env file
-        run: cp .env.ci .env
+        run: cp .env.example .env
 
       - name: 📦 Install dependencies
         run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
