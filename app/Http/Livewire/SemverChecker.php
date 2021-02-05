@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Packagist\Client;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\Factory;
 use Livewire\Component;
 
 class SemverChecker extends Component
@@ -11,7 +13,7 @@ class SemverChecker extends Component
     public string $version = 'dev-main';
     public string $stability = 'stable';
 
-    public function render(Client $client)
+    public function render(Client $client): Factory|View
     {
         return view(
             'livewire.semver-checker',
