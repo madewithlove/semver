@@ -23,7 +23,7 @@ final class ApiClient implements Client
                 return $result[0];
             }
             return $result;
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return null;
         }
     }
