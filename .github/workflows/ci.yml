@@ -35,3 +35,32 @@ jobs:
 
       - name: ✅ Run PHPUnit tests
         run: php artisan test
+
+phpstan:
+  name: Static analysis
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: 📤 Checkout project
+      uses: actions/checkout@v2
+
+    - name: 📩 Fetch vendor from cache
+      uses: actions/cache@v1
+      id: cache
+      with:
+        path: vendor
+        key: composer-${{ hashFiles('**/composer.lock') }}
+
+    - name: 🐘 Setup PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: "8.0"
+        tools: composer
+      env:
+        update: true
+
+    - name: 📦 Install dependencies
+      run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+    - name: ✅ Run static analysis
+      run: vendor/bin/phpstan analyse
