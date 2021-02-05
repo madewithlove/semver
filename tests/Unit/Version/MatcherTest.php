@@ -25,9 +25,46 @@ final class MatcherTest extends TestCase
         ));
     }
 
-    /** @test */
-    public function it matches an in bound version(): void
+    /**
+     * @test
+     * @dataProvider providesMatchingStableVersion
+     */
+    public function it matches an in bound version($version, $constraint): void
     {
         $this->assertTrue($this->matcher->matches('1.5.0', '^1.5', 'stable'));
+    }
+
+    public function providesMatchingStableVersion(): array
+    {
+        return [
+            [
+                '1.5.0',
+                '^1.5',
+            ],
+            [
+                '1.5.0',
+                '^1.4',
+            ],
+            [
+                '1.5.0',
+                '^1.0',
+            ],
+            [
+                '1.5.0',
+                '^1.5.0',
+            ],
+            [
+                '1.5.0',
+                '>=1.5',
+            ],
+            [
+                '1.5.0',
+                '>1.5',
+            ],
+            [
+                '1.5.0',
+                '~1.5',
+            ],
+        ];
     }
 }
