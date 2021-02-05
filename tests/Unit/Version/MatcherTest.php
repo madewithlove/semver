@@ -23,4 +23,10 @@ final class MatcherTest extends TestCase
             'stable'
         ));
     }
+
+    /** @test */
+    public function it matches an in bound version(): void
+    {
+        $this->assertTrue($this->matcher->matches('1.5.0', '^1.5', 'stable'));
+    }
 }
