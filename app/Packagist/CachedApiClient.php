@@ -7,12 +7,9 @@ use Packagist\Api\Result\Package;
 
 final class CachedApiClient implements Client
 {
-    private ApiClient $client;
-
-    public function __construct(ApiClient $client)
-    {
-        $this->client = $client;
-    }
+    public function __construct(
+        private ApiClient $client
+    ) {}
 
     public function getPackage(string $packageName): ?Package
     {

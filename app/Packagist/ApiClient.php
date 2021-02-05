@@ -8,12 +8,9 @@ use Throwable;
 
 final class ApiClient implements Client
 {
-    private BaseClient $client;
-
-    public function __construct(BaseClient $client)
-    {
-        $this->client = $client;
-    }
+    public function __construct(
+        private BaseClient $client
+    ) {}
 
     public function getPackage(string $packageName): ?Package
     {

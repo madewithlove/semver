@@ -10,8 +10,7 @@ final class Matcher
 {
     public function __construct(
         private VersionParser $versionParser
-    ) {
-    }
+    ) {}
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {
