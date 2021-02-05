@@ -1,0 +1,11 @@
+parameters:
+    paths:
+        - app
+        - config
+        - database
+        - resources
+        - tests
+    level: max
+    excludePaths:
+        - database/factories/*.php
+    checkMissingIterableValueType: false
