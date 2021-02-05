@@ -30,5 +30,8 @@ jobs:
       - name: 📦 Install dependencies
         run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
+      - name: 🔑 Generate a laravel key
+        run: php artisan key:generate
+
       - name: ✅ Run PHPUnit tests
         run: php artisan test
