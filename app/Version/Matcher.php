@@ -28,15 +28,7 @@ final class Matcher
         return true;
     }
 
-    /**
-     * Helper method.
-     *
-     * @param string $version
-     * @param string $requiredStability
-     *
-     * @return bool
-     */
-    private function isMoreOrEquallyStable($version, $requiredStability)
+    private function isMoreOrEquallyStable(string $version, string $requiredStability): bool
     {
         $stability = $this->versionParser->parseStability($version);
 
