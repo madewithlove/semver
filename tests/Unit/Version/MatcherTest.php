@@ -67,4 +67,12 @@ final class MatcherTest extends TestCase
             ],
         ];
     }
+
+    /**
+     * @test
+     */
+    public function it does not match a version if the stability flag does not allow it(): void
+    {
+        $this->assertFalse($this->matcher->matches('dev-main', 'dev-main', 'stable'));
+    }
 }
