@@ -29,9 +29,9 @@ final class MatcherTest extends TestCase
      * @test
      * @dataProvider providesMatchingStableVersion
      */
-    public function it matches an in bound version($version, $constraint): void
+    public function it matches an in bound version(string $version, string $constraint): void
     {
-        $this->assertTrue($this->matcher->matches('1.5.0', '^1.5', 'stable'));
+        $this->assertTrue($this->matcher->matches($version, $constraint, 'stable'));
     }
 
     public function providesMatchingStableVersion(): array
@@ -59,7 +59,7 @@ final class MatcherTest extends TestCase
             ],
             [
                 '1.5.0',
-                '>1.5',
+                '>1.4',
             ],
             [
                 '1.5.0',

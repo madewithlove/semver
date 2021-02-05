@@ -8,11 +8,9 @@ use Composer\Semver\VersionParser;
 
 final class Matcher
 {
-    private VersionParser $parser;
-
-    public function __construct(VersionParser $versionParser)
-    {
-        $this->versionParser = $versionParser;
+    public function __construct(
+        private VersionParser $versionParser
+    ) {
     }
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
