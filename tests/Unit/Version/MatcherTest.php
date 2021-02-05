@@ -3,6 +3,7 @@
 namespace Unit\Version;
 
 use App\Version\Matcher;
+use Composer\Semver\VersionParser;
 use PHPUnit\Framework\TestCase;
 
 final class MatcherTest extends TestCase
@@ -11,7 +12,7 @@ final class MatcherTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->matcher = new Matcher();
+        $this->matcher = new Matcher(new VersionParser());
     }
 
     /** @test */
