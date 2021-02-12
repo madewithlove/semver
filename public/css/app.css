@@ -26,3 +26,35 @@ header a::after {display: none;}
 header a {background:none;}
 footer a {color:#000;}
 
+ul.versions {
+    display: flex;
+    flex-flow: row wrap;
+    font-family: Monaco,Consolas,monospace;
+    font-size: 14px;
+    justify-content: center;
+}
+
+ul.versions li {
+    margin: 0 1rem 1rem 0;
+    background: none;
+    color: #ed2324;
+    border: 2px solid #ed2324;
+}
+
+ul.versions li:hover,
+ul.versions li:active,
+ul.versions li:focus {
+    background: #ed2324;
+}
+
+ul.versions li a {
+    transition: none;
+    background-size: none;
+    padding: 4px 10px 5px;
+}
+
+ul.versions li a:hover,
+ul.versions li a:active,
+ul.versions li a:focus {
+    color: white;
+}

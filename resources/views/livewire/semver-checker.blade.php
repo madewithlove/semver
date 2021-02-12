@@ -20,7 +20,7 @@
         </form>
 
         <section class="text-center mt-5 pt-5 border-t border-gray-100">
-            <h1 class="text-lg text-gray-600 font-medium">Results for <a target="_blank" href="https://packagist.org/packages/">:</a></h1>
+            <h1 class="text-lg text-gray-600 font-medium mb-5">Results for <a target="_blank" href="https://packagist.org/packages/">{{ $packageName }}:{{ $version }}</a></h1>
 
             @if ($package === null)
                 <p>The package does not exist</p>
@@ -28,7 +28,7 @@
 
             <p class="hidden" ng-show="versions.length &amp;&amp; errors.matching">Invalid version constraint</p>
 
-            <ul>
+            <ul class="versions">
                 @if ($package)
                     @foreach ($versions as $packageVersion)
                         <li
