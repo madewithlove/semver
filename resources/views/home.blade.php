@@ -9,6 +9,17 @@
         <link href="//fonts.googleapis.com/css?family=Lato:300,400,500,700" rel="stylesheet" type="text/css">
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
+        <script>
+            if (window.location.hash.startsWith('#!?')) {
+                window.location.replace(
+                    window.location.origin
+                    + window.location.pathname
+                    + window.location.hash.replace('#!?', '?')
+                        .replace('version=', 'constraint=')
+                        .replace('minimum-stability=', 'stability=')
+                );
+            }
+        </script>
         @livewireStyles
     </head>
     <body class="font-sans antialiased flex flex-col min-h-screen">
