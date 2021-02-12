@@ -14,6 +14,10 @@ a {
     background-position: center 85%;
 }
 
+input {
+    font-size: 15px;
+}
+
 a:hover,
 a:active,
 a:focus {

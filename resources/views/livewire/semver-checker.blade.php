@@ -7,10 +7,9 @@
 
     <section>
         <form class="flex">
-            <input wire:model="packageName" placeholder="Package" id="package" type="text" autofocus="" class="flex-grow text-center bg-gray-200 p-3 text-gray-600 outline-none focus:bg-gray-100">
-            <button type="submit" class="p-3 bg-red-500 text-white font-bold text-sm mx-3">Search</button>
-            <input wire:model="version" placeholder="Version (eg. ^1.5)" id="version" type="text"  class="flex-grow text-center bg-gray-200 p-3 text-gray-600 outline-none focus:bg-gray-100">
-            <select name="stability" id="stability" wire:model="stability" class="bg-gray-200 p-3 pr-5 ml-3 text-gray-600 outline-none focus:bg-gray-100">
+            <input wire:model="packageName" placeholder="Package" id="package" type="text" autofocus="" class="flex-grow text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-none mr-3 text-lg font-bold">
+            <input wire:model="version" placeholder="Version (eg. ^1.5)" id="version" type="text"  class="flex-grow text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-none mr-3 text-lg font-bold">
+            <select name="stability" id="stability" wire:model="stability" class="text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-none mr-3 text-lg font-bold">
                 <option label="dev" value="dev">dev</option>
                 <option label="alpha" value="alpha">alpha</option>
                 <option label="beta" value="beta">beta</option>
@@ -44,6 +43,6 @@
         </section>
 
         <h2 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h2>
-        <pre class="bg-gray-200 p-3 text-sm text-gray-600">composer require {{ $packageName }}:"{{ $version }}{{ $this->stabilityFlag }}"</pre>
+        <pre class="bg-gray-100 p-3 text-sm text-gray-600">composer require {{ $packageName }}:"{{ $version }}{{ $this->stabilityFlag }}"</pre>
     </section>
 </div>
