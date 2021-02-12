@@ -18,6 +18,9 @@ class SemverChecker extends Component
     public string $constraint = 'dev-main';
     public string $stability = 'stable';
 
+    /**
+     * @var string[]
+     */
     protected $queryString = ['package', 'constraint', 'stability'];
 
     public function render(Client $client, Matcher $matcher): Factory|View
@@ -36,7 +39,7 @@ class SemverChecker extends Component
                 function (PackagistVersion $packagistVersion) use ($matcher) {
                     return new Version(
                         $this->getNameWithBranchAliasReplaced($packagistVersion),
-                        $packagistVersion->getSource()->getUrl(),
+                        (string) $packagistVersion->getSource()?->getUrl(),
                         $matcher->matches($packagistVersion->getVersion(), $this->constraint, $this->stability)
                     );
                 },
@@ -77,10 +80,10 @@ class SemverChecker extends Component
         return '@' . $this->stability;
     }
 
-    public function getIsValidConstraintProperty(VersionParser $versionParser): string
+    public function getIsValidConstraintProperty(VersionParser $versionParser): bool
     {
         try {
-            $constraint = $versionParser->parseConstraints($this->constraint);
+            $versionParser->parseConstraints($this->constraint);
         } catch (UnexpectedValueException) {
             return false;
         }
