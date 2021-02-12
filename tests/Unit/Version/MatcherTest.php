@@ -75,4 +75,12 @@ final class MatcherTest extends TestCase
     {
         $this->assertFalse($this->matcher->matches('dev-main', 'dev-main', 'stable'));
     }
+
+    /**
+     * @test
+     */
+    public function it does not match an invalid constraint(): void
+    {
+        $this->assertFalse($this->matcher->matches('dev-main', 'NOT_A_CONSTRAINT', 'stable'));
+    }
 }

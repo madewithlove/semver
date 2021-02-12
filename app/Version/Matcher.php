@@ -5,6 +5,7 @@ namespace App\Version;
 use Composer\Package\BasePackage;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\VersionParser;
+use UnexpectedValueException;
 
 final class Matcher
 {
@@ -14,7 +15,12 @@ final class Matcher
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {
-        $constraint = $this->versionParser->parseConstraints($constraint);
+        try {
+            $constraint = $this->versionParser->parseConstraints($constraint);
+        } catch (UnexpectedValueException) {
+            return false;
+        }
+
         $parsedVersion = new Constraint('=', $this->versionParser->normalize($version));
 
         if (!$parsedVersion->matches($constraint)) {
