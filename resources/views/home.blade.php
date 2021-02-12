@@ -11,7 +11,7 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased flex flex-col min-h-screen">
         <header class="w-full z-30 top-0 py-2 border-b border-grey-200 mb-12">
             <div  class="w-full container mx-auto flex flex-wrap items-center mt-0 py-3 px-5">
                 <a href="https://madewithlove.com?ref=semver" title="go to the madewitlove website" class="w-40 bg-transparent pb-0">
@@ -21,7 +21,7 @@
                 <h1 class="ml-3 pl-3 text-xl border-l border-red-500">Packagist Semver Checker</h1>
             </div>
         </header>
-        <main class="w-full mx-auto container px-5">
+        <main class="w-full mx-auto container px-5 flex-grow">
             <livewire:semver-checker />
         </main>
         <footer class="w-full border-t border-grey-200 mt-3">
