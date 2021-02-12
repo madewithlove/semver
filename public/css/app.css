@@ -54,7 +54,6 @@ ul.versions li:focus {
 
 ul.versions li a {
     transition: none;
-    background-size: none;
     padding: 4px 10px 5px;
 }
 
