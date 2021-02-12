@@ -13,7 +13,7 @@ use Packagist\Api\Result\Package\Version as PackagistVersion;
 class SemverChecker extends Component
 {
     public string $packageName = 'madewithlove/htaccess-cli';
-    public string $version = 'dev-main';
+    public string $constraint = 'dev-main';
     public string $stability = 'stable';
 
     public function render(Client $client, Matcher $matcher): Factory|View
@@ -32,7 +32,7 @@ class SemverChecker extends Component
                 function (PackagistVersion $packagistVersion) use ($matcher) {
                     return new Version(
                         $this->getNameWithBranchAliasReplaced($packagistVersion),
-                        $matcher->matches($packagistVersion->getVersion(), $this->version, $this->stability)
+                        $matcher->matches($packagistVersion->getVersion(), $this->constraint, $this->stability)
                     );
                 },
                 $versions
