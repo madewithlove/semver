@@ -31,7 +31,7 @@ class SemverChecker extends Component
             $versions =  array_map(
                 function (PackagistVersion $packagistVersion) use ($matcher) {
                     return new Version(
-                        $packagistVersion->getVersion(),
+                        $this->getNameWithBranchAliasReplaced($packagistVersion),
                         $matcher->matches($packagistVersion->getVersion(), $this->version, $this->stability)
                     );
                 },
@@ -46,6 +46,21 @@ class SemverChecker extends Component
                 'versions' => $versions,
             ]
         );
+    }
+
+    private function getNameWithBranchAliasReplaced(PackagistVersion $version): string
+    {
+        $extras = $version->getExtra();
+
+        if ($extras && isset($extras['branch-alias'])) {
+            foreach ($extras['branch-alias'] as $branch => $alias) {
+                if ($version->getVersion() === $branch) {
+                    return $alias;
+                }
+            }
+        }
+
+        return $version->getVersion();
     }
 
     public function getStabilityFlagProperty(): string
