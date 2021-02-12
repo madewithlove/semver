@@ -3,9 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Packagist\Client;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Packagist\Api\Result\Package\Version;
 
 class SemverChecker extends Component
 {
@@ -15,10 +16,22 @@ class SemverChecker extends Component
 
     public function render(Client $client): Factory|View
     {
+        $package = $client->getPackage($this->packageName);
+        $versions = [];
+
+        if ($package) {
+            $versions = $package->getVersions();
+
+            usort($versions, function (Version $a, Version $b) {
+                return -1 * version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
+            });
+        }
+
         return view(
             'livewire.semver-checker',
             [
-                'package' => $client->getPackage($this->packageName),
+                'package' => $package,
+                'versions' => $versions,
             ]
         );
     }

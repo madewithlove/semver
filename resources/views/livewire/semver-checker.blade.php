@@ -30,7 +30,7 @@
 
             <ul>
                 @if ($package)
-                    @foreach ($package->getVersions() as $packageVersion)
+                    @foreach ($versions as $packageVersion)
                         <li
                             @if ($matcher->matches($packageVersion->getVersion(), $version, $stability))
                                 class="matches"
