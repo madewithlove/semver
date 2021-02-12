@@ -34,6 +34,7 @@ class SemverChecker extends Component
                 function (PackagistVersion $packagistVersion) use ($matcher) {
                     return new Version(
                         $this->getNameWithBranchAliasReplaced($packagistVersion),
+                        $packagistVersion->getSource()->getUrl(),
                         $matcher->matches($packagistVersion->getVersion(), $this->constraint, $this->stability)
                     );
                 },

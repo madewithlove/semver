@@ -27,7 +27,7 @@
                                 class="matches"
                             @endif
                         >
-                            <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $version->getName() }}">{{ $version->getName() }}</a>
+                            <a target="_blank" href="{{ $version->getUrl() }}">{{ $version->getName() }}</a>
                         </li>
                     @endforeach
                 @endif
