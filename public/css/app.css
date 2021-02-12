@@ -41,6 +41,7 @@ ul.versions li {
     border: 2px solid #ed2324;
 }
 
+ul.versions li.matches,
 ul.versions li:hover,
 ul.versions li:active,
 ul.versions li:focus {
@@ -53,6 +54,7 @@ ul.versions li a {
     padding: 4px 10px 5px;
 }
 
+ul.versions li.matches a,
 ul.versions li a:hover,
 ul.versions li a:active,
 ul.versions li a:focus {
