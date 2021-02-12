@@ -5,10 +5,12 @@ namespace App\Http\Livewire;
 use App\Packagist\Client;
 use App\Version\Matcher;
 use App\Version\Version;
+use Composer\Semver\VersionParser;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Packagist\Api\Result\Package\Version as PackagistVersion;
+use UnexpectedValueException;
 
 class SemverChecker extends Component
 {
@@ -70,5 +72,16 @@ class SemverChecker extends Component
         }
 
         return '@' . $this->stability;
+    }
+
+    public function getIsValidConstraintProperty(VersionParser $versionParser): string
+    {
+        try {
+            $constraint = $versionParser->parseConstraints($this->constraint);
+        } catch (UnexpectedValueException) {
+            return false;
+        }
+
+        return true;
     }
 }
