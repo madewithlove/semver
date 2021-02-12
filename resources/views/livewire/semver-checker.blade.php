@@ -27,13 +27,13 @@
 
             <ul class="versions">
                 @if ($package)
-                    @foreach ($versions as $packageVersion)
+                    @foreach ($versions as $version)
                         <li
-                            @if ($packageVersion->matches())
+                            @if ($version->matches())
                                 class="matches"
                             @endif
                         >
-                            <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $packageVersion->getName() }}">{{ $packageVersion->getName() }}</a>
+                            <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $version->getName() }}">{{ $version->getName() }}</a>
                         </li>
                     @endforeach
                 @endif
