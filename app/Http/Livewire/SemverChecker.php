@@ -14,13 +14,15 @@ use UnexpectedValueException;
 
 class SemverChecker extends Component
 {
-    public string $packageName = 'madewithlove/htaccess-cli';
+    public string $package = 'madewithlove/htaccess-cli';
     public string $constraint = 'dev-main';
     public string $stability = 'stable';
 
+    protected $queryString = ['package', 'constraint', 'stability'];
+
     public function render(Client $client, Matcher $matcher): Factory|View
     {
-        $package = $client->getPackage($this->packageName);
+        $package = $client->getPackage($this->package);
         $versions = [];
 
         if ($package) {
