@@ -1,5 +1,3 @@
-@inject('matcher', 'App\Version\Matcher')
-
 <div>
     <p class="mb-3 text-sm">
         <a target="_blank" href="https://getcomposer.org/doc/articles/versions.md#versions-and-constraints">Learn more about version constraints</a>
@@ -31,11 +29,11 @@
                 @if ($package)
                     @foreach ($versions as $packageVersion)
                         <li
-                            @if ($matcher->matches($packageVersion->getVersion(), $version, $stability))
+                            @if ($packageVersion->matches())
                                 class="matches"
                             @endif
                         >
-                            <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $packageVersion->getVersion() }}">{{ $packageVersion->getVersion() }}</a>
+                            <a target="_blank" href="https://github.com/{{ $packageName }}/releases/tag/{{ $packageVersion->getName() }}">{{ $packageVersion->getName() }}</a>
                         </li>
                     @endforeach
                 @endif

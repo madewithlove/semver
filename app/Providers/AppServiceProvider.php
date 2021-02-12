@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
             function () {
                 if ($this->app->environment('local')) {
                     // no cache in the local environment
-                    return $this->app->get(ApiClient::class);
+                    //return $this->app->get(ApiClient::class);
                 }
 
                 return $this->app->get(CachedApiClient::class);
