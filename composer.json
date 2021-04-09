@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "knplabs/packagist-api": "^2.0@dev",
         "laravel/framework": "^8.12",
+        "laravel/octane": "^0.1.1",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.3"
     },
