@@ -35,6 +35,6 @@
         </section>
 
         <h2 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h2>
-        <pre class="bg-gray-100 p-3 text-sm text-gray-600">composer require {{ $package }}:"{{ $constraint }}{{ $this->stabilityFlag }}"</pre>
+        <pre class="bg-gray-100 p-3 text-sm text-gray-600">composer require {{ $package }}:&quot;{{ $constraint }}{{ $this->stabilityFlag }}&quot;</pre>
     </section>
 </div>
