@@ -26,6 +26,10 @@ final class Version
 
     public function getUrl(): string
     {
+        if (empty($this->url)) {
+            return '';
+        }
+
         if (Str::startsWith($this->name, 'dev-')) {
             return substr($this->url, 0, -4) . '/tree/' . substr($this->name, 4);
         }
