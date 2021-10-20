@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use App\Packagist\ApiClient;
 use App\Packagist\CachedApiClient;
 use App\Packagist\Client;
+use App\VirtualPackages\VirtualPackageFactory;
+use App\VirtualPackages\VirtualPackageEnrichingApiClient;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,12 +20,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             Client::class,
             function () {
-                if ($this->app->environment('local')) {
-                    // no cache in the local environment
-                    //return $this->app->get(ApiClient::class);
-                }
-
-                return $this->app->get(CachedApiClient::class);
+                return new VirtualPackageEnrichingApiClient(
+                    $this->app->get(CachedApiClient::class),
+                    [
+                        VirtualPackageFactory::php()
+                    ]
+                );
             }
         );
     }
