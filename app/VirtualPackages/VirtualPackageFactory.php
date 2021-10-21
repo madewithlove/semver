@@ -10,7 +10,7 @@ class VirtualPackageFactory
         return new VirtualPackage(
             'php',
             [
-                new VirtualPackageVersion('6.5'),
+                new VirtualPackageVersion('5.6'),
                 new VirtualPackageVersion('7.0'),
                 new VirtualPackageVersion('7.1'),
                 new VirtualPackageVersion('7.2'),
