@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Packagist\Client;
 use App\Version\Matcher;
 use App\Version\Version;
+use App\VirtualPackages\VirtualPackage;
 use Composer\Semver\VersionParser;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -56,6 +57,7 @@ class SemverChecker extends Component
         return view(
             'livewire.semver-checker',
             [
+                'isVirtual' => $package instanceof VirtualPackage,
                 'versions' => $versions,
                 'results' => $results,
             ]
