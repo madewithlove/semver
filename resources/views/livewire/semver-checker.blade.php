@@ -1,3 +1,7 @@
+@php
+    /** @var \Packagist\Api\Result\Package[] $results */
+@endphp
+
 <div>
     <p class="mb-3 text-sm">
         <a target="_blank" href="https://getcomposer.org/doc/articles/versions.md#versions-and-constraints">Learn more about version constraints</a>
@@ -42,6 +46,17 @@
 
             <h2 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h2>
             <pre class="bg-gray-100 p-3 text-sm text-gray-600">composer require {{ $package }}:&quot;{{ $constraint }}{{ $this->stabilityFlag }}&quot;</pre>
+        @elseif(!empty($package))
+            <section class="mt-5 pt-5 border-t border-gray-100">
+                <h1 class="text-lg text-gray-600 font-medium mb-5">Known packages</h1>
+                <ul>
+                    @foreach($results as $result)
+                        <li>
+                            <a wire:click="choosePackage('{{ $result->getName() }}')">{{ $result->getName() }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </section>
         @endif
     </section>
 </div>
