@@ -39,10 +39,12 @@ class SemverChecker extends Component
 
             $versions =  array_map(
                 function (PackagistVersion $packagistVersion) use ($matcher) {
+                    $alias = $this->getNameWithBranchAliasReplaced($packagistVersion);
+
                     return new Version(
-                        $this->getNameWithBranchAliasReplaced($packagistVersion),
+                        $alias,
                         (string) $packagistVersion->getSource()?->getUrl(),
-                        $matcher->matches($packagistVersion->getVersion(), $this->constraint, $this->stability)
+                        $matcher->matches($alias, $this->constraint, $this->stability)
                     );
                 },
                 $versions
