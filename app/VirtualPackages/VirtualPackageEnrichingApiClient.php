@@ -27,4 +27,9 @@ class VirtualPackageEnrichingApiClient implements Client
 
         return $this->client->getPackage($packageName);
     }
+
+    public function search(string $name): array
+    {
+        return $this->client->search($name);
+    }
 }

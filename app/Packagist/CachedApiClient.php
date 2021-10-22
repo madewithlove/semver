@@ -17,4 +17,11 @@ final class CachedApiClient implements Client
             return $this->client->getPackage($packageName);
         });
     }
+
+    public function search(string $name): array
+    {
+        return Cache::remember('search-' . $name, 60 * 60, function () use ($name): array {
+            return $this->client->search($name);
+        });
+    }
 }
