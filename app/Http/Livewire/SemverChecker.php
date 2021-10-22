@@ -53,16 +53,17 @@ class SemverChecker extends Component
                         );
                     }
 
+                    $name = $version->getVersion();
                     $url = substr((string) $version->getSource()?->getUrl(), 0, -4);
 
-                    if (Str::startsWith($alias, 'dev-')) {
-                        $url .= '/tree/' . substr($alias, 4);
+                    if (Str::startsWith($name, 'dev-')) {
+                        $url .= '/tree/' . substr($name, 4);
                     }
-                    elseif (Str::endsWith($alias, '-dev')) {
-                        $url .= '/tree/' . substr($alias, 0, -4);
+                    elseif (Str::endsWith($name, '-dev')) {
+                        $url .= '/tree/' . substr($name, 0, -4);
                     }
                     else {
-                        $url .= '/releases/tag/' . $alias;
+                        $url .= '/releases/tag/' . $name;
                     }
 
                     return new Version(
