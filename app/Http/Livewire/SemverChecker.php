@@ -51,6 +51,7 @@ class SemverChecker extends Component
             'livewire.semver-checker',
             [
                 'versions' => $versions,
+                'results' => $client->search($this->package),
             ]
         );
     }
