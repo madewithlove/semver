@@ -28,7 +28,7 @@ final class ApiClient implements Client
     public function search(string $name): array
     {
         try {
-            return $this->client->search($name, [], 1);
+            return $this->client->search($name, [], 2);
         } catch (Throwable) {
             return [];
         }
