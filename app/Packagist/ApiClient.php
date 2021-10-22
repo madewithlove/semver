@@ -24,4 +24,13 @@ final class ApiClient implements Client
             return null;
         }
     }
+
+    public function search(string $name): array
+    {
+        try {
+            return $this->client->search($name, [], 1);
+        } catch (Throwable) {
+            return [];
+        }
+    }
 }
