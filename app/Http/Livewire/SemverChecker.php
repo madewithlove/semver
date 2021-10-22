@@ -50,7 +50,6 @@ class SemverChecker extends Component
         return view(
             'livewire.semver-checker',
             [
-                'package' => $package,
                 'versions' => $versions,
             ]
         );
