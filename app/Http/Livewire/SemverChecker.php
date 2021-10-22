@@ -44,7 +44,7 @@ class SemverChecker extends Component
                     return new Version(
                         $alias,
                         (string) $packagistVersion->getSource()?->getUrl(),
-                        $matcher->matches($alias, $this->constraint, $this->stability)
+                        $matcher->matches($alias, $this->constraint, $this->stability) || $matcher->matches($packagistVersion->getVersion(), $this->constraint, $this->stability)
                     );
                 },
                 $versions
