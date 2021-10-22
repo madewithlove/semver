@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Version;
 
-use Illuminate\Support\Str;
-
 final class Version
 {
     public function __construct(
