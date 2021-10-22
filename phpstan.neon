@@ -8,4 +8,8 @@ parameters:
     level: max
     excludePaths:
         - database/factories/*.php
-    checkMissingIterableValueType: false
+        - app/Http/Middleware/*.php
+        - app/Http/Kernel.php
+        - app/Console/Kernel.php
+        - app/Exceptions/Handler.php
+    checkMissingIterableValueType: true
