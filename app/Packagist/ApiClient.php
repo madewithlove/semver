@@ -4,6 +4,7 @@ namespace App\Packagist;
 
 use Packagist\Api\Client as BaseClient;
 use Packagist\Api\Result\Package;
+use Packagist\Api\Result\Result;
 use Throwable;
 
 final class ApiClient implements Client
@@ -28,7 +29,9 @@ final class ApiClient implements Client
     public function search(string $name): array
     {
         try {
-            return $this->client->search($name, [], 2);
+            $results = $this->client->search($name, [], 2);
+
+            return array_filter($results, fn(Result $result) => $result->getRepository());
         } catch (Throwable) {
             return [];
         }
