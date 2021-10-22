@@ -29,7 +29,7 @@
 
         @if(!empty($versions))
             <section class="text-center mt-5 pt-5 border-t border-gray-100">
-                <h1 class="text-lg text-gray-600 font-medium mb-5">Results for <a target="_blank" href="https://packagist.org/packages/{{ $package }}/{{ $constraint }}">{{ $package }}:{{ $constraint }}</a></h1>
+                <h1 class="text-lg text-gray-600 font-medium mb-5">Results for <a target="_blank" href="https://packagist.org/packages/{{ $package }}">{{ $package }}:{{ $constraint }}</a></h1>
 
                 <ul class="versions">
                     @foreach ($versions as $version)
