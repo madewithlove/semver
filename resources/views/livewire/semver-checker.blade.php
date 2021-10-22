@@ -49,13 +49,17 @@
         @elseif(!empty($package))
             <section class="mt-5 pt-5 border-t border-gray-100">
                 <h1 class="text-lg text-gray-600 font-medium mb-5">Known packages</h1>
-                <ul>
-                    @foreach($results as $result)
-                        <li>
-                            <a wire:click="choosePackage('{{ $result->getName() }}')">{{ $result->getName() }}</a>
-                        </li>
-                    @endforeach
-                </ul>
+                @if(!empty($results))
+                    <ul>
+                        @foreach($results as $result)
+                            <li>
+                                <a wire:click="choosePackage('{{ $result->getName() }}')">{{ $result->getName() }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p class="text-lg text-gray-500"><em>No packages found for "{{ $package }}".</em></p>
+                @endif
             </section>
         @endif
     </section>
