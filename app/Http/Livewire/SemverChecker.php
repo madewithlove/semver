@@ -28,6 +28,7 @@ class SemverChecker extends Component
     {
         $package = $client->getPackage($this->package);
         $versions = [];
+        $results = [];
 
         if ($package) {
             $versions = $package->getVersions();
@@ -46,13 +47,15 @@ class SemverChecker extends Component
                 },
                 $versions
             );
+        } else {
+            $results = $client->search($this->package);
         }
 
         return view(
             'livewire.semver-checker',
             [
                 'versions' => $versions,
-                'results' => $client->search($this->package),
+                'results' => $results,
             ]
         );
     }
