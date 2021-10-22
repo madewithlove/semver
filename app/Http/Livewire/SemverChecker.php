@@ -6,9 +6,11 @@ use App\Packagist\Client;
 use App\Version\Matcher;
 use App\Version\Version;
 use App\VirtualPackages\VirtualPackage;
+use App\VirtualPackages\VirtualPackageVersion;
 use Composer\Semver\VersionParser;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Packagist\Api\Result\Package\Version as PackagistVersion;
 use Packagist\Api\Result\Result;
@@ -38,18 +40,28 @@ class SemverChecker extends Component
                 return -1 * version_compare($a->getVersionNormalized(), $b->getVersionNormalized());
             });
 
-            $versions =  array_map(
-                function (PackagistVersion $packagistVersion) use ($matcher) {
-                    $alias = $this->getNameWithBranchAliasReplaced($packagistVersion);
+            $versions = collect($versions)
+                ->map(function (PackagistVersion $version) use ($matcher) {
+                    $alias = $this->getNameWithBranchAliasReplaced($version);
+                    $matches = $matcher->matches($alias, $this->constraint, $this->stability) || $matcher->matches($version->getVersion(), $this->constraint, $this->stability);
+
+                    if ($version instanceof VirtualPackageVersion) {
+                        return new Version(
+                            $alias,
+                            $version->getUrl(),
+                            $matches,
+                        );
+                    }
+
+                    $url = substr($version->getSource()->getUrl(), 0, -4);
+                    $url .= Str::startsWith($alias, 'dev-') ? '/tree/' . substr($alias, 4) : '/releases/tag/' . $alias;
 
                     return new Version(
                         $alias,
-                        (string) $packagistVersion->getSource()?->getUrl(),
-                        $matcher->matches($alias, $this->constraint, $this->stability) || $matcher->matches($packagistVersion->getVersion(), $this->constraint, $this->stability)
+                        $url,
+                        $matches
                     );
-                },
-                $versions
-            );
+                });
         } else {
             $results = $client->search($this->package);
         }

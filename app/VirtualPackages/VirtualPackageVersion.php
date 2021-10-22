@@ -10,7 +10,8 @@ use Packagist\Api\Result\Package\Version;
 class VirtualPackageVersion extends Version
 {
     public function __construct(
-        protected string $version
+        protected string $version,
+        private string $url
     ) {
     }
 
@@ -24,8 +25,8 @@ class VirtualPackageVersion extends Version
         return $this->getVersion();
     }
 
-    public function getSource(): ?Source
+    public function getUrl(): string
     {
-        return null;
+        return $this->url;
     }
 }
