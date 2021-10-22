@@ -34,6 +34,9 @@ final class MatcherTest extends TestCase
         $this->assertTrue($this->matcher->matches($version, $constraint, 'stable'));
     }
 
+    /**
+     * @return string[][]
+     */
     public function providesMatchingStableVersion(): array
     {
         return [

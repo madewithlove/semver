@@ -8,6 +8,9 @@ use Packagist\Api\Result\Package;
 
 class VirtualPackage extends Package
 {
+    /**
+     * @param VirtualPackageVersion[] $packageVersions
+     */
     public function __construct(
         string $packageName,
         array $packageVersions

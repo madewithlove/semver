@@ -10,7 +10,7 @@ use Packagist\Api\Result\Package;
 class VirtualPackageEnrichingApiClient implements Client
 {
     /**
-     * @var VirtualPackage[] $virtualPackages
+     * @param VirtualPackage[] $virtualPackages
      */
     public function __construct(
         private Client $client,
