@@ -20,8 +20,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             Client::class,
             function () {
+                /** @var CachedApiClient $cachedClient */
+                $cachedClient = $this->app->get(CachedApiClient::class);
+
                 return new VirtualPackageEnrichingApiClient(
-                    $this->app->get(CachedApiClient::class),
+                    $cachedClient,
                     [
                         VirtualPackageFactory::php()
                     ]
