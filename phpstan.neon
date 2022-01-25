@@ -12,3 +12,4 @@ parameters:
         - app/Http/Kernel.php
         - app/Console/Kernel.php
         - app/Exceptions/Handler.php
+        - config/
