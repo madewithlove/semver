@@ -2,7 +2,7 @@
 
 ## About
 
-This is the repository for the semver checker tool hosted at [https://semver.mwl.be/](https://semver.mwl.be/).
+This is the repository for the semver checker tool hosted at [https://semver.madewithlove.com/](https://semver.madewithlove.com/).
 It's written in [Laravel](https://laravel.com/) and uses [Livewire](https://laravel-livewire.com/) to make the user interface more dynamic.
 
 ## Installation
