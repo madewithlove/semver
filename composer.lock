@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1a237efa61bc0ae983641b3ac6d790b",
+    "content-hash": "6b22aa132c8297930311d9c5caf09552",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1631,19 +1631,20 @@
         },
         {
             "name": "knplabs/packagist-api",
-            "version": "v2.0.0-beta2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/packagist-api.git",
-                "reference": "ca668d4e2bd6d53338dd531806e8d10151f6a435"
+                "reference": "cf3906e603a701abb8b36eb3aadfebff33da6a4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/packagist-api/zipball/ca668d4e2bd6d53338dd531806e8d10151f6a435",
-                "reference": "ca668d4e2bd6d53338dd531806e8d10151f6a435",
+                "url": "https://api.github.com/repos/KnpLabs/packagist-api/zipball/cf3906e603a701abb8b36eb3aadfebff33da6a4c",
+                "reference": "cf3906e603a701abb8b36eb3aadfebff33da6a4c",
                 "shasum": ""
             },
             "require": {
+                "composer/metadata-minifier": "^1.0",
                 "doctrine/inflector": "^1.0 || ^2.0",
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.0 || ^7.0",
@@ -1653,6 +1654,7 @@
                 "phpspec/phpspec": "^6.0 || ^7.0",
                 "squizlabs/php_codesniffer": "^3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1683,9 +1685,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/packagist-api/issues",
-                "source": "https://github.com/KnpLabs/packagist-api/tree/v2.0.0-beta2"
+                "source": "https://github.com/KnpLabs/packagist-api/tree/master"
             },
-            "time": "2020-12-22T17:22:39+00:00"
+            "time": "2022-01-26T17:50:21+00:00"
         },
         {
             "name": "laravel/framework",

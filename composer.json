@@ -13,7 +13,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.3",
-        "knplabs/packagist-api": "^2.0@dev",
+        "knplabs/packagist-api": "dev-master",
         "laravel/framework": "^8.61",
         "laravel/tinker": "^2.6",
         "livewire/livewire": "^2.6"
