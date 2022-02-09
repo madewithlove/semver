@@ -10,21 +10,20 @@
     "require": {
         "php": "^8.1",
         "composer/composer": "^2.1",
-        "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.3",
         "knplabs/packagist-api": "dev-master",
-        "laravel/framework": "^8.61",
-        "laravel/tinker": "^2.6",
-        "livewire/livewire": "^2.6"
+        "laravel/framework": "^9.0",
+        "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10"
     },
     "require-dev": {
-        "facade/ignition": "^2.13",
+        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.16",
         "laravel/sail": "^1.10",
         "mockery/mockery": "^1.4",
-        "nunomaduro/collision": "^5.9",
-        "nunomaduro/larastan": "^1.0.3",
+        "nunomaduro/collision": "^6.1",
+        "nunomaduro/larastan": "^2.0",
         "phpunit/phpunit": "^9.5"
     },
     "config": {
