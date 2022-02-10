@@ -1637,16 +1637,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.0.0",
+            "version": "v9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fbe7ed828819eadabb3cb9f95847a2ffe8846fd6"
+                "reference": "afeb58d019b203ecb1a1c4063a66a029ea6bea63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fbe7ed828819eadabb3cb9f95847a2ffe8846fd6",
-                "reference": "fbe7ed828819eadabb3cb9f95847a2ffe8846fd6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/afeb58d019b203ecb1a1c4063a66a029ea6bea63",
+                "reference": "afeb58d019b203ecb1a1c4063a66a029ea6bea63",
                 "shasum": ""
             },
             "require": {
@@ -1812,7 +1812,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-02-08T15:48:31+00:00"
+            "time": "2022-02-09T15:00:05+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -6641,20 +6641,20 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "17e68d65f20b310b7c0f827b00d1243434a53c92"
+                "reference": "c5ba9e615ccd9563595af9c271bef69fbffc15d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/17e68d65f20b310b7c0f827b00d1243434a53c92",
-                "reference": "17e68d65f20b310b7c0f827b00d1243434a53c92",
+                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/c5ba9e615ccd9563595af9c271bef69fbffc15d2",
+                "reference": "c5ba9e615ccd9563595af9c271bef69fbffc15d2",
                 "shasum": ""
             },
             "require": {
-                "composer/composer": "^2.2.4",
+                "composer/pcre": "^1.0",
                 "ext-json": "*",
                 "illuminate/console": "^9",
                 "illuminate/container": "^9",
@@ -6714,7 +6714,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/larastan/issues",
-                "source": "https://github.com/nunomaduro/larastan/tree/2.0.0"
+                "source": "https://github.com/nunomaduro/larastan/tree/v2.0.1"
             },
             "funding": [
                 {
@@ -6734,7 +6734,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-01-26T11:21:20+00:00"
+            "time": "2022-02-09T15:28:04+00:00"
         },
         {
             "name": "phar-io/manifest",
