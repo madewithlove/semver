@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.1",
         "composer/composer": "^2.1",
-        "fruitcake/laravel-cors": "^2.0",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.3",
         "knplabs/packagist-api": "dev-master",
         "laravel/framework": "^9.0",
