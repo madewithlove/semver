@@ -144,16 +144,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "0f43aa1652c447a6bc7c9217ec133313b1d32e72"
+                "reference": "10cd375cf85dede2ff417ceab517ef9a0dc55407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/0f43aa1652c447a6bc7c9217ec133313b1d32e72",
-                "reference": "0f43aa1652c447a6bc7c9217ec133313b1d32e72",
+                "url": "https://api.github.com/repos/composer/composer/zipball/10cd375cf85dede2ff417ceab517ef9a0dc55407",
+                "reference": "10cd375cf85dede2ff417ceab517ef9a0dc55407",
                 "shasum": ""
             },
             "require": {
@@ -196,6 +196,11 @@
             "extra": {
                 "branch-alias": {
                     "dev-main": "2.3-dev"
+                },
+                "phpstan": {
+                    "includes": [
+                        "phpstan/rules.neon"
+                    ]
                 }
             },
             "autoload": {
@@ -229,7 +234,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.3.6"
+                "source": "https://github.com/composer/composer/tree/2.3.7"
             },
             "funding": [
                 {
@@ -245,7 +250,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-01T19:57:13+00:00"
+            "time": "2022-06-06T14:43:28+00:00"
         },
         {
             "name": "composer/metadata-minifier",
