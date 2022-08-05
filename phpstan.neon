@@ -6,7 +6,6 @@ parameters:
         - tests
     level: max
     excludePaths:
-        - database/factories/*.php
         - app/Http/Middleware/*.php
         - app/Http/Kernel.php
         - app/Console/Kernel.php
