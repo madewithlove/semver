@@ -7,5 +7,4 @@ parameters:
     level: max
     excludePaths:
         - app/Http/Middleware/*.php
-        - app/Console/Kernel.php
         - app/Exceptions/Handler.php
