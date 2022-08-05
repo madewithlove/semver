@@ -1,7 +1,6 @@
 parameters:
     paths:
         - app
-        - config
         - database
         - resources
         - tests
@@ -12,4 +11,3 @@ parameters:
         - app/Http/Kernel.php
         - app/Console/Kernel.php
         - app/Exceptions/Handler.php
-        - config/
