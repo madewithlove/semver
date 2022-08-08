@@ -3,8 +3,9 @@
     "type": "project",
     "description": "Semver checker for Packagist",
     "keywords": [
-        "framework",
-        "laravel"
+        "madewithlove",
+        "semver",
+        "semver-checker"
     ],
     "license": "MIT",
     "require": {
