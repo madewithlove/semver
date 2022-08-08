@@ -1,7 +1,7 @@
 {
     "name": "madewithlove/semver",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Semver checker for Packagist",
     "keywords": [
         "framework",
         "laravel"
