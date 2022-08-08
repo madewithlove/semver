@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "madewithlove/semver",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Semver checker for Packagist",
     "keywords": [
-        "framework",
-        "laravel"
+        "madewithlove",
+        "semver",
+        "semver-checker"
     ],
     "license": "MIT",
     "require": {
@@ -26,16 +27,6 @@
         "nunomaduro/larastan": "^2.0",
         "phpunit/phpunit": "^9.5"
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
@@ -46,8 +37,6 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -59,5 +48,17 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

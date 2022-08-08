@@ -7,10 +7,10 @@ jobs:
 
     steps:
       - name: 📤 Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 📩 Fetch vendor from cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: cache
         with:
           path: vendor
@@ -42,10 +42,10 @@ jobs:
 
     steps:
       - name: 📤 Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 📩 Fetch vendor from cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: cache
         with:
           path: vendor
