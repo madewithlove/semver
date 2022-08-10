@@ -26,7 +26,7 @@
                     <option label="RC" value="RC">RC</option>
                     <option label="stable" value="stable">stable</option>
                 </select>
-            @endif
+            @endunless
         </form>
 
         @if(!empty($versions))
@@ -49,7 +49,7 @@
             @unless($isVirtual)
                 <h2 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h2>
                 <pre class="bg-gray-100 p-3 text-sm text-gray-600">composer require {{ $package }}:&quot;{{ $constraint }}{{ $this->stabilityFlag }}&quot;</pre>
-            @endif
+            @endunless
         @elseif(!empty($package))
             <section class="mt-5 pt-5 border-t border-gray-100">
                 <h1 class="text-lg text-gray-600 font-medium mb-5">Known packages</h1>
