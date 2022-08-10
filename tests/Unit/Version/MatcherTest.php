@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Unit\Version;
+namespace Tests\Unit\Version;
 
 use App\Version\Matcher;
 use Composer\Semver\VersionParser;
