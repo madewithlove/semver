@@ -13,7 +13,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Packagist\Api\Result\Package\Version as PackagistVersion;
-use Packagist\Api\Result\Result;
 use UnexpectedValueException;
 
 class SemverChecker extends Component
