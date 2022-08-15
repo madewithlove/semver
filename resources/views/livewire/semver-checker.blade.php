@@ -36,11 +36,11 @@
                 <ul class="versions">
                     @foreach ($versions as $version)
                         <li
-                            @if ($version->matches())
+                            @if ($version->matches)
                             class="matches"
                             @endif
                         >
-                            <a target="_blank" href="{{ $version->getUrl() }}">{{ $version->getName() }}</a>
+                            <a target="_blank" href="{{ $version->url }}">{{ $version->name }}</a>
                         </li>
                     @endforeach
                 </ul>
