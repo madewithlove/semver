@@ -10,12 +10,13 @@ use Packagist\Api\Result\Package;
 class VirtualPackageEnrichingApiClient implements Client
 {
     /**
-     * @param VirtualPackage[] $virtualPackages
+     * @param  VirtualPackage[]  $virtualPackages
      */
     public function __construct(
         private Client $client,
         private array $virtualPackages,
-    ) {}
+    ) {
+    }
 
     public function getPackage(string $packageName): ?Package
     {

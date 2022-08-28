@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Packagist;
 
@@ -9,12 +11,13 @@ final class CachedApiClient implements Client
 {
     public function __construct(
         private ApiClient $client
-    ) {}
+    ) {
+    }
 
     public function getPackage(string $packageName): ?Package
     {
         /** @phpstan-ignore-next-line */
-        return Cache::remember('package-' . $packageName, 60 * 60, function () use ($packageName): ?Package {
+        return Cache::remember('package-'.$packageName, 60 * 60, function () use ($packageName): ?Package {
             return $this->client->getPackage($packageName);
         });
     }
@@ -22,7 +25,7 @@ final class CachedApiClient implements Client
     public function search(string $name): array
     {
         /** @phpstan-ignore-next-line */
-        return Cache::remember('search-' . $name, 60 * 60, function () use ($name): array {
+        return Cache::remember('search-'.$name, 60 * 60, function () use ($name): array {
             return $this->client->search($name);
         });
     }

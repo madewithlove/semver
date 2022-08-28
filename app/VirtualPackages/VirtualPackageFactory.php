@@ -6,7 +6,8 @@ namespace App\VirtualPackages;
 
 class VirtualPackageFactory
 {
-    public static function php(): VirtualPackage {
+    public static function php(): VirtualPackage
+    {
         return new VirtualPackage(
             'php',
             [

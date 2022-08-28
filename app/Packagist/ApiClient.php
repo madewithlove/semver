@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Packagist;
 
@@ -11,7 +13,8 @@ final class ApiClient implements Client
 {
     public function __construct(
         private BaseClient $client
-    ) {}
+    ) {
+    }
 
     public function getPackage(string $packageName): ?Package
     {
@@ -20,6 +23,7 @@ final class ApiClient implements Client
             if (is_array($result)) {
                 return $result[0];
             }
+
             return $result;
         } catch (Throwable) {
             return null;
@@ -32,7 +36,7 @@ final class ApiClient implements Client
             /** @var Result[] $results */
             $results = $this->client->search($name, [], 2);
 
-            return array_filter($results, fn(Result $result) => !empty($result->getRepository()));
+            return array_filter($results, fn (Result $result) => ! empty($result->getRepository()));
         } catch (Throwable) {
             return [];
         }
