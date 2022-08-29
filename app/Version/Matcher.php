@@ -9,15 +9,12 @@ use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\VersionParser;
 use UnexpectedValueException;
 
-
 final class Matcher
 {
-
     public function __construct(
         private VersionParser $versionParser
     ) {
     }
-
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {
@@ -29,8 +26,7 @@ final class Matcher
 
         $parsedVersion = new Constraint('=', $this->versionParser->normalize($version));
 
-        if (! $parsedVersion->matches($constraint))
-        {
+        if (! $parsedVersion->matches($constraint)) {
             return false;
         }
 
@@ -47,5 +43,4 @@ final class Matcher
 
         return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$requiredStability];
     }
-
 }
