@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Version;
 
@@ -11,7 +13,8 @@ final class Matcher
 {
     public function __construct(
         private VersionParser $versionParser
-    ) {}
+    ) {
+    }
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {
@@ -23,11 +26,11 @@ final class Matcher
 
         $parsedVersion = new Constraint('=', $this->versionParser->normalize($version));
 
-        if (!$parsedVersion->matches($constraint)) {
+        if (! $parsedVersion->matches($constraint)) {
             return false;
         }
 
-        if (!$this->isMoreOrEquallyStable($version, $requiredStability)) {
+        if (! $this->isMoreOrEquallyStable($version, $requiredStability)) {
             return false;
         }
 

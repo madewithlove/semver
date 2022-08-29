@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\VirtualPackages;
 
-use Packagist\Api\Result\Package\Source;
 use Packagist\Api\Result\Package\Version;
 
 class VirtualPackageVersion extends Version

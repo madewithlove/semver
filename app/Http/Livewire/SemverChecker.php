@@ -18,7 +18,9 @@ use UnexpectedValueException;
 class SemverChecker extends Component
 {
     public string $package = 'madewithlove/htaccess-cli';
+
     public string $constraint = 'dev-main';
+
     public string $stability = 'stable';
 
     /**
@@ -57,11 +59,9 @@ class SemverChecker extends Component
 
                     if (Str::startsWith($name, 'dev-')) {
                         $url .= '/tree/' . substr($name, 4);
-                    }
-                    elseif (Str::endsWith($name, '-dev')) {
+                    } elseif (Str::endsWith($name, '-dev')) {
                         $url .= '/tree/' . substr($name, 0, -4);
-                    }
-                    else {
+                    } else {
                         $url .= '/releases/tag/' . $name;
                     }
 

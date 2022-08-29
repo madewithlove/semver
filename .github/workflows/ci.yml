@@ -64,3 +64,37 @@ jobs:
 
       - name: ✅ Run static analysis
         run: vendor/bin/phpstan analyse
+
+  coding-standards:
+    name: Coding standards
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📤 Checkout project
+        uses: actions/checkout@v3
+
+      - name: 📩 Fetch vendor from cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: "8.1"
+          tools: composer
+        env:
+          update: true
+
+      - name: 📦 Install dependencies
+        run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: ✅ Run Laravel Pint
+        run: vendor/bin/pint
+
+      - name: 📥 Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Fix coding standards issues

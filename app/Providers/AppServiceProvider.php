@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Packagist\CachedApiClient;
 use App\Packagist\Client;
-use App\VirtualPackages\VirtualPackageFactory;
 use App\VirtualPackages\VirtualPackageEnrichingApiClient;
+use App\VirtualPackages\VirtualPackageFactory;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                 return new VirtualPackageEnrichingApiClient(
                     $cachedClient,
                     [
-                        VirtualPackageFactory::php()
+                        VirtualPackageFactory::php(),
                     ]
                 );
             }

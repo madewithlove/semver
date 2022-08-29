@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Packagist;
 
@@ -9,7 +11,8 @@ final class CachedApiClient implements Client
 {
     public function __construct(
         private ApiClient $client
-    ) {}
+    ) {
+    }
 
     public function getPackage(string $packageName): ?Package
     {
