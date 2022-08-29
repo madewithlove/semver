@@ -58,11 +58,11 @@ class SemverChecker extends Component
                     $url = substr((string) $version->getSource()?->getUrl(), 0, -4);
 
                     if (Str::startsWith($name, 'dev-')) {
-                        $url .= '/tree/'.substr($name, 4);
+                        $url .= '/tree/' . substr($name, 4);
                     } elseif (Str::endsWith($name, '-dev')) {
-                        $url .= '/tree/'.substr($name, 0, -4);
+                        $url .= '/tree/' . substr($name, 0, -4);
                     } else {
-                        $url .= '/releases/tag/'.$name;
+                        $url .= '/releases/tag/' . $name;
                     }
 
                     return new Version(
@@ -106,7 +106,7 @@ class SemverChecker extends Component
             return '';
         }
 
-        return '@'.$this->stability;
+        return '@' . $this->stability;
     }
 
     public function getIsValidConstraintProperty(VersionParser $versionParser): bool
