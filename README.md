@@ -8,9 +8,21 @@
   <br>
 </h1>
 
+<h4 align="center">
+This is the repository for the SemVer checker tool hosted at [semver.madewithlove.com](https://semver.madewithlove.com).
+</h4>
+
+<div align="center">
+
+![ci](https://github.com/madewithlove/semver/actions/workflows/ci.yml/badge.svg)
+[![issues](https://img.shields.io/github/issues/madewithlove/semver)](https://github.com/madewithlove/semver/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/madewithlove/semver)](https://github.com/madewithlove/semver/pulls)
+[![contributors](https://img.shields.io/github/contributors/madewithlove/semver)](https://github.com/madewithlove/semver/graphs/contributors)
+
+</div>
+
 ## About
 
-This is the repository for the semver checker tool hosted at [https://semver.madewithlove.com/](https://semver.madewithlove.com/).
 It's written in [Laravel](https://laravel.com/) and uses [Livewire](https://laravel-livewire.com/) to make the user interface more dynamic.
 
 ## Installation
