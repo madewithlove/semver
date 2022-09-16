@@ -22,6 +22,10 @@ This is the repository for the SemVer checker tool hosted at <a href="https://se
 
 </div>
 
+<div align="center">
+  <sub>Built with :heart:︎ and :coffee: by heroes at <a href="https://madewithlove.com">madewithlove</a>.</sub>
+</div>
+
 ## About
 
 It's written in [Laravel](https://laravel.com/) and uses [Livewire](https://laravel-livewire.com/) to make the user interface more dynamic.
