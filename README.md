@@ -4,12 +4,12 @@
     <img src="https://static.madewithlove.com/logo/red/full.png" alt="madewithlove" width="400">
   </a>
   <br><br>
-  Packagist SemVer Checker
+  SemVer
   <br>
 </h1>
 
 <h4 align="center">
-This is the repository for the SemVer checker tool hosted at <a href="https://semver.madewithlove.com" target="_blank">semver.madewithlove.com</a>.
+A SemVer checker tool for Packagist.
 </h4>
 
 <div align="center">
@@ -28,7 +28,19 @@ This is the repository for the SemVer checker tool hosted at <a href="https://se
 
 ## About
 
-It's written in [Laravel](https://laravel.com/) and uses [Livewire](https://laravel-livewire.com/) to make the user interface more dynamic.
+This is the repository for the SemVer checker tool hosted at [semver.madewithlove.com](https://semver.madewithlove.com).
+
+### Tech Stack
+
+- [Laravel](https://laravel.com)
+- [Laravel Livewire](https://laravel-livewire.com)
+- [TailwindCSS](https://tailwindcss.com)
+
+## Prerequisites
+
+- [Git](https://git-scm.com)
+- [PHP 8.0+](https://www.php.net)
+- [Composer](https://getcomposer.org)
 
 ## Installation
 
