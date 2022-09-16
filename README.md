@@ -9,7 +9,7 @@
 </h1>
 
 <h4 align="center">
-This is the repository for the SemVer checker tool hosted at [semver.madewithlove.com](https://semver.madewithlove.com).
+This is the repository for the SemVer checker tool hosted at <a href="https://semver.madewithlove.com" target="_blank">semver.madewithlove.com</a>.
 </h4>
 
 <div align="center">
@@ -18,6 +18,7 @@ This is the repository for the SemVer checker tool hosted at [semver.madewithlov
 [![issues](https://img.shields.io/github/issues/madewithlove/semver)](https://github.com/madewithlove/semver/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/madewithlove/semver)](https://github.com/madewithlove/semver/pulls)
 [![contributors](https://img.shields.io/github/contributors/madewithlove/semver)](https://github.com/madewithlove/semver/graphs/contributors)
+![contributors](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
 </div>
 
