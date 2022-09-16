@@ -1,9 +1,9 @@
 <h1 align="center">
   <br>
   <a href="https://semver.madewithlove.com">
-    <img src="https://static.madewithlove.com/logo/red/full.png" alt="madewithlove" width="300">
+    <img src="https://static.madewithlove.com/logo/red/full.png" alt="madewithlove" width="400">
   </a>
-  <br>
+  <br><br>
   Packagist SemVer Checker
   <br>
 </h1>
