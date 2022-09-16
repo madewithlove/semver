@@ -45,7 +45,49 @@ This is the repository for the SemVer checker tool hosted at [semver.madewithlov
 
 ## Installation
 
-The only requirement to run this project locally is PHP 8. There is no additional infrastructure to set up.
+**1. Clone the repository:**
+
+```bash
+git clone git@github.com:madewithlove/semver.git
+```
+
+**2. Go to the project folder:**
+
+```bash
+cd semver
+```
+
+**3. Install the dependencies:**
+
+```bash
+composer install
+```
+
+**4. Create a copy of `.env.example`:**
+
+```bash
+cp .env.example .env
+```
+
+**5. Set the application key:**
+
+```bash
+php artisan key:generate
+```
+
+**6. Start the PHP development server:**
+
+```bash
+php artisan serve
+```
+
+### Tests
+
+Run the following command:
+
+```bash
+php artisan test
+```
 
 ## Contributing
 
