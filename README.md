@@ -81,7 +81,7 @@ php artisan key:generate
 php artisan serve
 ```
 
-### Tests
+## Tests
 
 Run the following command:
 
