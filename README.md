@@ -23,6 +23,14 @@ A SemVer checker tool for Packagist.
 </div>
 
 <div align="center">
+  <a href="#about">About</a> •
+  <a href="#prerequisites">Prerequisites</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#tests">Tests</a> •
+  <a href="#contributing">Contributing</a>
+</div>
+
+<div align="center">
   <sub>Built with :heart:︎ and :coffee: by heroes at <a href="https://madewithlove.com">madewithlove</a>.</sub>
 </div>
 
