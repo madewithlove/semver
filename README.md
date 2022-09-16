@@ -18,7 +18,7 @@ A SemVer checker tool for Packagist.
 [![issues](https://img.shields.io/github/issues/madewithlove/semver)](https://github.com/madewithlove/semver/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/madewithlove/semver)](https://github.com/madewithlove/semver/pulls)
 [![contributors](https://img.shields.io/github/contributors/madewithlove/semver)](https://github.com/madewithlove/semver/graphs/contributors)
-![contributors](https://img.shields.io/badge/contributions-welcome-brightgreen)
+[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)](#contributing)
 
 </div>
 
