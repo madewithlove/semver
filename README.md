@@ -1,4 +1,12 @@
-# Packagist Semver Checker
+<h1 align="center">
+  <br>
+  <a href="https://semver.madewithlove.com">
+    <img src="https://static.madewithlove.com/logo/red/full.png" alt="madewithlove" width="300">
+  </a>
+  <br>
+  Packagist SemVer Checker
+  <br>
+</h1>
 
 ## About
 
