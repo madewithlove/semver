@@ -34,7 +34,8 @@ This is the repository for the SemVer checker tool hosted at [semver.madewithlov
 
 - [Laravel](https://laravel.com)
 - [Laravel Livewire](https://laravel-livewire.com)
-- [TailwindCSS](https://tailwindcss.com)
+- [PHPUnit](https://phpunit.de)
+- [Tailwind CSS](https://tailwindcss.com)
 
 ## Prerequisites
 
