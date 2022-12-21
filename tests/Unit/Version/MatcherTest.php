@@ -29,6 +29,7 @@ final class MatcherTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider providesMatchingStableVersion
      */
     public function it matches an in bound version(string $version, string $constraint): void
