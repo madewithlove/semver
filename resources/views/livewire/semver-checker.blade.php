@@ -31,7 +31,7 @@
 
         @if(!empty($versions))
             <section class="text-center mt-5 pt-5 border-t border-gray-100">
-                <h1 class="text-lg text-gray-600 font-medium mb-5">Results for <a target="_blank" href="https://packagist.org/packages/{{ $package }}">{{ $package }}:{{ $constraint }}</a></h1>
+                <h2 class="text-lg text-gray-600 font-medium mb-5">Results for <a target="_blank" href="https://packagist.org/packages/{{ $package }}">{{ $package }}:{{ $constraint }}</a></h2>
 
                 <ul class="versions">
                     @foreach ($versions as $version)
@@ -43,12 +43,12 @@
             </section>
 
             @unless($isVirtual)
-                <h2 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h2>
+                <h3 class="text-center text-lg text-gray-600 my-5 font-medium">Satisfied?</h3>
                 <pre class="bg-gray-100 p-3 text-sm text-gray-600">composer require {{ $package }}:&quot;{{ $constraint }}{{ $this->stabilityFlag }}&quot;</pre>
             @endunless
         @elseif(!empty($package))
             <section class="mt-5 pt-5 border-t border-gray-100">
-                <h1 class="text-lg text-gray-600 font-medium mb-5">Known packages</h1>
+                <h2 class="text-lg text-gray-600 font-medium mb-5">Known packages</h2>
                 @if(!empty($results))
                     <ul>
                         @foreach($results as $result)
