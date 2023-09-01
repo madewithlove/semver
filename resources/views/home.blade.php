@@ -22,7 +22,6 @@
                 );
             }
         </script>
-        @livewireStyles
     </head>
     <body class="font-sans antialiased flex flex-col min-h-screen">
         <header class="w-full z-30 top-0 py-2 border-b border-grey-200 mb-12">
@@ -51,9 +50,6 @@
                 </div>
             </div>
         </footer>
-
-        @livewireScripts
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BTMZKZBEBE"></script>
         <script>
