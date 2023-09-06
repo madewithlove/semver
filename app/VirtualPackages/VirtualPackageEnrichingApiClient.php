@@ -21,7 +21,7 @@ class VirtualPackageEnrichingApiClient implements Client
     public function getPackage(string $packageName): ?Package
     {
         foreach ($this->virtualPackages as $virtualPackage) {
-            if ($virtualPackage->getName() === $packageName) {
+            if ($packageName === $virtualPackage->getName()) {
                 return $virtualPackage;
             }
         }
