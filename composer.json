@@ -9,7 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "composer/composer": "^2.2",
         "guzzlehttp/guzzle": "^7.3",
         "knplabs/packagist-api": "dev-master",
