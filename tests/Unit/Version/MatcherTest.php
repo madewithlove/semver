@@ -40,7 +40,7 @@ final class MatcherTest extends TestCase
     /**
      * @return string[][]
      */
-    public function providesMatchingStableVersion(): array
+    public static function providesMatchingStableVersion(): array
     {
         return [
             [

@@ -23,6 +23,7 @@ class VirtualPackageFactory
                 new VirtualPackageVersion('8.0', 'https://www.php.net/ChangeLog-8.php#PHP_8_0'),
                 new VirtualPackageVersion('8.1', 'https://www.php.net/ChangeLog-8.php#PHP_8_1'),
                 new VirtualPackageVersion('8.2', 'https://www.php.net/ChangeLog-8.php#PHP_8_2'),
+                new VirtualPackageVersion('8.3', 'https://www.php.net/ChangeLog-8.php#PHP_8_3'),
             ]
         );
     }
