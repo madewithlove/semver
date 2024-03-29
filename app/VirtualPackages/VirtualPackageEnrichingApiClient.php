@@ -7,7 +7,7 @@ namespace App\VirtualPackages;
 use App\Packagist\Client;
 use Packagist\Api\Result\Package;
 
-class VirtualPackageEnrichingApiClient implements Client
+final readonly class VirtualPackageEnrichingApiClient implements Client
 {
     /**
      * @param  VirtualPackage[]  $virtualPackages

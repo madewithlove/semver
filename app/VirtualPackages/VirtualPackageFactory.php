@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\VirtualPackages;
 
-class VirtualPackageFactory
+final readonly class VirtualPackageFactory
 {
     public static function php(): VirtualPackage
     {
