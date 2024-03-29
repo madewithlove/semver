@@ -7,7 +7,7 @@ namespace App\Packagist;
 use Illuminate\Support\Facades\Cache;
 use Packagist\Api\Result\Package;
 
-final class CachedApiClient implements Client
+final readonly class CachedApiClient implements Client
 {
     public function __construct(
         private ApiClient $client

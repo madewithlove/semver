@@ -9,7 +9,7 @@ use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\VersionParser;
 use UnexpectedValueException;
 
-final class Matcher
+final readonly class Matcher
 {
     public function __construct(
         private VersionParser $versionParser
