@@ -18,10 +18,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectUsersTo(AppServiceProvider::HOME);
 
         $middleware->api('throttle:api');
-
-        $middleware->alias([
-            'auth' => \App\Http\Middleware\Authenticate::class,
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
