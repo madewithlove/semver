@@ -17,8 +17,6 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -40,8 +38,6 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -56,7 +52,6 @@ class AppServiceProvider extends ServiceProvider
             /** @phpstan-ignore-next-line */
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
-
 
     }
 }
