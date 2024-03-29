@@ -6,7 +6,7 @@ namespace App\VirtualPackages;
 
 use Packagist\Api\Result\Package;
 
-class VirtualPackage extends Package
+final class VirtualPackage extends Package
 {
     /**
      * @param  VirtualPackageVersion[]  $packageVersions

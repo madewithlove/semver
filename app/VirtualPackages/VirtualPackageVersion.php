@@ -6,11 +6,11 @@ namespace App\VirtualPackages;
 
 use Packagist\Api\Result\Package\Version;
 
-class VirtualPackageVersion extends Version
+final class VirtualPackageVersion extends Version
 {
     public function __construct(
         protected string $version,
-        private string $url
+        public readonly string $url
     ) {
     }
 
@@ -22,10 +22,5 @@ class VirtualPackageVersion extends Version
     public function getVersionNormalized(): string
     {
         return $this->getVersion();
-    }
-
-    public function getUrl(): string
-    {
-        return $this->url;
     }
 }

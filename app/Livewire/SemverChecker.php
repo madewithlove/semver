@@ -51,7 +51,7 @@ class SemverChecker extends Component
                     if ($version instanceof VirtualPackageVersion) {
                         return new Version(
                             $alias,
-                            $version->getUrl(),
+                            $version->url,
                             $matches,
                         );
                     }

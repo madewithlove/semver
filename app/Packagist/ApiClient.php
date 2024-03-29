@@ -9,7 +9,7 @@ use Packagist\Api\Result\Package;
 use Packagist\Api\Result\Result;
 use Throwable;
 
-final class ApiClient implements Client
+final readonly class ApiClient implements Client
 {
     public function __construct(
         private BaseClient $client
