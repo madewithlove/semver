@@ -46,7 +46,7 @@
                     <a target="_blank" href="https://github.com/madewithlove/semver/graphs/contributors" class="ml-5">creators</a>
                 </div>
                 <div class="flex-end">
-                    <a target="_blank" href="https://madewithlove.com/company/playground/?ref=semver">This is a madewithlove project</a>
+                    <a target="_blank" href="https://madewithlove.com/about/playground/?ref=semver">This is a madewithlove project</a>
                 </div>
             </div>
         </footer>
