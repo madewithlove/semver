@@ -6,10 +6,10 @@ namespace App\Livewire;
 
 use App\Packagist\Client;
 use App\Version\Matcher;
+use App\Version\Parser;
 use App\Version\Version;
 use App\VirtualPackages\VirtualPackage;
 use App\VirtualPackages\VirtualPackageVersion;
-use Composer\Semver\VersionParser;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
@@ -111,14 +111,10 @@ class SemverChecker extends Component
         return '@' . $this->stability;
     }
 
-    public function getIsValidConstraintProperty(VersionParser $versionParser): bool
+    public function getIsValidConstraintProperty(Parser $versionParser): bool
     {
-        if (Str::startsWith($this->constraint, '@')) {
-            return false;
-        }
-
         try {
-            $versionParser->parseConstraints($this->constraint);
+            $versionParser->parseConstraint($this->constraint);
         } catch (UnexpectedValueException) {
             return false;
         }

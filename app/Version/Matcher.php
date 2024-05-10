@@ -6,30 +6,24 @@ namespace App\Version;
 
 use Composer\Package\BasePackage;
 use Composer\Semver\Constraint\Constraint;
-use Composer\Semver\VersionParser;
-use Illuminate\Support\Str;
 use UnexpectedValueException;
 
 final readonly class Matcher
 {
     public function __construct(
-        private VersionParser $versionParser
+        private Parser $parser,
     ) {
     }
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {
-        if (Str::startsWith($constraint, '@')) {
-            return false;
-        }
-
         try {
-            $constraint = $this->versionParser->parseConstraints($constraint);
+            $constraint = $this->parser->parseConstraint($constraint);
         } catch (UnexpectedValueException) {
             return false;
         }
 
-        $parsedVersion = new Constraint('=', $this->versionParser->normalize($version));
+        $parsedVersion = new Constraint('=', $this->parser->normalize($version));
 
         if (! $parsedVersion->matches($constraint)) {
             return false;
@@ -44,7 +38,7 @@ final readonly class Matcher
 
     private function isMoreOrEquallyStable(string $version, string $requiredStability): bool
     {
-        $stability = $this->versionParser->parseStability($version);
+        $stability = $this->parser->parseStability($version);
 
         return BasePackage::$stabilities[$stability] <= BasePackage::$stabilities[$requiredStability];
     }
