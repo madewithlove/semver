@@ -113,6 +113,10 @@ class SemverChecker extends Component
 
     public function getIsValidConstraintProperty(VersionParser $versionParser): bool
     {
+        if (Str::startsWith($this->constraint, '@')) {
+            return false;
+        }
+
         try {
             $versionParser->parseConstraints($this->constraint);
         } catch (UnexpectedValueException) {
