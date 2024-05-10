@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Version;
 
 use App\Version\Matcher;
+use App\Version\Parser;
 use Composer\Semver\VersionParser;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +15,7 @@ final class MatcherTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->matcher = new Matcher(new VersionParser());
+        $this->matcher = new Matcher(new Parser(new VersionParser()));
     }
 
     /** @test */
