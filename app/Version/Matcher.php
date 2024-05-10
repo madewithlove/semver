@@ -7,6 +7,7 @@ namespace App\Version;
 use Composer\Package\BasePackage;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\VersionParser;
+use Illuminate\Support\Str;
 use UnexpectedValueException;
 
 final readonly class Matcher
@@ -18,6 +19,10 @@ final readonly class Matcher
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {
+        if (Str::startsWith($constraint, '@')) {
+            return false;
+        }
+
         try {
             $constraint = $this->versionParser->parseConstraints($constraint);
         } catch (UnexpectedValueException) {
