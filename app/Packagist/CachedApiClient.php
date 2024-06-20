@@ -11,8 +11,7 @@ final readonly class CachedApiClient implements Client
 {
     public function __construct(
         private ApiClient $client
-    ) {
-    }
+    ) {}
 
     public function getPackage(string $packageName): ?Package
     {

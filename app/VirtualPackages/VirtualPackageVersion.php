@@ -11,8 +11,7 @@ final class VirtualPackageVersion extends Version
     public function __construct(
         protected string $version,
         public readonly string $url
-    ) {
-    }
+    ) {}
 
     public function getVersion(): string
     {
