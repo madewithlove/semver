@@ -11,8 +11,7 @@ final readonly class Parser
 {
     public function __construct(
         private VersionParser $versionParser
-    ) {
-    }
+    ) {}
 
     public function parseConstraint(string $constraints): ConstraintInterface
     {
