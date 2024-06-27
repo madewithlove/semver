@@ -12,8 +12,7 @@ final readonly class Matcher
 {
     public function __construct(
         private Parser $parser,
-    ) {
-    }
+    ) {}
 
     public function matches(string $version, string $constraint, string $requiredStability): bool
     {

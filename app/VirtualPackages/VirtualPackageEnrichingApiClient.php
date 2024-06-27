@@ -15,8 +15,7 @@ final readonly class VirtualPackageEnrichingApiClient implements Client
     public function __construct(
         private Client $client,
         private array $virtualPackages,
-    ) {
-    }
+    ) {}
 
     public function getPackage(string $packageName): ?Package
     {
