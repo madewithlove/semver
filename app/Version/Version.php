@@ -10,6 +10,5 @@ final readonly class Version
         public string $name,
         public string $url,
         public bool $matches,
-    ) {
-    }
+    ) {}
 }
