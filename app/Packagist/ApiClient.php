@@ -13,8 +13,7 @@ final readonly class ApiClient implements Client
 {
     public function __construct(
         private BaseClient $client
-    ) {
-    }
+    ) {}
 
     public function getPackage(string $packageName): ?Package
     {
