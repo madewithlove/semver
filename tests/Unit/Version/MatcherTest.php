@@ -7,6 +7,8 @@ namespace Tests\Unit\Version;
 use App\Version\Matcher;
 use App\Version\Parser;
 use Composer\Semver\VersionParser;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 final class MatcherTest extends TestCase
@@ -18,7 +20,7 @@ final class MatcherTest extends TestCase
         $this->matcher = new Matcher(new Parser(new VersionParser()));
     }
 
-    /** @test */
+    #[Test]
     public function it matches an exact same version(): void
     {
         $this->assertTrue($this->matcher->matches(
@@ -28,11 +30,8 @@ final class MatcherTest extends TestCase
         ));
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider providesMatchingStableVersion
-     */
+    #[Test]
+    #[DataProvider('providesMatchingStableVersion')]
     public function it matches an in bound version(string $version, string $constraint): void
     {
         $this->assertTrue($this->matcher->matches($version, $constraint, 'stable'));
@@ -75,17 +74,13 @@ final class MatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it does not match a version if the stability flag does not allow it(): void
     {
         $this->assertFalse($this->matcher->matches('dev-main', 'dev-main', 'stable'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it does not match an invalid constraint(): void
     {
         $this->assertFalse($this->matcher->matches('dev-main', 'NOT_A_CONSTRAINT', 'stable'));
