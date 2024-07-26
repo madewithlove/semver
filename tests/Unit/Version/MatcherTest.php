@@ -17,7 +17,7 @@ final class MatcherTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->matcher = new Matcher(new Parser(new VersionParser()));
+        $this->matcher = new Matcher(new Parser(new VersionParser));
     }
 
     #[Test]
