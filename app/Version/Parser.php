@@ -16,7 +16,7 @@ final readonly class Parser
     public function parseConstraint(string $constraints): ConstraintInterface
     {
         if (Str::startsWith($constraints, '@')) {
-            throw new UnexpectedValueException();
+            throw new UnexpectedValueException;
         }
 
         return $this->versionParser->parseConstraints($constraints);
