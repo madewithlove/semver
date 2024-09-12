@@ -15,7 +15,7 @@
         "knplabs/packagist-api": "dev-master",
         "laravel/framework": "^11.23",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.4"
+        "livewire/livewire": "^3.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
