@@ -11,11 +11,11 @@
     "require": {
         "php": "^8.3",
         "composer/composer": "^2.7",
-        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/guzzle": "^7.9",
         "knplabs/packagist-api": "dev-master",
         "laravel/framework": "^11.24",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.4"
+        "livewire/livewire": "^3.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
