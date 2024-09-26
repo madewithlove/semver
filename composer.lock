@@ -7260,16 +7260,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.31.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "48d89608a3bb5be763c9bb87121d31e7da27c1cb"
+                "reference": "d54af9d5745e3680d8a6463ffd9f314aa53eb2d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/48d89608a3bb5be763c9bb87121d31e7da27c1cb",
-                "reference": "48d89608a3bb5be763c9bb87121d31e7da27c1cb",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/d54af9d5745e3680d8a6463ffd9f314aa53eb2d1",
+                "reference": "d54af9d5745e3680d8a6463ffd9f314aa53eb2d1",
                 "shasum": ""
             },
             "require": {
@@ -7319,7 +7319,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2024-07-22T14:36:50+00:00"
+            "time": "2024-09-22T19:04:21+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -9553,16 +9553,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v7.1.1",
+            "version": "v7.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "fa34c77015aa6720469db7003567b9f772492bf2"
+                "reference": "4e561c316e135e053bd758bf3b3eb291d9919de4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/fa34c77015aa6720469db7003567b9f772492bf2",
-                "reference": "fa34c77015aa6720469db7003567b9f772492bf2",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/4e561c316e135e053bd758bf3b3eb291d9919de4",
+                "reference": "4e561c316e135e053bd758bf3b3eb291d9919de4",
                 "shasum": ""
             },
             "require": {
@@ -9604,7 +9604,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v7.1.1"
+                "source": "https://github.com/symfony/yaml/tree/v7.1.5"
             },
             "funding": [
                 {
@@ -9620,7 +9620,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:57:53+00:00"
+            "time": "2024-09-17T12:49:58+00:00"
         },
         {
             "name": "theseer/tokenizer",
