@@ -91,11 +91,12 @@ class SemverChecker extends Component
     {
         $extras = $version->getExtra();
 
-        if ($extras && isset($extras['branch-alias'])) {
-            foreach ($extras['branch-alias'] as $branch => $alias) {
-                if ($version->getVersion() === $branch) {
-                    return $alias;
-                }
+        /** @var array<string, string> $branchAlias */
+        $branchAlias = $extras['branch-alias'] ?? [];
+
+        foreach ($branchAlias as $branch => $alias) {
+            if ($version->getVersion() === $branch) {
+                return $alias;
             }
         }
 
