@@ -10,7 +10,6 @@ use App\Version\Parser;
 use App\Version\Version;
 use App\VirtualPackages\VirtualPackage;
 use App\VirtualPackages\VirtualPackageVersion;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -30,7 +29,7 @@ class SemverChecker extends Component
      */
     protected $queryString = ['package', 'constraint', 'stability'];
 
-    public function render(Client $client, Matcher $matcher): Factory|View
+    public function render(Client $client, Matcher $matcher): View
     {
         $package = $client->getPackage($this->package);
         $versions = [];
@@ -91,11 +90,12 @@ class SemverChecker extends Component
     {
         $extras = $version->getExtra();
 
-        if ($extras && isset($extras['branch-alias'])) {
-            foreach ($extras['branch-alias'] as $branch => $alias) {
-                if ($version->getVersion() === $branch) {
-                    return $alias;
-                }
+        /** @var array<string, string> $branchAlias */
+        $branchAlias = $extras['branch-alias'] ?? [];
+
+        foreach ($branchAlias as $branch => $alias) {
+            if ($version->getVersion() === $branch) {
+                return $alias;
             }
         }
 

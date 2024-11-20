@@ -41,8 +41,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
-
         $this->bootRoute();
     }
 
@@ -52,6 +50,5 @@ class AppServiceProvider extends ServiceProvider
             /** @phpstan-ignore-next-line */
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
-
     }
 }

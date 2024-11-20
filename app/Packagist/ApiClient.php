@@ -9,6 +9,9 @@ use Packagist\Api\Result\Package;
 use Packagist\Api\Result\Result;
 use Throwable;
 
+use function array_filter;
+use function is_array;
+
 final readonly class ApiClient implements Client
 {
     public function __construct(
@@ -18,12 +21,10 @@ final readonly class ApiClient implements Client
     public function getPackage(string $packageName): ?Package
     {
         try {
+            /** @var Package|Package[] $result */
             $result = $this->client->get($packageName);
-            if (is_array($result)) {
-                return $result[0];
-            }
 
-            return $result;
+            return is_array($result) ? $result[0] : $result;
         } catch (Throwable) {
             return null;
         }
