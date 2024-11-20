@@ -1,20 +1,14 @@
 name: CI
+
 on: [push, pull_request_target]
+
 jobs:
   tests:
     name: Run tests
     runs-on: ubuntu-latest
-
     steps:
       - name: 📤 Checkout project
         uses: actions/checkout@v4
-
-      - name: 📩 Fetch vendor from cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('**/composer.lock') }}
 
       - name: 🐘 Setup PHP
         uses: shivammathur/setup-php@master
@@ -28,7 +22,7 @@ jobs:
         run: cp .env.example .env
 
       - name: 📦 Install dependencies
-        run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        uses: ramsey/composer-install@v3
 
       - name: 🔑 Generate a laravel key
         run: php artisan key:generate
@@ -39,17 +33,9 @@ jobs:
   phpstan:
     name: Static analysis
     runs-on: ubuntu-latest
-
     steps:
       - name: 📤 Checkout project
         uses: actions/checkout@v4
-
-      - name: 📩 Fetch vendor from cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('**/composer.lock') }}
 
       - name: 🐘 Setup PHP
         uses: shivammathur/setup-php@master
@@ -60,7 +46,7 @@ jobs:
           update: true
 
       - name: 📦 Install dependencies
-        run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        uses: ramsey/composer-install@v3
 
       - name: ✅ Run static analysis
         run: vendor/bin/phpstan analyse
@@ -68,17 +54,9 @@ jobs:
   coding-standards:
     name: Coding standards
     runs-on: ubuntu-latest
-
     steps:
       - name: 📤 Checkout project
         uses: actions/checkout@v4
-
-      - name: 📩 Fetch vendor from cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('**/composer.lock') }}
 
       - name: 🐘 Setup PHP
         uses: shivammathur/setup-php@master
@@ -89,7 +67,7 @@ jobs:
           update: true
 
       - name: 📦 Install dependencies
-        run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        uses: ramsey/composer-install@v3
 
       - name: ✅ Run Laravel Pint
         run: vendor/bin/pint
