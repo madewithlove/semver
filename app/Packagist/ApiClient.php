@@ -18,6 +18,7 @@ final readonly class ApiClient implements Client
     public function getPackage(string $packageName): ?Package
     {
         try {
+            /** @var Package|Package[] $result */
             $result = $this->client->get($packageName);
             if (is_array($result)) {
                 return $result[0];
