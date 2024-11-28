@@ -24,6 +24,7 @@ final readonly class VirtualPackageFactory
                 new VirtualPackageVersion('8.1', 'https://www.php.net/ChangeLog-8.php#PHP_8_1'),
                 new VirtualPackageVersion('8.2', 'https://www.php.net/ChangeLog-8.php#PHP_8_2'),
                 new VirtualPackageVersion('8.3', 'https://www.php.net/ChangeLog-8.php#PHP_8_3'),
+                new VirtualPackageVersion('8.4', 'https://www.php.net/ChangeLog-8.php#PHP_8_4'),
             ]
         );
     }
