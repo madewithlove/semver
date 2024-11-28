@@ -2,6 +2,9 @@ name: CI
 
 on: [push, pull_request_target]
 
+env:
+  PHP_VERSION: 8.4
+
 jobs:
   tests:
     name: Run tests
@@ -13,8 +16,7 @@ jobs:
       - name: 🐘 Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: "8.4"
-          tools: composer
+          php-version: ${{ env.PHP_VERSION }}
         env:
           update: true
 
@@ -40,8 +42,7 @@ jobs:
       - name: 🐘 Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: "8.4"
-          tools: composer
+          php-version: ${{ env.PHP_VERSION }}
         env:
           update: true
 
@@ -61,8 +62,7 @@ jobs:
       - name: 🐘 Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: "8.4"
-          tools: composer
+          php-version: ${{ env.PHP_VERSION }}
         env:
           update: true
 
