@@ -1,5 +1,3 @@
-body {font-family: Lato,Helvetica,Arial,sans-serif;}
-
 a {
     transition: color .3s ease-in-out, background .3s linear;
     position: relative;
@@ -7,15 +5,10 @@ a {
     text-decoration: none;
     font-weight: bold;
     display: inline;
-    padding-bottom: .6rem;
     background: linear-gradient(to right, #ed2324 100%, #ed2324 100%);
     background-size: 0 2px;
     background-repeat: no-repeat;
     background-position: center 85%;
-}
-
-input {
-    font-size: 15px;
 }
 
 a:hover,
