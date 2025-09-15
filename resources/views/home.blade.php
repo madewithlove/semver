@@ -8,9 +8,8 @@
         <link rel="icon" type="image/png" href="{{asset('img/favicon-16x16.png')}}" sizes="16x16">
         <link rel="icon" type="image/png" href="{{asset('img/favicon-32x32.png')}}" sizes="32x32">
         <meta name="description" content="Semver version constraint checker for packagist.">
-        <link href="//fonts.googleapis.com/css?family=Lato:300,400,500,700" rel="stylesheet" type="text/css">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <script>
             if (window.location.hash.startsWith('#!?')) {
                 window.location.replace(
@@ -24,19 +23,19 @@
         </script>
     </head>
     <body class="font-sans antialiased flex flex-col min-h-screen">
-        <header class="w-full z-30 top-0 py-2 border-b border-grey-200 mb-12">
+        <header class="w-full z-30 top-0 py-2 border-b border-gray-200 mb-12">
             <div  class="w-full container mx-auto flex flex-wrap items-center mt-0 py-3 px-5">
                 <a href="https://madewithlove.com?ref=semver" title="go to the madewitlove website" class="w-40 bg-transparent pb-0">
                     <img src="img/logo-new.svg" alt="the madewithlove logo">
                 </a>
 
-                <h1 class="ml-3 pl-3 text-xl border-l border-red-500">Packagist Semver Checker</h1>
+                <h1 class="ml-3 pl-3 text-xl/7 border-l border-red-500">Packagist Semver Checker</h1>
             </div>
         </header>
-        <main class="w-full mx-auto container px-5 flex-grow">
+        <main class="w-full mx-auto container px-5 grow">
             <livewire:semver-checker />
         </main>
-        <footer class="w-full border-t border-grey-200 mt-3">
+        <footer class="w-full border-t border-gray-200 mt-3">
             <div class="w-full mx-auto container flex flex-wrap items-center justify-between pt-5 mb-7 text-xs px-5">
                 <div>
                     <span>&copy; {{ now()->year }} <strong>made</strong>with<strong>love</strong></span>
