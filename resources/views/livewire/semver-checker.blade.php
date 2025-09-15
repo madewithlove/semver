@@ -15,11 +15,11 @@
                 id="package"
                 type="text"
                 autofocus=""
-                class="@if ($package === '') border-red-500 @endif flex-grow text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-none mr-3 text-lg font-bold"
+                class="@if ($package === '') border-red-500 @endif grow text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-hidden mr-3 text-lg font-bold"
             >
-            <input wire:model.live="constraint" placeholder="Version (eg. ^1.5)" id="version" type="text" class="@if (!$this->isValidConstraint) border-red-500 @endif flex-grow text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-none mr-3 text-lg font-bold">
+            <input wire:model.live="constraint" placeholder="Version (eg. ^1.5)" id="version" type="text" class="@if (!$this->isValidConstraint) border-red-500 @endif grow text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-hidden mr-3 text-lg font-bold">
             @unless($isVirtual)
-                <select name="stability" id="stability" wire:model.live="stability" class="text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-none mr-3 text-lg font-bold">
+                <select name="stability" id="stability" wire:model.live="stability" class="text-center border-2 border-gray-400 bg-gray-100 p-3 text-gray-400 focus:text-gray-500 outline-hidden mr-3 text-lg font-bold">
                     <option label="dev" value="dev">dev</option>
                     <option label="alpha" value="alpha">alpha</option>
                     <option label="beta" value="beta">beta</option>
