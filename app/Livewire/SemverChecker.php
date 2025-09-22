@@ -13,6 +13,7 @@ use App\VirtualPackages\VirtualPackageVersion;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Packagist\Api\Result\Package\Version as PackagistVersion;
 use UnexpectedValueException;
@@ -23,16 +24,14 @@ use UnexpectedValueException;
  */
 class SemverChecker extends Component
 {
+    #[Url]
     public string $package = 'madewithlove/htaccess-cli';
 
+    #[Url]
     public string $constraint = 'dev-main';
 
+    #[Url]
     public string $stability = 'stable';
-
-    /**
-     * @var string[]
-     */
-    protected $queryString = ['package', 'constraint', 'stability'];
 
     public function render(Client $client, Matcher $matcher): View
     {
