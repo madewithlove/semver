@@ -12,22 +12,26 @@ use App\VirtualPackages\VirtualPackage;
 use App\VirtualPackages\VirtualPackageVersion;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Packagist\Api\Result\Package\Version as PackagistVersion;
 use UnexpectedValueException;
 
+/**
+ * @property-read string $stabilityFlag
+ * @property-read bool $isValidConstraint
+ */
 class SemverChecker extends Component
 {
+    #[Url]
     public string $package = 'madewithlove/htaccess-cli';
 
+    #[Url]
     public string $constraint = 'dev-main';
 
+    #[Url]
     public string $stability = 'stable';
-
-    /**
-     * @var string[]
-     */
-    protected $queryString = ['package', 'constraint', 'stability'];
 
     public function render(Client $client, Matcher $matcher): View
     {
@@ -102,7 +106,8 @@ class SemverChecker extends Component
         return $version->getVersion();
     }
 
-    public function getStabilityFlagProperty(): string
+    #[Computed]
+    public function stabilityFlag(): string
     {
         if ($this->stability === 'stable') {
             return '';
@@ -111,10 +116,11 @@ class SemverChecker extends Component
         return '@' . $this->stability;
     }
 
-    public function getIsValidConstraintProperty(Parser $versionParser): bool
+    #[Computed]
+    public function isValidConstraint(): bool
     {
         try {
-            $versionParser->parseConstraint($this->constraint);
+            app(Parser::class)->parseConstraint($this->constraint);
         } catch (UnexpectedValueException) {
             return false;
         }

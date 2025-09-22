@@ -24,8 +24,8 @@
     </head>
     <body class="font-sans antialiased flex flex-col min-h-screen">
         <header class="w-full z-30 top-0 py-2 border-b border-gray-200 mb-12">
-            <div  class="w-full container mx-auto flex flex-wrap items-center mt-0 py-3 px-5">
-                <a href="https://madewithlove.com?ref=semver" title="go to the madewitlove website" class="w-40 bg-transparent pb-0">
+            <div class="w-full container mx-auto flex flex-wrap items-center mt-0 py-3 px-5">
+                <a href="https://madewithlove.com?ref=semver" title="go to the madewitlove website" class="w-40 bg-transparent pb-0!">
                     <img src="img/logo-new.svg" alt="the madewithlove logo">
                 </a>
 
