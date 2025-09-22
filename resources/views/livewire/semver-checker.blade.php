@@ -35,7 +35,7 @@
 
                 <ul class="versions">
                     @foreach ($versions as $version)
-                        <li @class(['matches' => $version->matches])>
+                        <li wire:key="{{ $version->name }}" @class(['matches' => $version->matches])>
                             <a target="_blank" href="{{ $version->url }}">{{ $version->name }}</a>
                         </li>
                     @endforeach
