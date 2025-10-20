@@ -13,7 +13,7 @@ final class HomeTest extends TestCase
     public function it can render the homepage(): void
     {
         $this->get('/')
-            ->assertStatus(200)
+            ->assertOk()
             ->assertSeeTextInOrder([
                 'Packagist Semver Checker',
                 'madewithlove/htaccess-cli:dev-main',
