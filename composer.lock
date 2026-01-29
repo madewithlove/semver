@@ -1815,16 +1815,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.48.1",
+            "version": "v12.49.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0f0974a9769378ccd9c9935c09b9927f3a606830"
+                "reference": "4bde4530545111d8bdd1de6f545fa8824039fcb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0f0974a9769378ccd9c9935c09b9927f3a606830",
-                "reference": "0f0974a9769378ccd9c9935c09b9927f3a606830",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4bde4530545111d8bdd1de6f545fa8824039fcb5",
+                "reference": "4bde4530545111d8bdd1de6f545fa8824039fcb5",
                 "shasum": ""
             },
             "require": {
@@ -2033,20 +2033,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-01-20T16:12:36+00:00"
+            "time": "2026-01-28T03:40:49+00:00"
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.3.10",
+            "version": "v0.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "360ba095ef9f51017473505191fbd4ab73e1cab3"
+                "reference": "dd2a2ed95acacbcccd32fd98dee4c946ae7a7217"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/360ba095ef9f51017473505191fbd4ab73e1cab3",
-                "reference": "360ba095ef9f51017473505191fbd4ab73e1cab3",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/dd2a2ed95acacbcccd32fd98dee4c946ae7a7217",
+                "reference": "dd2a2ed95acacbcccd32fd98dee4c946ae7a7217",
                 "shasum": ""
             },
             "require": {
@@ -2090,9 +2090,9 @@
             "description": "Add beautiful and user-friendly forms to your command-line applications.",
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.3.10"
+                "source": "https://github.com/laravel/prompts/tree/v0.3.11"
             },
-            "time": "2026-01-13T20:29:29+00:00"
+            "time": "2026-01-27T02:55:06+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -5072,16 +5072,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v7.4.4",
+            "version": "v7.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "01b24a145bbeaa7141e75887ec904c34a6728a5f"
+                "reference": "ad4daa7c38668dcb031e63bc99ea9bd42196a2cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/01b24a145bbeaa7141e75887ec904c34a6728a5f",
-                "reference": "01b24a145bbeaa7141e75887ec904c34a6728a5f",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/ad4daa7c38668dcb031e63bc99ea9bd42196a2cb",
+                "reference": "ad4daa7c38668dcb031e63bc99ea9bd42196a2cb",
                 "shasum": ""
             },
             "require": {
@@ -5116,7 +5116,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v7.4.4"
+                "source": "https://github.com/symfony/finder/tree/v7.4.5"
             },
             "funding": [
                 {
@@ -5136,20 +5136,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-12T12:19:02+00:00"
+            "time": "2026-01-26T15:07:59+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v7.4.4",
+            "version": "v7.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "977a554a34cf8edc95ca351fbecb1bb1ad05cc94"
+                "reference": "446d0db2b1f21575f1284b74533e425096abdfb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/977a554a34cf8edc95ca351fbecb1bb1ad05cc94",
-                "reference": "977a554a34cf8edc95ca351fbecb1bb1ad05cc94",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/446d0db2b1f21575f1284b74533e425096abdfb6",
+                "reference": "446d0db2b1f21575f1284b74533e425096abdfb6",
                 "shasum": ""
             },
             "require": {
@@ -5198,7 +5198,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v7.4.4"
+                "source": "https://github.com/symfony/http-foundation/tree/v7.4.5"
             },
             "funding": [
                 {
@@ -5218,20 +5218,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-09T12:14:21+00:00"
+            "time": "2026-01-27T16:16:02+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v7.4.4",
+            "version": "v7.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "48b067768859f7b68acf41dfb857a5a4be00acdd"
+                "reference": "229eda477017f92bd2ce7615d06222ec0c19e82a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/48b067768859f7b68acf41dfb857a5a4be00acdd",
-                "reference": "48b067768859f7b68acf41dfb857a5a4be00acdd",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/229eda477017f92bd2ce7615d06222ec0c19e82a",
+                "reference": "229eda477017f92bd2ce7615d06222ec0c19e82a",
                 "shasum": ""
             },
             "require": {
@@ -5317,7 +5317,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v7.4.4"
+                "source": "https://github.com/symfony/http-kernel/tree/v7.4.5"
             },
             "funding": [
                 {
@@ -5337,7 +5337,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-24T22:13:01+00:00"
+            "time": "2026-01-28T10:33:42+00:00"
         },
         {
             "name": "symfony/mailer",
@@ -5425,16 +5425,16 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v7.4.4",
+            "version": "v7.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "40945014c0a9471ccfe19673c54738fa19367a3c"
+                "reference": "b18c7e6e9eee1e19958138df10412f3c4c316148"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/40945014c0a9471ccfe19673c54738fa19367a3c",
-                "reference": "40945014c0a9471ccfe19673c54738fa19367a3c",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/b18c7e6e9eee1e19958138df10412f3c4c316148",
+                "reference": "b18c7e6e9eee1e19958138df10412f3c4c316148",
                 "shasum": ""
             },
             "require": {
@@ -5445,15 +5445,15 @@
             },
             "conflict": {
                 "egulias/email-validator": "~3.0.0",
-                "phpdocumentor/reflection-docblock": "<3.2.2",
-                "phpdocumentor/type-resolver": "<1.4.0",
+                "phpdocumentor/reflection-docblock": "<5.2|>=6",
+                "phpdocumentor/type-resolver": "<1.5.1",
                 "symfony/mailer": "<6.4",
                 "symfony/serializer": "<6.4.3|>7.0,<7.0.3"
             },
             "require-dev": {
                 "egulias/email-validator": "^2.1.10|^3.1|^4",
                 "league/html-to-markdown": "^5.0",
-                "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
+                "phpdocumentor/reflection-docblock": "^5.2",
                 "symfony/dependency-injection": "^6.4|^7.0|^8.0",
                 "symfony/process": "^6.4|^7.0|^8.0",
                 "symfony/property-access": "^6.4|^7.0|^8.0",
@@ -5490,7 +5490,7 @@
                 "mime-type"
             ],
             "support": {
-                "source": "https://github.com/symfony/mime/tree/v7.4.4"
+                "source": "https://github.com/symfony/mime/tree/v7.4.5"
             },
             "funding": [
                 {
@@ -5510,7 +5510,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-08T16:12:55+00:00"
+            "time": "2026-01-27T08:59:58+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
