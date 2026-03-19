@@ -13,7 +13,7 @@
         "composer/composer": "^2.8",
         "guzzlehttp/guzzle": "^7.10",
         "knplabs/packagist-api": "dev-master",
-        "laravel/framework": "^12.34",
+        "laravel/framework": "^13.1",
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^4.0"
     },
