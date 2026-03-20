@@ -41,9 +41,7 @@
                     <span>&copy; {{ now()->year }} <strong>made</strong>with<strong>love</strong></span>
                     <a href="https://madewithlove.com/cookie-policy/?ref=semver" class="ml-5">cookie policy</a>
                     <a href="https://madewithlove.com/privacy-policy/?ref=semver" class="ml-5">privacy policy</a>
-                    <a target="_blank" href="https://github.com/madewithlove/semver" class="ml-5">source</a>
-                    <a target="_blank" href="https://github.com/madewithlove/semver" class="ml-5">github</a>
-                    <a target="_blank" href="https://github.com/madewithlove/semver/graphs/contributors" class="ml-5">creators</a>
+                    <a target="_blank" href="https://github.com/madewithlove/semver" class="ml-5">source</a>                    <a target="_blank" href="https://github.com/madewithlove/semver/graphs/contributors" class="ml-5">creators</a>
                 </div>
                 <div class="flex-end">
                     <a target="_blank" href="https://madewithlove.com/about/playground/?ref=semver">This is a madewithlove project</a>
