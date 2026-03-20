@@ -42,7 +42,6 @@
                     <a href="https://madewithlove.com/cookie-policy/?ref=semver" class="ml-5">cookie policy</a>
                     <a href="https://madewithlove.com/privacy-policy/?ref=semver" class="ml-5">privacy policy</a>
                     <a target="_blank" href="https://github.com/madewithlove/semver" class="ml-5">source</a>
-                    <a target="_blank" href="https://app.changehub.io/share/p-oXqP9gaQg1" class="ml-5">changelog</a>
                     <a target="_blank" href="https://github.com/madewithlove/semver/graphs/contributors" class="ml-5">creators</a>
                 </div>
                 <div class="flex-end">
