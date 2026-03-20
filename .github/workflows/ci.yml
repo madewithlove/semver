@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request_target]
 
 env:
-  PHP_VERSION: 8.4
+  PHP_VERSION: 8.5
 
 jobs:
   tests:
