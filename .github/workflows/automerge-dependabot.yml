@@ -7,8 +7,10 @@ jobs:
   automerge:
     name: Enable automerge on dependabot PRs
     runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       - name: Enable automerge on dependabot PRs
-        uses: daneden/enable-automerge-action@v1
-        with:
-          github-token: ${{ secrets.DEPENDABOT_AUTO_MERGE_PERSONAL_ACCESS_TOKEN }}
+        run: gh pr merge --merge --auto "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.DEPENDABOT_AUTO_MERGE_PERSONAL_ACCESS_TOKEN }}
